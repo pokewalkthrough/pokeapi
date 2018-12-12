@@ -1,0 +1,46 @@
+{
+  "name": "@pokequest/pokeapi",
+  "version": "1.0.0",
+  "description": "PokeAPI wrapper",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run clean && npm run lint && tsc",
+    "clean": "rm -rf dist/",
+    "lint": "npm run lint:ts && npm run lint:json",
+    "lint:json": "prettier --config prettier-json.json '**/!(package*|tsconfig*).json' --write",
+    "lint:ts": "tslint -p . --fix",
+    "test": "mocha --require ts-node/register test/**/*.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/pokequest/pokeapi.git"
+  },
+  "keywords": [
+    "PokeAPI",
+    "Pokemon",
+    "PokeQuest"
+  ],
+  "author": "Michael Randolph <mrand01@gmail.com> (https://github.com/mrand01)",
+  "license": "MIT",
+  "bugs": "https://github.com/pokequest/pokeapi/issues",
+  "homepage": "https://github.com/pokequest/pokeapi#readme",
+  "private": true,
+  "dependencies": {
+    "tslib": "^1.9.3"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/expect": "^1.20.3",
+    "@types/mocha": "^5.2.5",
+    "chai": "^4.2.0",
+    "expect": "^23.6.0",
+    "mocha": "^5.2.0",
+    "prettier": "^1.15.3",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.17.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "^3.2.2"
+  }
+}
