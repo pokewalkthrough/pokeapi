@@ -1,0 +1,7 @@
+# Paths
+dist
+node_modules
+
+# Files
+TODO.md
+.editorconfig
