@@ -2,14 +2,14 @@
 export interface IAPIResourceList {
   count: number;
   next: string;
-  previous: boolean;
+  previous: string;
   results: IAPIResource[];
 }
 
 export interface INamedAPIResourceList {
   count: number;
-  next: string | null;
-  previous: boolean | null;
+  next: string;
+  previous: string;
   results: INamedAPIResource[];
 }
 
