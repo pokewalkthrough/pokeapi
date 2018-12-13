@@ -26,12 +26,15 @@
   "homepage": "https://github.com/pokequest/pokeapi#readme",
   "private": true,
   "dependencies": {
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.5",
     "tslib": "^1.9.3"
   },
   "devDependencies": {
     "@types/chai": "^4.1.7",
     "@types/expect": "^1.20.3",
     "@types/mocha": "^5.2.5",
+    "@types/request-promise-native": "^1.0.15",
     "chai": "^4.2.0",
     "expect": "^23.6.0",
     "mocha": "^5.2.0",
