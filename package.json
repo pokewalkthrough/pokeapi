@@ -9,7 +9,7 @@
     "lint": "npm run lint:ts && npm run lint:json",
     "lint:json": "prettier --config prettier-json.json '**/!(package*|tsconfig*).json' --write",
     "lint:ts": "tslint -p . --fix",
-    "test": "mocha --require ts-node/register test/**/*.ts"
+    "test": "mocha --require ts-node/register 'test/**/*.ts'"
   },
   "repository": {
     "type": "git",
