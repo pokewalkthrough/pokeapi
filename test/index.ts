@@ -62,3 +62,4 @@ describe('internal methods', (): void => {
 });
 
 endpointRunner('berry');
+endpointRunner('berry-firmness');

@@ -32,9 +32,20 @@ export interface IBerryFlavorMap {
   potency: number;
 }
 
+// Berry Firmnesses
+export interface IBerryFirmness extends INamedPokeAPIResource {
+  berries: INamedAPIResource[]; // Berry
+  names: IName[];
+}
+
 // Utility
 export interface IAPIResource {
   url: string;
+}
+
+export interface IName {
+  language: INamedAPIResource; // Language
+  name: string;
 }
 
 export interface INamedAPIResource extends IAPIResource {
