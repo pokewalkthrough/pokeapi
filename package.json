@@ -4,8 +4,9 @@
   "description": "PokeAPI wrapper",
   "main": "index.js",
   "scripts": {
-    "build": "npm run clean && npm run lint && tsc",
+    "build": "npm run clean && npm run lint && npm run compile",
     "clean": "rm -rf dist/",
+    "compile": "tsc",
     "lint": "npm run lint:ts && npm run lint:json",
     "lint:json": "prettier --config prettier-json.json '**/!(package*|tsconfig*).json' --write",
     "lint:ts": "tslint -p . --fix",
@@ -37,6 +38,8 @@
     "@types/request-promise-native": "^1.0.15",
     "chai": "^4.2.0",
     "expect": "^23.6.0",
+    "husky": "^1.2.1",
+    "lint-staged": "^8.1.0",
     "mocha": "^5.2.0",
     "prettier": "^1.15.3",
     "ts-node": "^7.0.1",
@@ -45,5 +48,20 @@
     "tslint-eslint-rules": "^5.4.0",
     "tslint-plugin-prettier": "^2.0.1",
     "typescript": "^3.2.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && npm run compile"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "npm run lint:ts",
+      "git add"
+    ],
+    "*.json": [
+      "npm run lint:json",
+      "git add"
+    ]
   }
 }
