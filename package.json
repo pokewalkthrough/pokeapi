@@ -10,7 +10,7 @@
     "lint": "npm run lint:ts && npm run lint:json",
     "lint:json": "prettier --config prettier-json.json '**/!(package*|tsconfig*).json' --write",
     "lint:ts": "tslint -p . --fix",
-    "test": "mocha --require ts-node/register 'test/**/*.ts'"
+    "test": "nyc mocha --opts ./mocha.opts"
   },
   "repository": {
     "type": "git",
@@ -41,7 +41,9 @@
     "husky": "^1.2.1",
     "lint-staged": "^8.1.0",
     "mocha": "^5.2.0",
+    "nyc": "^13.1.0",
     "prettier": "^1.15.3",
+    "source-map-support": "^0.5.9",
     "ts-node": "^7.0.1",
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.17.0",
@@ -63,5 +65,19 @@
       "npm run lint:json",
       "git add"
     ]
+  },
+  "nyc": {
+    "include": [
+      "src/**/*.ts"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "reporter": [
+      "text-summary",
+      "html"
+    ],
+    "instrument": true,
+    "sourceMap": true
   }
 }
