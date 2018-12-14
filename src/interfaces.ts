@@ -1,16 +1,35 @@
 // Resource Lists
 export interface IAPIResourceList {
   count: number;
-  next: string;
-  previous: string;
+  next: string | null;
+  previous: string | null;
   results: IAPIResource[];
 }
 
 export interface INamedAPIResourceList {
   count: number;
-  next: string;
-  previous: string;
+  next: string | null;
+  previous: string | null;
   results: INamedAPIResource[];
+}
+
+// Berries
+export interface IBerry extends INamedPokeAPIResource {
+  firmness: INamedAPIResource; // BerryFirmness
+  flavors: IBerryFlavorMap[];
+  growth_time: number;
+  item: INamedAPIResource; // Item
+  max_harvest: number;
+  natural_gift_power: number;
+  natural_gift_type: INamedAPIResource; // Type
+  size: number;
+  smoothness: number;
+  soil_dryness: number;
+}
+
+export interface IBerryFlavorMap {
+  flavor: INamedAPIResource; // BerryFlavor
+  potency: number;
 }
 
 // Utility
@@ -22,7 +41,7 @@ export interface INamedAPIResource extends IAPIResource {
   name: string;
 }
 
-// Support
+// Additional Interfaces
 export interface IPokeAPIResource {
   id: number;
 }

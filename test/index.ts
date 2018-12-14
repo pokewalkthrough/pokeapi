@@ -1,8 +1,9 @@
 import { expect } from 'chai';
+import { endpointRunner } from './support/endpoint-runner';
 import { IAPIResourceList, INamedAPIResourceList } from '../src/interfaces';
 import { PokeAPIPublic } from './support/pokeapi-public';
 
-describe('pokeapi', (): void => {
+describe('internal methods', (): void => {
   const pokeapi = new PokeAPIPublic();
 
   describe('_constructUrl', (): void => {
@@ -59,3 +60,5 @@ describe('pokeapi', (): void => {
     });
   });
 });
+
+endpointRunner('berry');
