@@ -1,7 +1,10 @@
 # Paths
+.nyc_output
+coverage
 dist
 node_modules
 
 # Files
-TODO.md
 .editorconfig
+.DS_Store
+TODO.md
