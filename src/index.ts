@@ -1,10 +1,12 @@
-import { IAPIResourceList, INamedAPIResourceList, TPokeAPIEndpoint, TPokeAPIResource } from './interfaces';
+import { IAPIResourceList, IBerry, INamedAPIResourceList, TPokeAPIEndpoint, TPokeAPIResource } from './interfaces';
 import request from 'request-promise-native';
 
 export class PokeAPI {
   protected static _API_VERSION: string = 'v2';
   protected static _BASE: string = 'https://pokeapi.co';
 
+  public async get<T extends IBerry>(endpoint: 'berry'): Promise<INamedAPIResourceList>;
+  public async get<T extends IBerry>(endpoint: 'berry', filter: number | string): Promise<T>;
   public async get<T extends TPokeAPIResource>(endpoint: TPokeAPIEndpoint, filter?: number | string): Promise<T | IAPIResourceList | INamedAPIResourceList> {
     const url = this._constructUrl(endpoint, filter);
 
