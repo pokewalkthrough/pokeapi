@@ -4,13 +4,14 @@
   "description": "PokeAPI wrapper",
   "main": "index.js",
   "scripts": {
-    "build": "npm run clean && npm run lint && npm run compile",
-    "clean": "rm -rf dist/",
+    "build": "npm run clean:compile && npm run lint && npm run compile",
+    "clean:compile": "rm -rf dist/",
+    "clean:test": "rm -rf nyc_output/ && rm -rf coverage/",
     "compile": "tsc",
     "lint": "npm run lint:ts && npm run lint:json",
     "lint:json": "prettier --config prettier-json.json '**/!(package*|tsconfig*).json' --write",
     "lint:ts": "tslint -p . --fix",
-    "test": "nyc mocha --opts ./mocha.opts"
+    "test": "npm run clean:test && nyc mocha --opts ./mocha.opts"
   },
   "repository": {
     "type": "git",
