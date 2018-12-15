@@ -62,7 +62,6 @@ export interface INamedPokeAPIResource extends IPokeAPIResource {
 }
 
 // Additional Types
-export type TPokeAPIResource = IPokeAPIResource | INamedPokeAPIResource;
 export type TPokeAPIEndpoint =
   | 'berry'
   | 'berry-firmness'

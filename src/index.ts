@@ -1,4 +1,4 @@
-import { IAPIResourceList, IBerry, IBerryFirmness, INamedAPIResourceList, TPokeAPIEndpoint, TPokeAPIResource } from './interfaces';
+import { IAPIResourceList, IBerry, IBerryFirmness, INamedAPIResourceList, IPokeAPIResource, TPokeAPIEndpoint } from './interfaces';
 import request from 'request-promise-native';
 
 export class PokeAPI {
@@ -9,7 +9,7 @@ export class PokeAPI {
   public async get<T extends IBerryFirmness>(endpoint: 'berry-firmness', filter: number | string): Promise<T>;
   public async get<T extends IBerry>(endpoint: 'berry'): Promise<INamedAPIResourceList>;
   public async get<T extends IBerry>(endpoint: 'berry', filter: number | string): Promise<T>;
-  public async get<T extends TPokeAPIResource>(endpoint: TPokeAPIEndpoint, filter?: number | string): Promise<T | IAPIResourceList | INamedAPIResourceList> {
+  public async get<T extends IPokeAPIResource>(endpoint: TPokeAPIEndpoint, filter?: number | string): Promise<T | IAPIResourceList | INamedAPIResourceList> {
     const url = this._constructUrl(endpoint, filter);
 
     return request(url)

@@ -1,3 +1,5 @@
+import { berryTests } from './support/endpoints/berry';
+import { berryFirmnessTests } from './support/endpoints/berry-firmness';
 import { expect } from 'chai';
 import { endpointRunner } from './support/endpoint-runner';
 import { IAPIResourceList, INamedAPIResourceList } from '../src/interfaces';
@@ -61,5 +63,5 @@ describe('internal methods', (): void => {
   });
 });
 
-endpointRunner('berry');
-endpointRunner('berry-firmness');
+endpointRunner('berry', berryTests);
+endpointRunner('berry-firmness', berryFirmnessTests);
