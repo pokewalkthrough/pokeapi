@@ -1,34 +1,43 @@
-import { IBerryFlavorMap, IName, INamedAPIResource } from '../../src/interfaces';
+import { IBerryFlavorMap, IFlavorBerryMap, IName, INamedAPIResource } from '../../src/interfaces';
 
 // BerryFlavorMap
-export function isBerryFlavorMap(resource: any): resource is IBerryFlavorMap {
+export function isBerryFlavorMap(resource: IBerryFlavorMap): resource is IBerryFlavorMap {
   return isNamedAPIResource(resource.flavor) && typeof resource.potency === 'number';
 }
 
-export function isBerryFlavorMapArray(resource: any): resource is IBerryFlavorMap[] {
+export function isBerryFlavorMapArray(resource: IBerryFlavorMap[]): resource is IBerryFlavorMap[] {
   return _isResourceArray(resource, isBerryFlavorMap);
 }
 
+// FlavorBerryMap
+export function isFlavorBerryMap(resource: IFlavorBerryMap): resource is IFlavorBerryMap {
+  return typeof resource.potency === 'number' && isNamedAPIResource(resource.berry);
+}
+
+export function isFlavorBerryMapArray(resource: IFlavorBerryMap[]): resource is IFlavorBerryMap[] {
+  return _isResourceArray(resource, isFlavorBerryMap);
+}
+
 // Name
-export function isName(resource: any): resource is IName {
+export function isName(resource: IName): resource is IName {
   return typeof resource.name === 'string' && isNamedAPIResource(resource.language);
 }
 
-export function isNameArray(resource: any): resource is IName[] {
+export function isNameArray(resource: IName[]): resource is IName[] {
   return _isResourceArray(resource, isName);
 }
 
 // NamedAPIResource
-export function isNamedAPIResource(resource: any): resource is INamedAPIResource {
+export function isNamedAPIResource(resource: INamedAPIResource): resource is INamedAPIResource {
   return typeof resource.name === 'string' && typeof resource.url === 'string';
 }
 
-export function isNamedAPIResourceArray(resource: any): resource is INamedAPIResource[] {
+export function isNamedAPIResourceArray(resource: INamedAPIResource[]): resource is INamedAPIResource[] {
   return _isResourceArray(resource, isNamedAPIResource);
 }
 
 // Utility
-export function isStringOrNull(value: any): value is string | null {
+export function isStringOrNull(value: string | null): value is string | null {
   return _isNull(value) || _isString(value);
 }
 
@@ -36,7 +45,7 @@ function _isNull(value: any): value is null {
   return value === null;
 }
 
-function _isString(value: any): value is string {
+function _isString(value: string): value is string {
   return typeof value === 'string';
 }
 

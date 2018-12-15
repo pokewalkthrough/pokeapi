@@ -38,6 +38,18 @@ export interface IBerryFirmness extends INamedPokeAPIResource {
   names: IName[];
 }
 
+// Berry Flavors
+export interface IBerryFlavor extends INamedPokeAPIResource {
+  berries: IFlavorBerryMap[];
+  contest_type: INamedAPIResource; // ContestType
+  names: IName[];
+}
+
+export interface IFlavorBerryMap {
+  berry: INamedAPIResource; // Berry
+  potency: number;
+}
+
 // Utility
 export interface IAPIResource {
   url: string;
