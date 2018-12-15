@@ -1,8 +1,9 @@
 import { expect } from 'chai';
-import { IAPIResource, IAPIResourceList, INamedAPIResource, INamedAPIResourceList, TPokeAPIEndpoint } from '../../src/interfaces';
+import { IAPIResource, IAPIResourceList, INamedAPIResource, INamedAPIResourceList, IPokeAPIResource, TPokeAPIEndpoint } from '../../src/interfaces';
 import { PokeAPIPublic } from '../support/pokeapi-public';
+import { isStringOrNull } from './type-guards';
 
-export function endpointRunner(endpoint: TPokeAPIEndpoint) {
+export function endpointRunner<T extends IPokeAPIResource>(endpoint: TPokeAPIEndpoint, itemTests: (resource: T) => void) {
   describe(`${endpoint}`, (): void => {
     const pokeapi: PokeAPIPublic = new PokeAPIPublic();
     let list: IAPIResourceList | INamedAPIResourceList | undefined;
@@ -12,8 +13,8 @@ export function endpointRunner(endpoint: TPokeAPIEndpoint) {
 
       expect(list.count).to.be.a('number');
       expect(list.count).to.be.greaterThan(0);
-      expect(list.next).to.satisfy(_isStringOrNull);
-      expect(list.previous).to.satisfy(_isStringOrNull);
+      expect(list.next).to.satisfy(isStringOrNull);
+      expect(list.previous).to.satisfy(isStringOrNull);
 
       if (pokeapi.listIsNamed(list)) {
         expect(list.results[0].name).to.be.a('string');
@@ -35,6 +36,8 @@ export function endpointRunner(endpoint: TPokeAPIEndpoint) {
         if (pokeapi.listIsNamed(list)) {
           expect(output.name).to.equal(list.results[randomIndex].name);
         }
+
+        itemTests(output as any); // TODO: Remove 'any' check after 'get' method is fully populated with TPokeAPIEndpoint names
       }
     });
 
@@ -52,11 +55,9 @@ export function endpointRunner(endpoint: TPokeAPIEndpoint) {
         if (pokeapi.listIsNamed(list)) {
           expect(output.name).to.equal(list.results[randomIndex].name);
         }
+
+        itemTests(output as any); // TODO: Remove 'any' check after 'get' method is fully populated with TPokeAPIEndpoint names
       }
     });
   });
-}
-
-function _isStringOrNull(value: string | null): value is string | null {
-  return value === null || typeof value === 'string';
 }
