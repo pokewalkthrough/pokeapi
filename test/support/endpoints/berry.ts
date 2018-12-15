@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import { IBerry } from '../../../src/interfaces';
 import { isBerryFlavorMapArray, isNamedAPIResource } from '../type-guards';
 
-export function berryTests(berry: IBerry) {
+export function berryTests(berry: IBerry): void {
   expect(berry.firmness).to.satisfy(isNamedAPIResource);
   expect(berry.flavors).to.satisfy(isBerryFlavorMapArray);
   expect(berry.growth_time).to.be.a('number');
