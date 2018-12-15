@@ -6,20 +6,20 @@ import { IAPIResourceList, INamedAPIResourceList } from '../src/interfaces';
 import { PokeAPIPublic } from './support/pokeapi-public';
 
 describe('internal methods', (): void => {
-  const pokeapi = new PokeAPIPublic();
+  const pokeapi: PokeAPIPublic = new PokeAPIPublic();
 
   describe('_constructUrl', (): void => {
     it('returns URL with no filter', (): void => {
-      const endpoint = 'test-name';
-      const output = pokeapi.constructUrl(endpoint);
+      const endpoint: string = 'test-name';
+      const output: string = pokeapi.constructUrl(endpoint);
 
       expect(output).to.equal(`${PokeAPIPublic.BASE}/api/${PokeAPIPublic.API_VERSION}/${endpoint}/`);
     });
 
     it('returns URL with filter', (): void => {
-      const endpoint = 'test-name';
-      const filter = 'test-filter';
-      const output = pokeapi.constructUrl(endpoint, filter);
+      const endpoint: string = 'test-name';
+      const filter: string = 'test-filter';
+      const output: string = pokeapi.constructUrl(endpoint, filter);
 
       expect(output).to.equal(`${PokeAPIPublic.BASE}/api/${PokeAPIPublic.API_VERSION}/${endpoint}/${filter}/`);
     });

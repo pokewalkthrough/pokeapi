@@ -57,7 +57,8 @@ export interface IPokeAPIResource {
   id: number;
 }
 
-export interface INamedPokeAPIResource extends IPokeAPIResource {
+export interface INamedPokeAPIResource {
+  id: number;
   name: string;
 }
 

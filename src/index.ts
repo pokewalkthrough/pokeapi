@@ -10,11 +10,11 @@ export class PokeAPI {
   public async get<T extends IBerry>(endpoint: 'berry'): Promise<INamedAPIResourceList>;
   public async get<T extends IBerry>(endpoint: 'berry', filter: number | string): Promise<T>;
   public async get<T extends IPokeAPIResource>(endpoint: TPokeAPIEndpoint, filter?: number | string): Promise<T | IAPIResourceList | INamedAPIResourceList> {
-    const url = this._constructUrl(endpoint, filter);
+    const url: string = this._constructUrl(endpoint, filter);
 
     return request(url)
-      .then(value => {
-        const json = JSON.parse(value);
+      .then((value: any) => {
+        const json: any = JSON.parse(value);
 
         if (filter) {
           return json as T;
@@ -26,16 +26,13 @@ export class PokeAPI {
           }
         }
       })
-      .then(value => {
-        return value;
-      })
-      .catch(reason => {
+      .catch((reason: any) => {
         return reason;
       });
   }
 
   protected _constructUrl(endpoint: string, filter?: number | string): string {
-    const url = new URL(`/api/${PokeAPI._API_VERSION}/${endpoint}/${filter ? `${filter}/` : ''}`, PokeAPI._BASE);
+    const url: URL = new URL(`/api/${PokeAPI._API_VERSION}/${endpoint}/${filter ? `${filter}/` : ''}`, PokeAPI._BASE);
 
     return url.href;
   }

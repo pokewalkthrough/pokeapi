@@ -34,6 +34,18 @@
       }
     },
     "prettier": [true, "./prettier-ts.json"],
+    "typedef": [
+      true,
+      "call-signature",
+      "arrow-call-signature",
+      "parameter",
+      "arrow-parameter",
+      "property-declaration",
+      "variable-declaration",
+      "member-variable-declaration",
+      "object-destructuring",
+      "array-destructuring"
+    ],
     "variable-name": [true, "check-format", "allow-leading-underscore"]
   },
   "rulesDirectory": ["tslint-plugin-prettier"]

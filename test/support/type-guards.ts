@@ -40,9 +40,9 @@ function _isString(value: any): value is string {
   return typeof value === 'string';
 }
 
-function _isResourceArray<T extends any>(resource: T[], resourceCheckMethod: (internalResource: T) => boolean) {
-  const isArray = Array.isArray(resource);
-  const contentsCheck = resource.every(value => {
+function _isResourceArray<T extends any>(resource: T[], resourceCheckMethod: (internalResource: T) => boolean): boolean {
+  const isArray: boolean = Array.isArray(resource);
+  const contentsCheck: boolean = resource.every((value: T) => {
     return resourceCheckMethod(value);
   });
 

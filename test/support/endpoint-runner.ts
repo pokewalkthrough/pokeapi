@@ -1,9 +1,17 @@
 import { expect } from 'chai';
-import { IAPIResource, IAPIResourceList, INamedAPIResource, INamedAPIResourceList, IPokeAPIResource, TPokeAPIEndpoint } from '../../src/interfaces';
+import {
+  IAPIResource,
+  IAPIResourceList,
+  INamedAPIResource,
+  INamedAPIResourceList,
+  INamedPokeAPIResource,
+  IPokeAPIResource,
+  TPokeAPIEndpoint,
+} from '../../src/interfaces';
 import { PokeAPIPublic } from '../support/pokeapi-public';
 import { isStringOrNull } from './type-guards';
 
-export function endpointRunner<T extends IPokeAPIResource>(endpoint: TPokeAPIEndpoint, itemTests: (resource: T) => void) {
+export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResource>(endpoint: TPokeAPIEndpoint, itemTests: (resource: T) => void): void {
   describe(`${endpoint}`, (): void => {
     const pokeapi: PokeAPIPublic = new PokeAPIPublic();
     let list: IAPIResourceList | INamedAPIResourceList | undefined;
@@ -29,7 +37,7 @@ export function endpointRunner<T extends IPokeAPIResource>(endpoint: TPokeAPIEnd
         const result: IAPIResource | INamedAPIResource = list.results[randomIndex];
         const urlParts: string[] = result.url.split('/');
         const id: number = Number(urlParts[urlParts.length - 2]);
-        const output = await pokeapi.get(endpoint as any, id); // TODO: Remove 'any' check after 'get' method is fully populated with TPokeAPIEndpoint names
+        const output: any = await pokeapi.get(endpoint as any, id); // TODO: Remove 'any' check after 'get' method is fully populated with TPokeAPIEndpoint names
 
         expect(output.id).to.equal(id);
 
@@ -48,7 +56,7 @@ export function endpointRunner<T extends IPokeAPIResource>(endpoint: TPokeAPIEnd
         const urlParts: string[] = result.url.split('/');
         const id: number = Number(urlParts[urlParts.length - 2]);
         const name: string | null = pokeapi.listIsNamed(list) ? (result as INamedAPIResource).name : '';
-        const output = await pokeapi.get(endpoint as any, name); // TODO: Remove 'any' check after 'get' method is fully populated with TPokeAPIEndpoint names
+        const output: any = await pokeapi.get(endpoint as any, name); // TODO: Remove 'any' check after 'get' method is fully populated with TPokeAPIEndpoint names
 
         expect(output.id).to.equal(id);
 
