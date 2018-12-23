@@ -50,6 +50,18 @@ export interface IFlavorBerryMap {
   potency: number;
 }
 
+// Contest Types
+export interface IContestType extends INamedPokeAPIResource {
+  berry_flavor: INamedAPIResource; // BerryFlavor
+  names: IContestName[];
+}
+
+export interface IContestName {
+  color: string;
+  language: INamedAPIResource; // Language
+  name: string;
+}
+
 // Utility
 export interface IAPIResource {
   url: string;
