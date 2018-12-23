@@ -1,7 +1,7 @@
-import { IBerryFlavorMap, IFlavorBerryMap, IName, INamedAPIResource } from '../../src/interfaces';
+import { IBerryFlavorMap, IContestName, IFlavorBerryMap, IName, INamedAPIResource } from '../../src/interfaces';
 
 // BerryFlavorMap
-export function isBerryFlavorMap(resource: IBerryFlavorMap): resource is IBerryFlavorMap {
+function isBerryFlavorMap(resource: IBerryFlavorMap): resource is IBerryFlavorMap {
   return isNamedAPIResource(resource.flavor) && typeof resource.potency === 'number';
 }
 
@@ -10,7 +10,7 @@ export function isBerryFlavorMapArray(resource: IBerryFlavorMap[]): resource is 
 }
 
 // FlavorBerryMap
-export function isFlavorBerryMap(resource: IFlavorBerryMap): resource is IFlavorBerryMap {
+function isFlavorBerryMap(resource: IFlavorBerryMap): resource is IFlavorBerryMap {
   return typeof resource.potency === 'number' && isNamedAPIResource(resource.berry);
 }
 
@@ -18,8 +18,17 @@ export function isFlavorBerryMapArray(resource: IFlavorBerryMap[]): resource is 
   return _isResourceArray(resource, isFlavorBerryMap);
 }
 
+// ContestName
+function isContestName(resource: IContestName): resource is IContestName {
+  return typeof resource.color === 'string' && isNamedAPIResource(resource.language) && typeof resource.name === 'string';
+}
+
+export function isContestNameArray(resource: IContestName[]): resource is IContestName[] {
+  return _isResourceArray(resource, isContestName);
+}
+
 // Name
-export function isName(resource: IName): resource is IName {
+function isName(resource: IName): resource is IName {
   return typeof resource.name === 'string' && isNamedAPIResource(resource.language);
 }
 
