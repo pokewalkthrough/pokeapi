@@ -1,4 +1,5 @@
 import { expect } from 'chai';
+
 import { IContestType } from '../../../src/interfaces';
 import { isContestNameArray, isNamedAPIResource } from '../type-guards';
 

@@ -1,5 +1,6 @@
-import { IAPIResourceList, IBerry, IBerryFirmness, IBerryFlavor, IContestType, INamedAPIResourceList, IPokeAPIResource, TPokeAPIEndpoint } from './interfaces';
 import request from 'request-promise-native';
+
+import { IAPIResourceList, IBerry, IBerryFirmness, IBerryFlavor, IContestType, INamedAPIResourceList, IPokeAPIResource, TPokeAPIEndpoint } from './interfaces';
 
 export class PokeAPI {
   protected static _API_VERSION: string = 'v2';

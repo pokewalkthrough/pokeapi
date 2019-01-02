@@ -1,4 +1,5 @@
 import { expect } from 'chai';
+
 import {
   IAPIResource,
   IAPIResourceList,
@@ -9,6 +10,7 @@ import {
   TPokeAPIEndpoint,
 } from '../../src/interfaces';
 import { PokeAPIPublic } from '../support/pokeapi-public';
+
 import { isStringOrNull } from './type-guards';
 
 export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResource>(endpoint: TPokeAPIEndpoint, itemTests: (resource: T) => void): void {
