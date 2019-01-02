@@ -5,14 +5,16 @@ export class PokeAPI {
   protected static _API_VERSION: string = 'v2';
   protected static _BASE: string = 'https://pokeapi.co';
 
-  public async get<T extends IContestType>(endpoint: 'contest-type'): Promise<INamedAPIResourceList>;
-  public async get<T extends IContestType>(endpoint: 'contest-type', filter: number | string): Promise<T>;
-  public async get<T extends IBerryFlavor>(endpoint: 'berry-flavor'): Promise<INamedAPIResourceList>;
-  public async get<T extends IBerryFlavor>(endpoint: 'berry-flavor', filter: number | string): Promise<T>;
-  public async get<T extends IBerryFirmness>(endpoint: 'berry-firmness'): Promise<INamedAPIResourceList>;
-  public async get<T extends IBerryFirmness>(endpoint: 'berry-firmness', filter: number | string): Promise<T>;
   public async get<T extends IBerry>(endpoint: 'berry'): Promise<INamedAPIResourceList>;
   public async get<T extends IBerry>(endpoint: 'berry', filter: number | string): Promise<T>;
+  public async get<T extends IBerryFirmness>(endpoint: 'berry-firmness'): Promise<INamedAPIResourceList>;
+  public async get<T extends IBerryFirmness>(endpoint: 'berry-firmness', filter: number | string): Promise<T>;
+  public async get<T extends IBerryFlavor>(endpoint: 'berry-flavor'): Promise<INamedAPIResourceList>;
+  public async get<T extends IBerryFlavor>(endpoint: 'berry-flavor', filter: number | string): Promise<T>;
+  public async get<T extends IContestType>(endpoint: 'contest-type'): Promise<INamedAPIResourceList>;
+  public async get<T extends IContestType>(endpoint: 'contest-type', filter: number | string): Promise<T>;
+  public async get<T extends IContestType>(endpoint: 'contest-effect'): Promise<IAPIResourceList>;
+  public async get<T extends IContestType>(endpoint: 'contest-effect', filter: number): Promise<T>;
   public async get<T extends IPokeAPIResource>(endpoint: TPokeAPIEndpoint, filter?: number | string): Promise<T | IAPIResourceList | INamedAPIResourceList> {
     const url: string = this._constructUrl(endpoint, filter);
 

@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import { endpointRunner } from './support/endpoint-runner';
-import { berryFirmnessTests, berryFlavorTests, berryTests, contestTypeTests } from './support/endpoints';
+import { berryFirmnessTests, berryFlavorTests, berryTests, contestEffectTests, contestTypeTests } from './support/endpoints';
 import { IAPIResourceList, INamedAPIResourceList } from '../src/interfaces';
 import { PokeAPIPublic } from './support/pokeapi-public';
 
@@ -66,3 +66,4 @@ endpointRunner('berry', berryTests);
 endpointRunner('berry-firmness', berryFirmnessTests);
 endpointRunner('berry-flavor', berryFlavorTests);
 endpointRunner('contest-type', contestTypeTests);
+endpointRunner('contest-effect', contestEffectTests);
