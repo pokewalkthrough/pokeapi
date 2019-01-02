@@ -1,4 +1,5 @@
 import { expect } from 'chai';
+
 import { IContestEffect } from '../../../src/interfaces';
 import { isEffectArray, isFlavorTextArray } from '../type-guards';
 

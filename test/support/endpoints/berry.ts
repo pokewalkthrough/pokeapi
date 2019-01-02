@@ -1,4 +1,5 @@
 import { expect } from 'chai';
+
 import { IBerry } from '../../../src/interfaces';
 import { isBerryFlavorMapArray, isNamedAPIResource } from '../type-guards';
 

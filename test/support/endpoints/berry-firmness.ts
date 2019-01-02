@@ -1,4 +1,5 @@
 import { expect } from 'chai';
+
 import { IBerryFirmness } from '../../../src/interfaces';
 import { isNameArray, isNamedAPIResourceArray } from '../type-guards';
 
