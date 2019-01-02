@@ -49,8 +49,9 @@ export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResourc
       }
     });
 
+    // TODO: Figure out how to cancel this test entirely if the name property is not applicable
     it(`gets a ${endpoint} by name`, async (): Promise<void> => {
-      if (list) {
+      if (list && pokeapi.listIsNamed(list)) {
         const randomIndex: number = Math.floor(Math.random() * (Math.floor(list.count - 1) + 1));
         const result: IAPIResource | INamedAPIResource = list.results[randomIndex];
         const urlParts: string[] = result.url.split('/');

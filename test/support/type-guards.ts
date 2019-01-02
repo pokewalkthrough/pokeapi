@@ -1,4 +1,4 @@
-import { IBerryFlavorMap, IContestName, IFlavorBerryMap, IName, INamedAPIResource } from '../../src/interfaces';
+import { IBerryFlavorMap, IContestName, IEffect, IFlavorBerryMap, IFlavorText, IName, INamedAPIResource } from '../../src/interfaces';
 
 // BerryFlavorMap
 function isBerryFlavorMap(resource: IBerryFlavorMap): resource is IBerryFlavorMap {
@@ -25,6 +25,24 @@ function isContestName(resource: IContestName): resource is IContestName {
 
 export function isContestNameArray(resource: IContestName[]): resource is IContestName[] {
   return _isResourceArray(resource, isContestName);
+}
+
+// Effect
+function isEffect(resource: IEffect): resource is IEffect {
+  return typeof resource.effect === 'string' && isNamedAPIResource(resource.language);
+}
+
+export function isEffectArray(resource: IEffect[]): resource is IEffect[] {
+  return _isResourceArray(resource, isEffect);
+}
+
+// FlavorText
+function isFlavorText(resource: IFlavorText): resource is IFlavorText {
+  return typeof resource.flavor_text === 'string' && isNamedAPIResource(resource.language);
+}
+
+export function isFlavorTextArray(resource: IFlavorText[]): resource is IFlavorText[] {
+  return _isResourceArray(resource, isFlavorText);
 }
 
 // Name
@@ -58,6 +76,7 @@ function _isString(value: string): value is string {
   return typeof value === 'string';
 }
 
+// TODO: Remove 'any' check after 'get' method is fully populated with TPokeAPIEndpoint names
 function _isResourceArray<T extends any>(resource: T[], resourceCheckMethod: (internalResource: T) => boolean): boolean {
   const isArray: boolean = Array.isArray(resource);
   const contentsCheck: boolean = resource.every((value: T) => {

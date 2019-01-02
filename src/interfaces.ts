@@ -62,9 +62,27 @@ export interface IContestName {
   name: string;
 }
 
-// Utility
+// Contest Effects
+export interface IContestEffect extends IPokeAPIResource {
+  appeal: number;
+  effect_entries: IEffect[];
+  flavor_text_entries: IFlavorText[];
+  jam: number;
+}
+
+// Utility - Common Models
 export interface IAPIResource {
   url: string;
+}
+
+export interface IEffect {
+  effect: string;
+  language: INamedAPIResource; // Language
+}
+
+export interface IFlavorText {
+  flavor_text: string;
+  language: INamedAPIResource; // Language
 }
 
 export interface IName {
