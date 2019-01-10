@@ -70,6 +70,13 @@ export interface IContestEffect extends IPokeAPIResource {
   jam: number;
 }
 
+// Super Contest Effects
+export interface ISuperContestEffect extends IPokeAPIResource {
+  appeal: number;
+  flavor_text_entries: IFlavorText[];
+  moves: INamedAPIResource[]; // Move
+}
+
 // Utility - Common Models
 export interface IAPIResource {
   url: string;

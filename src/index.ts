@@ -1,6 +1,17 @@
 import request from 'request-promise-native';
 
-import { IAPIResourceList, IBerry, IBerryFirmness, IBerryFlavor, IContestType, INamedAPIResourceList, IPokeAPIResource, TPokeAPIEndpoint } from './interfaces';
+import {
+  IAPIResourceList,
+  IBerry,
+  IBerryFirmness,
+  IBerryFlavor,
+  IContestEffect,
+  IContestType,
+  INamedAPIResourceList,
+  IPokeAPIResource,
+  ISuperContestEffect,
+  TPokeAPIEndpoint,
+} from './interfaces';
 
 export class PokeAPI {
   protected static _API_VERSION: string = 'v2';
@@ -14,8 +25,10 @@ export class PokeAPI {
   public async get<T extends IBerryFlavor>(endpoint: 'berry-flavor', filter: number | string): Promise<T>;
   public async get<T extends IContestType>(endpoint: 'contest-type'): Promise<INamedAPIResourceList>;
   public async get<T extends IContestType>(endpoint: 'contest-type', filter: number | string): Promise<T>;
-  public async get<T extends IContestType>(endpoint: 'contest-effect'): Promise<IAPIResourceList>;
-  public async get<T extends IContestType>(endpoint: 'contest-effect', filter: number): Promise<T>;
+  public async get<T extends IContestEffect>(endpoint: 'contest-effect'): Promise<IAPIResourceList>;
+  public async get<T extends IContestEffect>(endpoint: 'contest-effect', filter: number): Promise<T>;
+  public async get<T extends ISuperContestEffect>(endpoint: 'super-contest-effect'): Promise<IAPIResourceList>;
+  public async get<T extends ISuperContestEffect>(endpoint: 'super-contest-effect', filter: number): Promise<T>;
   public async get<T extends IPokeAPIResource>(endpoint: TPokeAPIEndpoint, filter?: number | string): Promise<T | IAPIResourceList | INamedAPIResourceList> {
     const url: string = this._constructUrl(endpoint, filter);
 
