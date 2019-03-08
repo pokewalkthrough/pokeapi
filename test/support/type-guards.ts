@@ -76,7 +76,6 @@ function _isString(value: string): value is string {
   return typeof value === 'string';
 }
 
-// TODO: Remove 'any' check after 'get' method is fully populated with TPokeAPIEndpoint names
 function _isResourceArray<T extends any>(resource: T[], resourceCheckMethod: (internalResource: T) => boolean): boolean {
   const isArray: boolean = Array.isArray(resource);
   const contentsCheck: boolean = resource.every((value: T) => {

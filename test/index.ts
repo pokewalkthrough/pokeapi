@@ -9,20 +9,61 @@ import { PokeAPIPublic } from './support/pokeapi-public';
 describe('internal methods', (): void => {
   const pokeapi: PokeAPIPublic = new PokeAPIPublic();
 
-  describe('_constructUrl', (): void => {
-    it('returns URL with no filter', (): void => {
+  describe('_constructListUrl', (): void => {
+    it('returns URL with no limit or offset', (): void => {
       const endpoint: string = 'test-name';
-      const output: string = pokeapi.constructUrl(endpoint);
+      const output: string = pokeapi.constructListUrl(endpoint);
 
       expect(output).to.equal(`${PokeAPIPublic.BASE}/api/${PokeAPIPublic.API_VERSION}/${endpoint}/`);
     });
 
-    it('returns URL with filter', (): void => {
+    it('returns URL with limit and no offset', (): void => {
+      const endpoint: string = 'test-name';
+      const limit: number = 30;
+      const output: string = pokeapi.constructListUrl(endpoint, limit);
+
+      expect(output).to.equal(`${PokeAPIPublic.BASE}/api/${PokeAPIPublic.API_VERSION}/${endpoint}/?limit=${limit}`);
+    });
+
+    it('returns URL with limit and offset', (): void => {
+      const endpoint: string = 'test-name';
+      const limit: number = 30;
+      const offset: number = 30;
+      const output: string = pokeapi.constructListUrl(endpoint, limit, offset);
+
+      expect(output).to.equal(`${PokeAPIPublic.BASE}/api/${PokeAPIPublic.API_VERSION}/${endpoint}/?limit=${limit}&offset=${offset}`);
+    });
+  });
+
+  describe('_constructUrl', (): void => {
+    it('returns URL with number filter', (): void => {
+      const endpoint: string = 'test-name';
+      const filter: number = 10;
+      const output: string = pokeapi.constructUrl(endpoint, filter);
+
+      expect(output).to.equal(`${PokeAPIPublic.BASE}/api/${PokeAPIPublic.API_VERSION}/${endpoint}/${filter}/`);
+    });
+
+    it('returns URL with string filter', (): void => {
       const endpoint: string = 'test-name';
       const filter: string = 'test-filter';
       const output: string = pokeapi.constructUrl(endpoint, filter);
 
       expect(output).to.equal(`${PokeAPIPublic.BASE}/api/${PokeAPIPublic.API_VERSION}/${endpoint}/${filter}/`);
+    });
+  });
+
+  describe('_isNumber', (): void => {
+    it('returns true if value is a number', (): void => {
+      const output: boolean = pokeapi.isNumber(0);
+
+      expect(output).to.equal(true);
+    });
+
+    it('returns false if value is not a number', (): void => {
+      const output: boolean = pokeapi.isNumber('hello');
+
+      expect(output).to.equal(false);
     });
   });
 
@@ -55,6 +96,19 @@ describe('internal methods', (): void => {
             url: 'test-url',
           },
         ],
+      };
+
+      const output: boolean = pokeapi.listIsNamed(list);
+
+      expect(output).to.equal(false);
+    });
+
+    it('returns false if list is empty', (): void => {
+      const list: IAPIResourceList = {
+        count: 1,
+        next: '',
+        previous: '',
+        results: [],
       };
 
       const output: boolean = pokeapi.listIsNamed(list);

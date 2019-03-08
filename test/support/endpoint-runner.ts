@@ -19,7 +19,7 @@ export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResourc
     let list: IAPIResourceList | INamedAPIResourceList | undefined;
 
     it(`gets a list of ${endpoint} resources`, async (): Promise<void> => {
-      list = await pokeapi.get(endpoint as any); // TODO: Remove 'any' check after 'get' method is fully populated with TPokeAPIEndpoint names
+      list = await pokeapi.getList(endpoint as any, 1000, 0); // TODO: Remove 'any' check after 'get' method is fully populated with TPokeAPIEndpoint names
 
       expect(list.count).to.be.a('number');
       expect(list.count).to.be.greaterThan(0);
