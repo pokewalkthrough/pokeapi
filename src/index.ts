@@ -1,4 +1,4 @@
-import request from 'request-promise-native';
+import { AxiosResponse, default as axios } from 'axios';
 
 import {
   IAPIResourceList,
@@ -26,9 +26,10 @@ export class PokeAPI {
   public async get<T extends IPokeAPIResource>(endpoint: TPokeAPIEndpoint, filter: number | string): Promise<T> {
     const url: string = this._constructUrl(endpoint, filter);
 
-    return request(url)
-      .then((value: any) => {
-        return JSON.parse(value) as T;
+    return axios
+      .get<T>(url)
+      .then((value: AxiosResponse<T>) => {
+        return value.data;
       })
       .catch((reason: any) => {
         return reason; // TODO: test errors
@@ -40,15 +41,13 @@ export class PokeAPI {
   public async getList(endpoint: TPokeAPIEndpoint, limit?: number, offset?: number): Promise<IAPIResourceList | INamedAPIResourceList> {
     const url: string = this._constructListUrl(endpoint, limit, offset);
 
-    return request(url)
-      .then((value: any) => {
-        const json: any = JSON.parse(value);
-
-        // TODO: is this logic necessary?
-        if (this._listIsNamed(json)) {
-          return json as INamedAPIResourceList;
+    return axios
+      .get<IAPIResourceList | INamedAPIResourceList>(url)
+      .then((value: AxiosResponse<IAPIResourceList | INamedAPIResourceList>) => {
+        if (this._listIsNamed(value.data)) {
+          return value.data as INamedAPIResourceList;
         } else {
-          return json as IAPIResourceList;
+          return value.data as IAPIResourceList;
         }
       })
       .catch((reason: any) => {
