@@ -33,7 +33,7 @@
         "module-source-path": "basename"
       }
     },
-    "prettier": [true, "./prettier-ts.json"],
+    "prettier": true,
     "typedef": [
       true,
       "call-signature",
