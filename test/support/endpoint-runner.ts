@@ -62,10 +62,7 @@ export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResourc
         const output: any = await pokeapi.get(endpoint as any, name); // TODO: Remove 'any' check after 'get' method is fully populated with TPokeAPIEndpoint names
 
         expect(output.id).to.equal(id);
-
-        if (pokeapi.isListNamed(list)) {
-          expect(output.name).to.equal(list.results[randomIndex].name);
-        }
+        expect(output.name).to.equal(list.results[randomIndex].name);
 
         itemTests(output as any); // TODO: Remove 'any' check after 'get' method is fully populated with TPokeAPIEndpoint names
       }
