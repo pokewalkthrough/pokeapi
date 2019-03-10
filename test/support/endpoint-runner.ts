@@ -48,24 +48,30 @@ export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResourc
         }
 
         itemTests(output as any); // TODO: Remove 'any' check after 'get' method is fully populated with TPokeAPIEndpoint names
+      } else {
+        throw new Error('list not found');
       }
     });
 
     it(`gets a ${endpoint} by name`, async function(): Promise<void> {
-      if (list && pokeapi.isListNamed(list)) {
-        const randomIndex: number = Math.floor(Math.random() * (Math.floor(list.count - 1) + 1));
-        const result: IAPIResource | INamedAPIResource = list.results[randomIndex];
-        const urlParts: string[] = result.url.split('/');
-        const id: number = Number(urlParts[urlParts.length - 2]);
-        const name: string | null = pokeapi.isListNamed(list) ? (result as INamedAPIResource).name : '';
-        const output: any = await pokeapi.get(endpoint as any, name); // TODO: Remove 'any' check after 'get' method is fully populated with TPokeAPIEndpoint names
+      if (list) {
+        if (pokeapi.isListNamed(list)) {
+          const randomIndex: number = Math.floor(Math.random() * (Math.floor(list.count - 1) + 1));
+          const result: IAPIResource | INamedAPIResource = list.results[randomIndex];
+          const urlParts: string[] = result.url.split('/');
+          const id: number = Number(urlParts[urlParts.length - 2]);
+          const name: string | null = pokeapi.isListNamed(list) ? (result as INamedAPIResource).name : '';
+          const output: any = await pokeapi.get(endpoint as any, name); // TODO: Remove 'any' check after 'get' method is fully populated with TPokeAPIEndpoint names
 
-        expect(output.id).to.equal(id);
-        expect(output.name).to.equal(list.results[randomIndex].name);
+          expect(output.id).to.equal(id);
+          expect(output.name).to.equal(list.results[randomIndex].name);
 
-        itemTests(output as any); // TODO: Remove 'any' check after 'get' method is fully populated with TPokeAPIEndpoint names
+          itemTests(output as any); // TODO: Remove 'any' check after 'get' method is fully populated with TPokeAPIEndpoint names
+        } else {
+          this.skip();
+        }
       } else {
-        this.skip();
+        throw new Error('list not found');
       }
     });
   });
