@@ -2,7 +2,7 @@ import { IBerryFlavorMap, IContestName, IEffect, IFlavorBerryMap, IFlavorText, I
 
 // BerryFlavorMap
 function isBerryFlavorMap(resource: IBerryFlavorMap): resource is IBerryFlavorMap {
-  return isNamedAPIResource(resource.flavor) && typeof resource.potency === 'number';
+  return isNamedAPIResource(resource.flavor) && _isNumber(resource.potency);
 }
 
 export function isBerryFlavorMapArray(resource: IBerryFlavorMap[]): resource is IBerryFlavorMap[] {
@@ -11,7 +11,7 @@ export function isBerryFlavorMapArray(resource: IBerryFlavorMap[]): resource is 
 
 // FlavorBerryMap
 function isFlavorBerryMap(resource: IFlavorBerryMap): resource is IFlavorBerryMap {
-  return typeof resource.potency === 'number' && isNamedAPIResource(resource.berry);
+  return _isNumber(resource.potency) && isNamedAPIResource(resource.berry);
 }
 
 export function isFlavorBerryMapArray(resource: IFlavorBerryMap[]): resource is IFlavorBerryMap[] {
@@ -20,7 +20,7 @@ export function isFlavorBerryMapArray(resource: IFlavorBerryMap[]): resource is 
 
 // ContestName
 function isContestName(resource: IContestName): resource is IContestName {
-  return typeof resource.color === 'string' && isNamedAPIResource(resource.language) && typeof resource.name === 'string';
+  return _isString(resource.color) && isNamedAPIResource(resource.language) && _isString(resource.name);
 }
 
 export function isContestNameArray(resource: IContestName[]): resource is IContestName[] {
@@ -29,7 +29,7 @@ export function isContestNameArray(resource: IContestName[]): resource is IConte
 
 // Effect
 function isEffect(resource: IEffect): resource is IEffect {
-  return typeof resource.effect === 'string' && isNamedAPIResource(resource.language);
+  return _isString(resource.effect) && isNamedAPIResource(resource.language);
 }
 
 export function isEffectArray(resource: IEffect[]): resource is IEffect[] {
@@ -38,7 +38,7 @@ export function isEffectArray(resource: IEffect[]): resource is IEffect[] {
 
 // FlavorText
 function isFlavorText(resource: IFlavorText): resource is IFlavorText {
-  return typeof resource.flavor_text === 'string' && isNamedAPIResource(resource.language);
+  return _isString(resource.flavor_text) && isNamedAPIResource(resource.language);
 }
 
 export function isFlavorTextArray(resource: IFlavorText[]): resource is IFlavorText[] {
@@ -47,7 +47,7 @@ export function isFlavorTextArray(resource: IFlavorText[]): resource is IFlavorT
 
 // Name
 function isName(resource: IName): resource is IName {
-  return typeof resource.name === 'string' && isNamedAPIResource(resource.language);
+  return _isString(resource.name) && isNamedAPIResource(resource.language);
 }
 
 export function isNameArray(resource: IName[]): resource is IName[] {
@@ -56,7 +56,7 @@ export function isNameArray(resource: IName[]): resource is IName[] {
 
 // NamedAPIResource
 export function isNamedAPIResource(resource: INamedAPIResource): resource is INamedAPIResource {
-  return typeof resource.name === 'string' && typeof resource.url === 'string';
+  return _isString(resource.name) && _isString(resource.url);
 }
 
 export function isNamedAPIResourceArray(resource: INamedAPIResource[]): resource is INamedAPIResource[] {
@@ -72,15 +72,20 @@ function _isNull(value: any): value is null {
   return value === null;
 }
 
+function _isNumber(value: number): value is number {
+  return typeof value === 'number';
+}
+
 function _isString(value: string): value is string {
   return typeof value === 'string';
 }
 
-function _isResourceArray<T extends any>(resource: T[], resourceCheckMethod: (internalResource: T) => boolean): boolean {
-  const isArray: boolean = Array.isArray(resource);
-  const contentsCheck: boolean = resource.every((value: T) => {
-    return resourceCheckMethod(value);
-  });
-
-  return isArray && contentsCheck;
+function _isResourceArray<T extends any>(resource: T[], resourceCheckMethod: (internalResource: T) => boolean): resource is T[] {
+  if (Array.isArray(resource)) {
+    return resource.every((value: T) => {
+      return resourceCheckMethod(value);
+    });
+  } else {
+    return false;
+  }
 }

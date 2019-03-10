@@ -13,11 +13,11 @@ export class PokeAPIPublic extends PokeAPI {
     return this._constructUrl(endpoint, filter);
   }
 
-  public isNumber(value: any): value is number {
-    return this._isNumber(value);
+  public isListNamed(list: IAPIResourceList | INamedAPIResourceList): list is INamedAPIResourceList {
+    return this._isListNamed(list);
   }
 
-  public listIsNamed(list: IAPIResourceList | INamedAPIResourceList): list is INamedAPIResourceList {
-    return this._listIsNamed(list);
+  public isNumber(value: any): value is number {
+    return this._isNumber(value);
   }
 }
