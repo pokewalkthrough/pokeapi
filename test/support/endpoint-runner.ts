@@ -51,8 +51,7 @@ export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResourc
       }
     });
 
-    // TODO: Figure out how to cancel this test entirely if the name property is not applicable
-    it(`gets a ${endpoint} by name`, async (): Promise<void> => {
+    it(`gets a ${endpoint} by name`, async function(): Promise<void> {
       if (list && pokeapi.isListNamed(list)) {
         const randomIndex: number = Math.floor(Math.random() * (Math.floor(list.count - 1) + 1));
         const result: IAPIResource | INamedAPIResource = list.results[randomIndex];
@@ -65,6 +64,8 @@ export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResourc
         expect(output.name).to.equal(list.results[randomIndex].name);
 
         itemTests(output as any); // TODO: Remove 'any' check after 'get' method is fully populated with TPokeAPIEndpoint names
+      } else {
+        this.skip();
       }
     });
   });
