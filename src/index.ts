@@ -44,7 +44,7 @@ export class PokeAPI {
     return axios
       .get<IAPIResourceList | INamedAPIResourceList>(url)
       .then((value: AxiosResponse<IAPIResourceList | INamedAPIResourceList>) => {
-        if (this._listIsNamed(value.data)) {
+        if (this._isListNamed(value.data)) {
           return value.data as INamedAPIResourceList;
         } else {
           return value.data as IAPIResourceList;
@@ -77,15 +77,15 @@ export class PokeAPI {
     return url.href;
   }
 
-  protected _isNumber(value: any): value is number {
-    return typeof value === 'number';
-  }
-
-  protected _listIsNamed(list: IAPIResourceList | INamedAPIResourceList): list is INamedAPIResourceList {
+  protected _isListNamed(list: IAPIResourceList | INamedAPIResourceList): list is INamedAPIResourceList {
     if (list.results.length > 0) {
       return (list as INamedAPIResourceList).results[0].name !== undefined;
     } else {
       return false;
     }
+  }
+
+  protected _isNumber(value: any): value is number {
+    return typeof value === 'number';
   }
 }
