@@ -53,20 +53,6 @@ describe('internal methods', (): void => {
     });
   });
 
-  describe('_isNumber', (): void => {
-    it('returns true if value is a number', (): void => {
-      const output: boolean = pokeapi.isNumber(0);
-
-      expect(output).to.equal(true);
-    });
-
-    it('returns false if value is not a number', (): void => {
-      const output: boolean = pokeapi.isNumber('hello');
-
-      expect(output).to.equal(false);
-    });
-  });
-
   describe('_isListNamed', (): void => {
     it('returns true if list is named', (): void => {
       const list: INamedAPIResourceList = {
@@ -112,6 +98,20 @@ describe('internal methods', (): void => {
       };
 
       const output: boolean = pokeapi.isListNamed(list);
+
+      expect(output).to.equal(false);
+    });
+  });
+
+  describe('_isNumber', (): void => {
+    it('returns true if value is a number', (): void => {
+      const output: boolean = pokeapi.isNumber(0);
+
+      expect(output).to.equal(true);
+    });
+
+    it('returns false if value is not a number', (): void => {
+      const output: boolean = pokeapi.isNumber('hello');
 
       expect(output).to.equal(false);
     });
