@@ -47,7 +47,7 @@ export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResourc
           expect(output.name).to.equal(list.results[randomIndex].name);
         }
 
-        itemTests(output as any); // TODO: Remove 'any' check after 'get' method is fully populated with TPokeAPIEndpoint names
+        itemTests(output);
       } else {
         throw new Error('list not found');
       }
@@ -66,7 +66,7 @@ export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResourc
           expect(output.id).to.equal(id);
           expect(output.name).to.equal(list.results[randomIndex].name);
 
-          itemTests(output as any); // TODO: Remove 'any' check after 'get' method is fully populated with TPokeAPIEndpoint names
+          itemTests(output);
         } else {
           this.skip();
         }
