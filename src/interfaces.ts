@@ -119,14 +119,14 @@ export interface IEvolutionDetail {
   min_beauty: number | null;
   min_happiness: number | null;
   min_level: number | null;
-  needs_overworld_rain: boolean | null;
+  needs_overworld_rain: boolean;
   party_species: INamedAPIResource | null; // PokemonSpecies
   party_type: INamedAPIResource | null; // Type
   relative_physical_stats: number | null;
   time_of_day: string;
   trade_species: INamedAPIResource | null; // PokemonSpecies
   trigger: INamedAPIResource; // EvolutionTrigger
-  turn_upside_down: boolean | null;
+  turn_upside_down: boolean;
 }
 
 // Evolution Triggers
