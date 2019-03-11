@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 
 import { IAPIResourceList, INamedAPIResourceList } from '../src/interfaces';
+import { API_VERSION, BASE, constructListUrl, constructUrl, isListNamed, isNumber } from '../src/util';
 
 import { endpointRunner } from './support/endpoint-runner';
 import {
@@ -14,56 +15,53 @@ import {
   encounterMethodTests,
   superContestEffectTests,
 } from './support/endpoints';
-import { PokeAPIPublic } from './support/pokeapi-public';
 
-describe('internal methods', (): void => {
-  const pokeapi: PokeAPIPublic = new PokeAPIPublic();
-
-  describe('_constructListUrl', (): void => {
+describe('util', (): void => {
+  describe('constructListUrl', (): void => {
     it('returns URL with no limit or offset', (): void => {
       const endpoint: string = 'test-name';
-      const output: string = pokeapi.constructListUrl(endpoint);
+      const output: string = constructListUrl(endpoint);
 
-      expect(output).to.equal(`${PokeAPIPublic.BASE}/api/${PokeAPIPublic.API_VERSION}/${endpoint}/`);
+      expect(output).to.equal(`${BASE}/api/${API_VERSION}/${endpoint}/`);
     });
 
     it('returns URL with limit and no offset', (): void => {
       const endpoint: string = 'test-name';
       const limit: number = 30;
-      const output: string = pokeapi.constructListUrl(endpoint, limit);
+      const output: string = constructListUrl(endpoint, limit);
 
-      expect(output).to.equal(`${PokeAPIPublic.BASE}/api/${PokeAPIPublic.API_VERSION}/${endpoint}/?limit=${limit}`);
+      expect(output).to.equal(`${BASE}/api/${API_VERSION}/${endpoint}/?limit=${limit}`);
     });
 
     it('returns URL with limit and offset', (): void => {
       const endpoint: string = 'test-name';
       const limit: number = 30;
       const offset: number = 30;
-      const output: string = pokeapi.constructListUrl(endpoint, limit, offset);
+      const output: string = constructListUrl(endpoint, limit, offset);
 
-      expect(output).to.equal(`${PokeAPIPublic.BASE}/api/${PokeAPIPublic.API_VERSION}/${endpoint}/?limit=${limit}&offset=${offset}`);
+      expect(output).to.equal(`${BASE}/api/${API_VERSION}/${endpoint}/?limit=${limit}&offset=${offset}`);
     });
   });
 
-  describe('_constructUrl', (): void => {
+  describe('constructUrl', (): void => {
     it('returns URL with number filter', (): void => {
       const endpoint: string = 'test-name';
       const filter: number = 10;
-      const output: string = pokeapi.constructUrl(endpoint, filter);
+      const output: string = constructUrl(endpoint, filter);
 
-      expect(output).to.equal(`${PokeAPIPublic.BASE}/api/${PokeAPIPublic.API_VERSION}/${endpoint}/${filter}/`);
+      expect(output).to.equal(`${BASE}/api/${API_VERSION}/${endpoint}/${filter}/`);
     });
 
     it('returns URL with string filter', (): void => {
       const endpoint: string = 'test-name';
       const filter: string = 'test-filter';
-      const output: string = pokeapi.constructUrl(endpoint, filter);
+      const output: string = constructUrl(endpoint, filter);
 
-      expect(output).to.equal(`${PokeAPIPublic.BASE}/api/${PokeAPIPublic.API_VERSION}/${endpoint}/${filter}/`);
+      expect(output).to.equal(`${BASE}/api/${API_VERSION}/${endpoint}/${filter}/`);
     });
   });
 
-  describe('_isListNamed', (): void => {
+  describe('isListNamed', (): void => {
     it('returns true if list is named', (): void => {
       const list: INamedAPIResourceList = {
         count: 1,
@@ -77,7 +75,7 @@ describe('internal methods', (): void => {
         ],
       };
 
-      const output: boolean = pokeapi.isListNamed(list);
+      const output: boolean = isListNamed(list);
 
       expect(output).to.equal(true);
     });
@@ -94,7 +92,7 @@ describe('internal methods', (): void => {
         ],
       };
 
-      const output: boolean = pokeapi.isListNamed(list);
+      const output: boolean = isListNamed(list);
 
       expect(output).to.equal(false);
     });
@@ -107,21 +105,21 @@ describe('internal methods', (): void => {
         results: [],
       };
 
-      const output: boolean = pokeapi.isListNamed(list);
+      const output: boolean = isListNamed(list);
 
       expect(output).to.equal(false);
     });
   });
 
-  describe('_isNumber', (): void => {
+  describe('isNumber', (): void => {
     it('returns true if value is a number', (): void => {
-      const output: boolean = pokeapi.isNumber(0);
+      const output: boolean = isNumber(0);
 
       expect(output).to.equal(true);
     });
 
     it('returns false if value is not a number', (): void => {
-      const output: boolean = pokeapi.isNumber('hello');
+      const output: boolean = isNumber('hello');
 
       expect(output).to.equal(false);
     });
