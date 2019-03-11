@@ -65,13 +65,13 @@ function isEvolutionDetail(resource: IEvolutionDetail): resource is IEvolutionDe
     isNumberOrNull(resource.min_happiness) &&
     isNumberOrNull(resource.min_beauty) &&
     isNumberOrNull(resource.min_affection) &&
-    isBooleanOrNull(resource.needs_overworld_rain) &&
+    _isBoolean(resource.needs_overworld_rain) &&
     isNamedAPIResourceOrNull(resource.party_species) &&
     isNamedAPIResourceOrNull(resource.party_type) &&
     isNumberOrNull(resource.relative_physical_stats) &&
     _isString(resource.time_of_day) &&
     isNamedAPIResourceOrNull(resource.trade_species) &&
-    isBooleanOrNull(resource.turn_upside_down)
+    _isBoolean(resource.turn_upside_down)
   );
 }
 
@@ -116,10 +116,6 @@ export function isNamedAPIResourceArray(resource: INamedAPIResource[]): resource
 }
 
 // Utility
-export function isBooleanOrNull(value: boolean | null): value is boolean | null {
-  return _isNull(value) || _isBoolean(value);
-}
-
 export function isNamedAPIResourceOrNull(value: INamedAPIResource | null): value is INamedAPIResource | null {
   return _isNull(value) || isNamedAPIResource(value);
 }
