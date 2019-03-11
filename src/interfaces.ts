@@ -77,6 +77,24 @@ export interface ISuperContestEffect extends IPokeAPIResource {
   moves: INamedAPIResource[]; // Move
 }
 
+// Encounter Methods
+export interface IEncounterMethod extends INamedPokeAPIResource {
+  names: IName[];
+  order: number;
+}
+
+// Encounter Conditions
+export interface IEncounterCondition extends INamedPokeAPIResource {
+  names: IName[];
+  values: INamedAPIResource[]; // EncounterConditionValue
+}
+
+// Encounter Condition Values
+export interface IEncounterConditionValue extends INamedPokeAPIResource {
+  condition: INamedAPIResource; // EncounterCondition
+  names: IName[];
+}
+
 // Utility - Common Models
 export interface IAPIResource {
   url: string;

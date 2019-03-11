@@ -3,7 +3,17 @@ import { expect } from 'chai';
 import { IAPIResourceList, INamedAPIResourceList } from '../src/interfaces';
 
 import { endpointRunner } from './support/endpoint-runner';
-import { berryFirmnessTests, berryFlavorTests, berryTests, contestEffectTests, contestTypeTests, superContestEffectTests } from './support/endpoints';
+import {
+  berryFirmnessTests,
+  berryFlavorTests,
+  berryTests,
+  contestEffectTests,
+  contestTypeTests,
+  encounterConditionTests,
+  encounterConditionValueTests,
+  encounterMethodTests,
+  superContestEffectTests,
+} from './support/endpoints';
 import { PokeAPIPublic } from './support/pokeapi-public';
 
 describe('internal methods', (): void => {
@@ -124,3 +134,6 @@ endpointRunner('berry-flavor', berryFlavorTests);
 endpointRunner('contest-type', contestTypeTests);
 endpointRunner('contest-effect', contestEffectTests);
 endpointRunner('super-contest-effect', superContestEffectTests);
+endpointRunner('encounter-method', encounterMethodTests);
+endpointRunner('encounter-condition', encounterConditionTests);
+endpointRunner('encounter-condition-value', encounterConditionValueTests);
