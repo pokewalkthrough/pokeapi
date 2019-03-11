@@ -7,6 +7,9 @@ import {
   IBerryFlavor,
   IContestEffect,
   IContestType,
+  IEncounterCondition,
+  IEncounterConditionValue,
+  IEncounterMethod,
   INamedAPIResourceList,
   IPokeAPIResource,
   ISuperContestEffect,
@@ -23,6 +26,9 @@ export class PokeAPI {
   public async get<T extends IContestType>(endpoint: 'contest-type', filter: number | string): Promise<T>;
   public async get<T extends IContestEffect>(endpoint: 'contest-effect', filter: number): Promise<T>;
   public async get<T extends ISuperContestEffect>(endpoint: 'super-contest-effect', filter: number): Promise<T>;
+  public async get<T extends IEncounterMethod>(endpoint: 'encounter-method', filter: number | string): Promise<T>;
+  public async get<T extends IEncounterCondition>(endpoint: 'encounter-condition', filter: number | string): Promise<T>;
+  public async get<T extends IEncounterConditionValue>(endpoint: 'encounter-condition-value', filter: number | string): Promise<T>;
   public async get<T extends IPokeAPIResource>(endpoint: TPokeAPIEndpoint, filter: number | string): Promise<T> {
     const url: string = this._constructUrl(endpoint, filter);
 
@@ -36,7 +42,11 @@ export class PokeAPI {
       });
   }
 
-  public async getList(endpoint: 'berry' | 'berry-firmness' | 'berry-flavor' | 'contest-type', limit?: number, offset?: number): Promise<INamedAPIResourceList>;
+  public async getList(
+    endpoint: 'berry' | 'berry-firmness' | 'berry-flavor' | 'contest-type' | 'encounter-method' | 'encounter-condition' | 'encounter-condition-value',
+    limit?: number,
+    offset?: number,
+  ): Promise<INamedAPIResourceList>;
   public async getList(endpoint: 'contest-effect' | 'super-contest-effect', limit?: number, offset?: number): Promise<IAPIResourceList>;
   public async getList(endpoint: TPokeAPIEndpoint, limit?: number, offset?: number): Promise<IAPIResourceList | INamedAPIResourceList> {
     const url: string = this._constructListUrl(endpoint, limit, offset);
