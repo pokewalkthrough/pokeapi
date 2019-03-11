@@ -12,9 +12,13 @@ import {
   IEncounterMethod,
   IEvolutionChain,
   IEvolutionTrigger,
+  IGeneration,
   INamedAPIResourceList,
   IPokeAPIResource,
+  IPokedex,
   ISuperContestEffect,
+  IVersion,
+  IVersionGroup,
   TPokeAPIEndpoint,
 } from './interfaces';
 import { constructListUrl, constructUrl, isListNamed } from './util';
@@ -31,6 +35,10 @@ export class PokeAPI {
   public async get<T extends IEncounterConditionValue>(endpoint: 'encounter-condition-value', filter: number | string): Promise<T>;
   public async get<T extends IEvolutionChain>(endpoint: 'evolution-chain', filter: number): Promise<T>;
   public async get<T extends IEvolutionTrigger>(endpoint: 'evolution-trigger', filter: number | string): Promise<T>;
+  public async get<T extends IGeneration>(endpoint: 'generation', filter: number | string): Promise<T>;
+  public async get<T extends IPokedex>(endpoint: 'pokedex', filter: number | string): Promise<T>;
+  public async get<T extends IVersion>(endpoint: 'version', filter: number | string): Promise<T>;
+  public async get<T extends IVersionGroup>(endpoint: 'version-group', filter: number | string): Promise<T>;
   public async get<T extends IPokeAPIResource>(endpoint: TPokeAPIEndpoint, filter: number | string): Promise<T> {
     const url: string = constructUrl(endpoint, filter);
 
@@ -53,7 +61,11 @@ export class PokeAPI {
       | 'encounter-method'
       | 'encounter-condition'
       | 'encounter-condition-value'
-      | 'evolution-trigger',
+      | 'evolution-trigger'
+      | 'generation'
+      | 'pokedex'
+      | 'version'
+      | 'version-group',
     limit?: number,
     offset?: number,
   ): Promise<INamedAPIResourceList>;
