@@ -2,12 +2,14 @@ import {
   IBerryFlavorMap,
   IChainLink,
   IContestName,
+  IDescription,
   IEffect,
   IEvolutionDetail,
   IFlavorBerryMap,
   IFlavorText,
   IName,
   INamedAPIResource,
+  IPokemonEntry,
 } from '../../src/interfaces';
 
 // BerryFlavorMap
@@ -77,6 +79,24 @@ function isEvolutionDetail(resource: IEvolutionDetail): resource is IEvolutionDe
 
 function isEvolutionDetailArray(resource: IEvolutionDetail[]): resource is IEvolutionDetail[] {
   return _isResourceArray(resource, isEvolutionDetail);
+}
+
+// PokemonEntry
+function isPokemonEntry(resource: IPokemonEntry): resource is IPokemonEntry {
+  return _isNumber(resource.entry_number) && isNamedAPIResource(resource.pokemon_species);
+}
+
+export function isPokemonEntryArray(resource: IPokemonEntry[]): resource is IPokemonEntry[] {
+  return _isResourceArray(resource, isPokemonEntry);
+}
+
+// Description
+function isDescription(resource: IDescription): resource is IDescription {
+  return _isString(resource.description) && isNamedAPIResource(resource.language);
+}
+
+export function isDescriptionArray(resource: IDescription[]): resource is IDescription[] {
+  return _isResourceArray(resource, isDescription);
 }
 
 // Effect

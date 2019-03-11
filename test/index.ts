@@ -15,7 +15,11 @@ import {
   encounterMethodTests,
   evolutionChainTests,
   evolutionTriggerTests,
+  generationTests,
+  pokedexTests,
   superContestEffectTests,
+  versionGroupTests,
+  versionTests,
 } from './support/endpoints';
 
 describe('util', (): void => {
@@ -139,3 +143,7 @@ endpointRunner('encounter-condition', encounterConditionTests);
 endpointRunner('encounter-condition-value', encounterConditionValueTests);
 endpointRunner('evolution-chain', evolutionChainTests);
 endpointRunner('evolution-trigger', evolutionTriggerTests);
+endpointRunner('generation', generationTests);
+endpointRunner('pokedex', pokedexTests);
+endpointRunner('version', versionTests);
+endpointRunner('version-group', versionGroupTests);
