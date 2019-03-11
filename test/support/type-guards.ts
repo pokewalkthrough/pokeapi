@@ -1,4 +1,14 @@
-import { IBerryFlavorMap, IContestName, IEffect, IFlavorBerryMap, IFlavorText, IName, INamedAPIResource } from '../../src/interfaces';
+import {
+  IBerryFlavorMap,
+  IChainLink,
+  IContestName,
+  IEffect,
+  IEvolutionDetail,
+  IFlavorBerryMap,
+  IFlavorText,
+  IName,
+  INamedAPIResource,
+} from '../../src/interfaces';
 
 // BerryFlavorMap
 function isBerryFlavorMap(resource: IBerryFlavorMap): resource is IBerryFlavorMap {
@@ -25,6 +35,48 @@ function isContestName(resource: IContestName): resource is IContestName {
 
 export function isContestNameArray(resource: IContestName[]): resource is IContestName[] {
   return _isResourceArray(resource, isContestName);
+}
+
+// ChainLink
+export function isChainLink(resource: IChainLink): resource is IChainLink {
+  return (
+    _isBoolean(resource.is_baby) &&
+    isNamedAPIResource(resource.species) &&
+    isEvolutionDetailArray(resource.evolution_details) &&
+    isChainLinkArray(resource.evolves_to)
+  );
+}
+
+function isChainLinkArray(resource: IChainLink[]): resource is IChainLink[] {
+  return _isResourceArray(resource, isChainLink);
+}
+
+// EvolutionDetail
+function isEvolutionDetail(resource: IEvolutionDetail): resource is IEvolutionDetail {
+  return (
+    isNamedAPIResourceOrNull(resource.item) &&
+    isNamedAPIResource(resource.trigger) &&
+    isNumberOrNull(resource.gender) &&
+    isNamedAPIResourceOrNull(resource.held_item) &&
+    isNamedAPIResourceOrNull(resource.known_move) &&
+    isNamedAPIResourceOrNull(resource.known_move_type) &&
+    isNamedAPIResourceOrNull(resource.location) &&
+    isNumberOrNull(resource.min_level) &&
+    isNumberOrNull(resource.min_happiness) &&
+    isNumberOrNull(resource.min_beauty) &&
+    isNumberOrNull(resource.min_affection) &&
+    isBooleanOrNull(resource.needs_overworld_rain) &&
+    isNamedAPIResourceOrNull(resource.party_species) &&
+    isNamedAPIResourceOrNull(resource.party_type) &&
+    isNumberOrNull(resource.relative_physical_stats) &&
+    _isString(resource.time_of_day) &&
+    isNamedAPIResourceOrNull(resource.trade_species) &&
+    isBooleanOrNull(resource.turn_upside_down)
+  );
+}
+
+function isEvolutionDetailArray(resource: IEvolutionDetail[]): resource is IEvolutionDetail[] {
+  return _isResourceArray(resource, isEvolutionDetail);
 }
 
 // Effect
@@ -64,8 +116,24 @@ export function isNamedAPIResourceArray(resource: INamedAPIResource[]): resource
 }
 
 // Utility
+export function isBooleanOrNull(value: boolean | null): value is boolean | null {
+  return _isNull(value) || _isBoolean(value);
+}
+
+export function isNamedAPIResourceOrNull(value: INamedAPIResource | null): value is INamedAPIResource | null {
+  return _isNull(value) || isNamedAPIResource(value);
+}
+
+export function isNumberOrNull(value: number | null): value is number | null {
+  return _isNull(value) || _isNumber(value);
+}
+
 export function isStringOrNull(value: string | null): value is string | null {
   return _isNull(value) || _isString(value);
+}
+
+function _isBoolean(value: boolean): value is boolean {
+  return typeof value === 'boolean';
 }
 
 function _isNull(value: any): value is null {
@@ -82,9 +150,13 @@ function _isString(value: string): value is string {
 
 function _isResourceArray<T extends any>(resource: T[], resourceCheckMethod: (internalResource: T) => boolean): resource is T[] {
   if (Array.isArray(resource)) {
-    return resource.every((value: T) => {
-      return resourceCheckMethod(value);
-    });
+    if (resource.length === 0) {
+      return true;
+    } else {
+      return resource.every((value: T) => {
+        return resourceCheckMethod(value);
+      });
+    }
   } else {
     return false;
   }

@@ -7,3 +7,5 @@ export { superContestEffectTests } from './super-contest-effect';
 export { encounterMethodTests } from './encounter-method';
 export { encounterConditionTests } from './encounter-condition';
 export { encounterConditionValueTests } from './encounter-condition-value';
+export { evolutionChainTests } from './evolution-chain';
+export { evolutionTriggerTests } from './evolution-trigger';

@@ -10,6 +10,8 @@ import {
   IEncounterCondition,
   IEncounterConditionValue,
   IEncounterMethod,
+  IEvolutionChain,
+  IEvolutionTrigger,
   INamedAPIResourceList,
   IPokeAPIResource,
   ISuperContestEffect,
@@ -27,6 +29,8 @@ export class PokeAPI {
   public async get<T extends IEncounterMethod>(endpoint: 'encounter-method', filter: number | string): Promise<T>;
   public async get<T extends IEncounterCondition>(endpoint: 'encounter-condition', filter: number | string): Promise<T>;
   public async get<T extends IEncounterConditionValue>(endpoint: 'encounter-condition-value', filter: number | string): Promise<T>;
+  public async get<T extends IEvolutionChain>(endpoint: 'evolution-chain', filter: number): Promise<T>;
+  public async get<T extends IEvolutionTrigger>(endpoint: 'evolution-trigger', filter: number | string): Promise<T>;
   public async get<T extends IPokeAPIResource>(endpoint: TPokeAPIEndpoint, filter: number | string): Promise<T> {
     const url: string = constructUrl(endpoint, filter);
 
@@ -41,11 +45,19 @@ export class PokeAPI {
   }
 
   public async getList(
-    endpoint: 'berry' | 'berry-firmness' | 'berry-flavor' | 'contest-type' | 'encounter-method' | 'encounter-condition' | 'encounter-condition-value',
+    endpoint:
+      | 'berry'
+      | 'berry-firmness'
+      | 'berry-flavor'
+      | 'contest-type'
+      | 'encounter-method'
+      | 'encounter-condition'
+      | 'encounter-condition-value'
+      | 'evolution-trigger',
     limit?: number,
     offset?: number,
   ): Promise<INamedAPIResourceList>;
-  public async getList(endpoint: 'contest-effect' | 'super-contest-effect', limit?: number, offset?: number): Promise<IAPIResourceList>;
+  public async getList(endpoint: 'contest-effect' | 'super-contest-effect' | 'evolution-chain', limit?: number, offset?: number): Promise<IAPIResourceList>;
   public async getList(endpoint: TPokeAPIEndpoint, limit?: number, offset?: number): Promise<IAPIResourceList | INamedAPIResourceList> {
     const url: string = constructListUrl(endpoint, limit, offset);
 

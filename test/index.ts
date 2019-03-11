@@ -13,6 +13,8 @@ import {
   encounterConditionTests,
   encounterConditionValueTests,
   encounterMethodTests,
+  evolutionChainTests,
+  evolutionTriggerTests,
   superContestEffectTests,
 } from './support/endpoints';
 
@@ -135,3 +137,5 @@ endpointRunner('super-contest-effect', superContestEffectTests);
 endpointRunner('encounter-method', encounterMethodTests);
 endpointRunner('encounter-condition', encounterConditionTests);
 endpointRunner('encounter-condition-value', encounterConditionValueTests);
+endpointRunner('evolution-chain', evolutionChainTests);
+endpointRunner('evolution-trigger', evolutionTriggerTests);
