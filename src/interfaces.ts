@@ -234,6 +234,59 @@ export interface IItemPocket extends INamedPokeAPIResource {
   names: IName[];
 }
 
+// Locations
+export interface ILocation extends INamedPokeAPIResource {
+  areas: INamedAPIResource[]; // LocationArea
+  game_indices: IGenerationGameIndex[];
+  names: IName[];
+  region: INamedAPIResource; // Region
+}
+
+// LocationArea
+export interface ILocationArea extends INamedPokeAPIResource {
+  encounter_method_rates: IEncounterMethodRate[];
+  game_index: number;
+  location: INamedAPIResource; // Location
+  names: IName[];
+  pokemon_encounters: IPokemonEncounter[];
+}
+
+export interface IEncounterMethodRate {
+  encounter_method: INamedAPIResource; // EncounterMethod
+  version_details: IEncounterVersionDetails[];
+}
+
+export interface IEncounterVersionDetails {
+  rate: number;
+  version: INamedAPIResource; // Version
+}
+
+export interface IPokemonEncounter {
+  pokemon: INamedAPIResource; // Pokemon
+  version_details: IVersionEncounterDetail[];
+}
+
+// PalParkArea
+export interface IPalParkArea extends INamedPokeAPIResource {
+  names: IName[];
+  pokemon_encounters: IPalParkEncounterSpecies[];
+}
+
+export interface IPalParkEncounterSpecies {
+  base_score: number;
+  pokemon_species: INamedAPIResource; // PokemonSpecies
+  rate: number;
+}
+
+// Region
+export interface IRegion extends INamedPokeAPIResource {
+  locations: INamedAPIResource[]; // Location
+  main_generation: INamedAPIResource; // Generation
+  names: IName[];
+  pokedexes: INamedAPIResource[]; // Pokedex
+  version_groups: INamedAPIResource[]; // VersionGroup
+}
+
 // Utility - Common Models
 export interface IAPIResource {
   url: string;
@@ -247,6 +300,14 @@ export interface IDescription {
 export interface IEffect {
   effect: string;
   language: INamedAPIResource; // Language
+}
+
+export interface IEncounter {
+  chance: number;
+  condition_values: INamedAPIResource[]; // EncounterConditionValue
+  max_level: number;
+  method: INamedAPIResource; // EncounterMethod
+  min_level: number;
 }
 
 export interface IFlavorText {
@@ -277,6 +338,12 @@ export interface IVerboseEffect {
   effect: string;
   language: INamedAPIResource; // Language
   short_effect: string;
+}
+
+export interface IVersionEncounterDetail {
+  encounter_details: IEncounter[];
+  max_chance: number;
+  version: INamedAPIResource; // Version
 }
 
 export interface IVersionGroupFlavorText {
