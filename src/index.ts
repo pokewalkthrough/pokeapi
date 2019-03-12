@@ -21,7 +21,7 @@ import {
   IVersionGroup,
   TPokeAPIEndpoint,
 } from './interfaces';
-import { constructListUrl, constructUrl, isListNamed } from './util';
+import { constructListUrl, constructUrl } from './util';
 
 export class PokeAPI {
   public async get<T extends IBerry>(endpoint: 'berry', filter: number | string): Promise<T>;
@@ -42,6 +42,7 @@ export class PokeAPI {
   public async get<T extends IPokeAPIResource>(endpoint: TPokeAPIEndpoint, filter: number | string): Promise<T> {
     const url: string = constructUrl(endpoint, filter);
 
+    // TODO: Remove axios and replace with native method to reduce dependencies
     return axios
       .get<T>(url)
       .then((value: AxiosResponse<T>) => {
@@ -73,14 +74,11 @@ export class PokeAPI {
   public async getList(endpoint: TPokeAPIEndpoint, limit?: number, offset?: number): Promise<IAPIResourceList | INamedAPIResourceList> {
     const url: string = constructListUrl(endpoint, limit, offset);
 
+    // TODO: Remove axios and replace with native method to reduce dependencies
     return axios
       .get<IAPIResourceList | INamedAPIResourceList>(url)
       .then((value: AxiosResponse<IAPIResourceList | INamedAPIResourceList>) => {
-        if (isListNamed(value.data)) {
-          return value.data as INamedAPIResourceList;
-        } else {
-          return value.data as IAPIResourceList;
-        }
+        return value.data;
       })
       .catch((reason: any) => {
         return reason; // TODO: test errors
