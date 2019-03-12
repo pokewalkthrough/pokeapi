@@ -22,3 +22,4 @@ export { locationTests } from './location';
 export { locationAreaTests } from './location-area';
 export { palParkAreaTests } from './pal-park-area';
 export { regionTests } from './region';
+export { machineTests } from './machine';

@@ -23,6 +23,7 @@ import {
   itemTests,
   locationAreaTests,
   locationTests,
+  machineTests,
   palParkAreaTests,
   pokedexTests,
   regionTests,
@@ -165,3 +166,4 @@ endpointRunner('location', locationTests, true);
 endpointRunner('location-area', locationAreaTests, true);
 endpointRunner('pal-park-area', palParkAreaTests, true);
 endpointRunner('region', regionTests, true);
+endpointRunner('machine', machineTests, false);
