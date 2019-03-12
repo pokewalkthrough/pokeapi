@@ -1,7 +1,10 @@
 import {
   IAPIResource,
+  IAbilityEffectChange,
   IBerryFlavorMap,
   IChainLink,
+  IContestComboDetail,
+  IContestComboSets,
   IContestName,
   IDescription,
   IEffect,
@@ -16,9 +19,13 @@ import {
   IItemHolderPokemonVersionDetail,
   IItemSprites,
   IMachineVersionDetail,
+  IMoveFlavorText,
+  IMoveMetaData,
+  IMoveStatChange,
   IName,
   INamedAPIResource,
   IPalParkEncounterSpecies,
+  IPastMoveStatValues,
   IPokemonEncounter,
   IPokemonEntry,
   IVerboseEffect,
@@ -111,7 +118,7 @@ export function isItemSprites(resource: IItemSprites): resource is IItemSprites 
 
 // ItemHolderPokemon
 function isItemHolderPokemon(resource: IItemHolderPokemon): resource is IItemHolderPokemon {
-  return isString(resource.pokemon) && isItemHolderPokemonVersionDetailArray(resource.version_details);
+  return isNamedAPIResource(resource.pokemon) && isItemHolderPokemonVersionDetailArray(resource.version_details);
 }
 
 export function isItemHolderPokemonArray(resource: IItemHolderPokemon[]): resource is IItemHolderPokemon[] {
@@ -120,7 +127,7 @@ export function isItemHolderPokemonArray(resource: IItemHolderPokemon[]): resour
 
 // ItemHolderPokemonVersionDetail
 function isItemHolderPokemonVersionDetail(resource: IItemHolderPokemonVersionDetail): resource is IItemHolderPokemonVersionDetail {
-  return isString(resource.rarity) && isNamedAPIResource(resource.version);
+  return isNumber(resource.rarity) && isNamedAPIResource(resource.version);
 }
 
 function isItemHolderPokemonVersionDetailArray(resource: IItemHolderPokemonVersionDetail[]): resource is IItemHolderPokemonVersionDetail[] {
@@ -161,6 +168,78 @@ function isPalParkEncounterSpecies(resource: IPalParkEncounterSpecies): resource
 
 export function isPalParkEncounterSpeciesArray(resource: IPalParkEncounterSpecies[]): resource is IPalParkEncounterSpecies[] {
   return isResourceArray(resource, isPalParkEncounterSpecies);
+}
+
+// ContestComboSets
+function isContestComboSets(resource: IContestComboSets): resource is IContestComboSets {
+  return isContestComboDetail(resource.normal) && isContestComboDetail(resource.super);
+}
+
+// ContestComboDetail
+function isContestComboDetail(resource: IContestComboDetail): resource is IContestComboDetail {
+  return isNamedAPIResourceArrayOrNull(resource.use_before) && isNamedAPIResourceArrayOrNull(resource.use_after);
+}
+
+// MoveFlavorText
+function isMoveFlavorText(resource: IMoveFlavorText): resource is IMoveFlavorText {
+  return isString(resource.flavor_text) && isNamedAPIResource(resource.language) && isNamedAPIResource(resource.version_group);
+}
+
+export function isMoveFlavorTextArray(resource: IMoveFlavorText[]): resource is IMoveFlavorText[] {
+  return isResourceArray(resource, isMoveFlavorText);
+}
+
+// MoveMetaData
+export function isMoveMetaData(resource: IMoveMetaData): resource is IMoveMetaData {
+  return (
+    isNamedAPIResource(resource.ailment) &&
+    isNamedAPIResource(resource.category) &&
+    isNumberOrNull(resource.min_hits) &&
+    isNumberOrNull(resource.max_hits) &&
+    isNumberOrNull(resource.min_turns) &&
+    isNumberOrNull(resource.max_turns) &&
+    isNumber(resource.drain) &&
+    isNumber(resource.healing) &&
+    isNumber(resource.crit_rate) &&
+    isNumber(resource.ailment_chance) &&
+    isNumber(resource.flinch_chance) &&
+    isNumber(resource.stat_chance)
+  );
+}
+
+// MoveStatChange
+function isMoveStatChange(resource: IMoveStatChange): resource is IMoveStatChange {
+  return isNumber(resource.change) && isNamedAPIResource(resource.stat);
+}
+
+export function isMoveStatChangeArray(resource: IMoveStatChange[]): resource is IMoveStatChange[] {
+  return isResourceArray(resource, isMoveStatChange);
+}
+
+// PastMoveStatValues
+function isPastMoveStatValues(resource: IPastMoveStatValues): resource is IPastMoveStatValues {
+  return (
+    isNumberOrNull(resource.accuracy) &&
+    isNumberOrNull(resource.effect_chance) &&
+    isNumberOrNull(resource.power) &&
+    isNumberOrNull(resource.pp) &&
+    isVerboseEffectArray(resource.effect_entries) &&
+    isNamedAPIResourceOrNull(resource.type) &&
+    isNamedAPIResource(resource.version_group)
+  );
+}
+
+export function isPastMoveStatValuesArray(resource: IPastMoveStatValues[]): resource is IPastMoveStatValues[] {
+  return isResourceArray(resource, isPastMoveStatValues);
+}
+
+// AbilityEffectChange
+function isAbilityEffectChange(resource: IAbilityEffectChange): resource is IAbilityEffectChange {
+  return isEffectArray(resource.effect_entries) && isNamedAPIResource(resource.version_group);
+}
+
+export function isAbilityEffectChangeArray(resource: IAbilityEffectChange[]): resource is IAbilityEffectChange[] {
+  return isResourceArray(resource, isAbilityEffectChange);
 }
 
 // APIResource
@@ -282,8 +361,16 @@ function isBoolean(value: boolean): value is boolean {
   return typeof value === 'boolean';
 }
 
+export function isContestComboSetsOrNull(value: IContestComboSets | null): value is IContestComboSets | null {
+  return isNull(value) || isContestComboSets(value);
+}
+
 export function isNamedAPIResourceOrNull(value: INamedAPIResource | null): value is INamedAPIResource | null {
   return isNull(value) || isNamedAPIResource(value);
+}
+
+export function isNamedAPIResourceArrayOrNull(value: INamedAPIResource[] | null): value is INamedAPIResource[] | null {
+  return isNull(value) || isNamedAPIResourceArray(value);
 }
 
 function isNull(value: any): value is null {
