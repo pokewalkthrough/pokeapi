@@ -1,6 +1,9 @@
 import {
   IAPIResource,
   IAbilityEffectChange,
+  IAbilityFlavorText,
+  IAbilityPokemon,
+  IAwesomeName,
   IBerryFlavorMap,
   IChainLink,
   IContestComboDetail,
@@ -15,21 +18,46 @@ import {
   IFlavorBerryMap,
   IFlavorText,
   IGenerationGameIndex,
+  IGenus,
+  IGrowthRateExperienceLevel,
   IItemHolderPokemon,
   IItemHolderPokemonVersionDetail,
   IItemSprites,
   IMachineVersionDetail,
+  IMoveBattleStylePreference,
   IMoveFlavorText,
   IMoveMetaData,
+  IMoveStatAffect,
+  IMoveStatAffectSets,
   IMoveStatChange,
   IName,
   INamedAPIResource,
+  INaturePokeathlonStatAffect,
+  INaturePokeathlonStatAffectSets,
+  INatureStatAffectSets,
+  INatureStatChange,
+  IPalParkEncounterArea,
   IPalParkEncounterSpecies,
   IPastMoveStatValues,
+  IPokemonAbility,
   IPokemonEncounter,
   IPokemonEntry,
+  IPokemonFormSprites,
+  IPokemonHeldItem,
+  IPokemonHeldItemVersion,
+  IPokemonMove,
+  IPokemonMoveVersion,
+  IPokemonSpeciesDexEntry,
+  IPokemonSpeciesGender,
+  IPokemonSpeciesVariety,
+  IPokemonSprites,
+  IPokemonStat,
+  IPokemonType,
+  ITypePokemon,
+  ITypeRelations,
   IVerboseEffect,
   IVersionEncounterDetail,
+  IVersionGameIndex,
   IVersionGroupFlavorText,
 } from '../../src/interfaces';
 
@@ -190,7 +218,7 @@ export function isMoveFlavorTextArray(resource: IMoveFlavorText[]): resource is 
 }
 
 // MoveMetaData
-export function isMoveMetaData(resource: IMoveMetaData): resource is IMoveMetaData {
+function isMoveMetaData(resource: IMoveMetaData): resource is IMoveMetaData {
   return (
     isNamedAPIResource(resource.ailment) &&
     isNamedAPIResource(resource.category) &&
@@ -242,9 +270,250 @@ export function isAbilityEffectChangeArray(resource: IAbilityEffectChange[]): re
   return isResourceArray(resource, isAbilityEffectChange);
 }
 
+// AbilityFlavorText
+function isAbilityFlavorText(resource: IAbilityFlavorText): resource is IAbilityFlavorText {
+  return isString(resource.flavor_text) && isNamedAPIResource(resource.language) && isNamedAPIResource(resource.version_group);
+}
+
+export function isAbilityFlavorTextArray(resource: IAbilityFlavorText[]): resource is IAbilityFlavorText[] {
+  return isResourceArray(resource, isAbilityFlavorText);
+}
+
+// AbilityPokemon
+function isAbilityPokemon(resource: IAbilityPokemon): resource is IAbilityPokemon {
+  return isBoolean(resource.is_hidden) && isNumber(resource.slot) && isNamedAPIResource(resource.pokemon);
+}
+
+export function isAbilityPokemonArray(resource: IAbilityPokemon[]): resource is IAbilityPokemon[] {
+  return isResourceArray(resource, isAbilityPokemon);
+}
+
+// PokemonSpeciesGender
+function isPokemonSpeciesGender(resource: IPokemonSpeciesGender): resource is IPokemonSpeciesGender {
+  return isNumber(resource.rate) && isNamedAPIResource(resource.pokemon_species);
+}
+
+export function isPokemonSpeciesGenderArray(resource: IPokemonSpeciesGender[]): resource is IPokemonSpeciesGender[] {
+  return isResourceArray(resource, isPokemonSpeciesGender);
+}
+
+// GrowthRateExperienceLevel
+function isGrowthRateExperienceLevel(resource: IGrowthRateExperienceLevel): resource is IGrowthRateExperienceLevel {
+  return isNumber(resource.level) && isNumber(resource.experience);
+}
+
+export function isGrowthRateExperienceLevelArray(resource: IGrowthRateExperienceLevel[]): resource is IGrowthRateExperienceLevel[] {
+  return isResourceArray(resource, isGrowthRateExperienceLevel);
+}
+
+// NatureStatChange
+function isNatureStatChange(resource: INatureStatChange): resource is INatureStatChange {
+  return isNumber(resource.max_change) && isNamedAPIResource(resource.pokeathlon_stat);
+}
+
+export function isNatureStatChangeArray(resource: INatureStatChange[]): resource is INatureStatChange[] {
+  return isResourceArray(resource, isNatureStatChange);
+}
+
+// MoveBattleStylePreference
+function isMoveBattleStylePreference(resource: IMoveBattleStylePreference): resource is IMoveBattleStylePreference {
+  return isNumber(resource.low_hp_preference) && isNumber(resource.high_hp_preference) && isNamedAPIResource(resource.move_battle_style);
+}
+
+export function isMoveBattleStylePreferenceArray(resource: IMoveBattleStylePreference[]): resource is IMoveBattleStylePreference[] {
+  return isResourceArray(resource, isMoveBattleStylePreference);
+}
+
+// NaturePokeathlonStatAffectSets
+export function isNaturePokeathlonStatAffectSets(resource: INaturePokeathlonStatAffectSets): resource is INaturePokeathlonStatAffectSets {
+  return isNaturePokeathlonStatAffectArray(resource.increase) && isNaturePokeathlonStatAffectArray(resource.decrease);
+}
+
+// NaturePokeathlonStatAffect
+function isNaturePokeathlonStatAffect(resource: INaturePokeathlonStatAffect): resource is INaturePokeathlonStatAffect {
+  return isNumber(resource.max_change) && isNamedAPIResource(resource.nature);
+}
+
+function isNaturePokeathlonStatAffectArray(resource: INaturePokeathlonStatAffect[]): resource is INaturePokeathlonStatAffect[] {
+  return isResourceArray(resource, isNaturePokeathlonStatAffect);
+}
+
+// PokemonAbility
+function isPokemonAbility(resource: IPokemonAbility): resource is IPokemonAbility {
+  return isBoolean(resource.is_hidden) && isNumber(resource.slot) && isNamedAPIResource(resource.ability);
+}
+
+export function isPokemonAbilityArray(resource: IPokemonAbility[]): resource is IPokemonAbility[] {
+  return isResourceArray(resource, isPokemonAbility);
+}
+
+// PokemonType
+function isPokemonType(resource: IPokemonType): resource is IPokemonType {
+  return isNumber(resource.slot) && isNamedAPIResource(resource.type);
+}
+
+export function isPokemonTypeArray(resource: IPokemonType[]): resource is IPokemonType[] {
+  return isResourceArray(resource, isPokemonType);
+}
+
+// PokemonHeldItem
+function isPokemonHeldItem(resource: IPokemonHeldItem): resource is IPokemonHeldItem {
+  return isNamedAPIResource(resource.item) && isPokemonHeldItemVersionArray(resource.version_details);
+}
+
+export function isPokemonHeldItemArray(resource: IPokemonHeldItem[]): resource is IPokemonHeldItem[] {
+  return isResourceArray(resource, isPokemonHeldItem);
+}
+
+// PokemonHeldItemVersion
+function isPokemonHeldItemVersion(resource: IPokemonHeldItemVersion): resource is IPokemonHeldItemVersion {
+  return isNamedAPIResource(resource.version) && isNumber(resource.rarity);
+}
+
+function isPokemonHeldItemVersionArray(resource: IPokemonHeldItemVersion[]): resource is IPokemonHeldItemVersion[] {
+  return isResourceArray(resource, isPokemonHeldItemVersion);
+}
+
+// PokemonMove
+function isPokemonMove(resource: IPokemonMove): resource is IPokemonMove {
+  return isNamedAPIResource(resource.move) && isPokemonMoveVersionArray(resource.version_group_details);
+}
+
+export function isPokemonMoveArray(resource: IPokemonMove[]): resource is IPokemonMove[] {
+  return isResourceArray(resource, isPokemonMove);
+}
+
+// PokemonMoveVersion
+function isPokemonMoveVersion(resource: IPokemonMoveVersion): resource is IPokemonMoveVersion {
+  return isNamedAPIResource(resource.move_learn_method) && isNamedAPIResource(resource.version_group) && isNumber(resource.level_learned_at);
+}
+
+function isPokemonMoveVersionArray(resource: IPokemonMoveVersion[]): resource is IPokemonMoveVersion[] {
+  return isResourceArray(resource, isPokemonMoveVersion);
+}
+
+// PokemonStat
+function isPokemonStat(resource: IPokemonStat): resource is IPokemonStat {
+  return isNamedAPIResource(resource.stat) && isNumber(resource.effort) && isNumber(resource.base_stat);
+}
+
+export function isPokemonStatArray(resource: IPokemonStat[]): resource is IPokemonStat[] {
+  return isResourceArray(resource, isPokemonStat);
+}
+
+// PokemonSprites
+export function isPokemonSprites(resource: IPokemonSprites): resource is IPokemonSprites {
+  return (
+    isStringOrNull(resource.front_default) &&
+    isStringOrNull(resource.front_shiny) &&
+    isStringOrNull(resource.front_female) &&
+    isStringOrNull(resource.front_shiny_female) &&
+    isStringOrNull(resource.back_default) &&
+    isStringOrNull(resource.back_shiny) &&
+    isStringOrNull(resource.back_female) &&
+    isStringOrNull(resource.back_shiny_female)
+  );
+}
+
+// PokemonFormSprites
+export function isPokemonFormSprites(resource: IPokemonFormSprites): resource is IPokemonFormSprites {
+  return (
+    isString(resource.front_default) && isStringOrNull(resource.front_shiny) && isStringOrNull(resource.back_default) && isStringOrNull(resource.back_shiny)
+  );
+}
+
+// AwesomeName
+function isAwesomeName(resource: IAwesomeName): resource is IAwesomeName {
+  return isString(resource.awesome_name) && isNamedAPIResource(resource.language);
+}
+
+export function isAwesomeNameArray(resource: IAwesomeName[]): resource is IAwesomeName[] {
+  return isResourceArray(resource, isAwesomeName);
+}
+
+// Genus
+function isGenus(resource: IGenus): resource is IGenus {
+  return isString(resource.genus) && isNamedAPIResource(resource.language);
+}
+
+export function isGenusArray(resource: IGenus[]): resource is IGenus[] {
+  return isResourceArray(resource, isGenus);
+}
+
+// PokemonSpeciesDexEntry
+function isPokemonSpeciesDexEntry(resource: IPokemonSpeciesDexEntry): resource is IPokemonSpeciesDexEntry {
+  return isNumber(resource.entry_number) && isNamedAPIResource(resource.pokedex);
+}
+
+export function isPokemonSpeciesDexEntryArray(resource: IPokemonSpeciesDexEntry[]): resource is IPokemonSpeciesDexEntry[] {
+  return isResourceArray(resource, isPokemonSpeciesDexEntry);
+}
+
+// PalParkEncounterArea
+function isPalParkEncounterArea(resource: IPalParkEncounterArea): resource is IPalParkEncounterArea {
+  return isNumber(resource.base_score) && isNumber(resource.rate) && isNamedAPIResource(resource.area);
+}
+
+export function isPalParkEncounterAreaArray(resource: IPalParkEncounterArea[]): resource is IPalParkEncounterArea[] {
+  return isResourceArray(resource, isPalParkEncounterArea);
+}
+
+// PokemonSpeciesVariety
+function isPokemonSpeciesVariety(resource: IPokemonSpeciesVariety): resource is IPokemonSpeciesVariety {
+  return isBoolean(resource.is_default) && isNamedAPIResource(resource.pokemon);
+}
+
+export function isPokemonSpeciesVarietyArray(resource: IPokemonSpeciesVariety[]): resource is IPokemonSpeciesVariety[] {
+  return isResourceArray(resource, isPokemonSpeciesVariety);
+}
+
+// MoveStatAffectSets
+export function isMoveStatAffectSets(resource: IMoveStatAffectSets): resource is IMoveStatAffectSets {
+  return isMoveStatAffectArray(resource.increase) && isMoveStatAffectArray(resource.decrease);
+}
+
+// MoveStatAffect
+function isMoveStatAffect(resource: IMoveStatAffect): resource is IMoveStatAffect {
+  return isNumber(resource.change) && isNamedAPIResource(resource.move);
+}
+
+function isMoveStatAffectArray(resource: IMoveStatAffect[]): resource is IMoveStatAffect[] {
+  return isResourceArray(resource, isMoveStatAffect);
+}
+
+// NatureStatAffectSets
+export function isNatureStatAffectSets(resource: INatureStatAffectSets): resource is INatureStatAffectSets {
+  return isNamedAPIResourceArray(resource.increase) && isNamedAPIResourceArray(resource.decrease);
+}
+
+// TypePokemon
+function isTypePokemon(resource: ITypePokemon): resource is ITypePokemon {
+  return isNumber(resource.slot) && isNamedAPIResource(resource.pokemon);
+}
+
+export function isTypePokemonArray(resource: ITypePokemon[]): resource is ITypePokemon[] {
+  return isResourceArray(resource, isTypePokemon);
+}
+
+// TypeRelations
+export function isTypeRelations(resource: ITypeRelations): resource is ITypeRelations {
+  return (
+    isNamedAPIResourceArray(resource.no_damage_to) &&
+    isNamedAPIResourceArray(resource.half_damage_to) &&
+    isNamedAPIResourceArray(resource.double_damage_to) &&
+    isNamedAPIResourceArray(resource.no_damage_from) &&
+    isNamedAPIResourceArray(resource.half_damage_from) &&
+    isNamedAPIResourceArray(resource.double_damage_from)
+  );
+}
+
 // APIResource
 export function isAPIResource(resource: IAPIResource): resource is IAPIResource {
   return isString(resource.url);
+}
+
+export function isAPIResourceArray(resource: IAPIResource[]): resource is IAPIResource[] {
+  return isResourceArray(resource, isAPIResource);
 }
 
 // Description
@@ -343,6 +612,15 @@ function isVersionEncounterDetailArray(resource: IVersionEncounterDetail[]): res
   return isResourceArray(resource, isVersionEncounterDetail);
 }
 
+// VersionGameIndex
+function isVersionGameIndex(resource: IVersionGameIndex): resource is IVersionGameIndex {
+  return isNumber(resource.game_index) && isNamedAPIResource(resource.version);
+}
+
+export function isVersionGameIndexArray(resource: IVersionGameIndex[]): resource is IVersionGameIndex[] {
+  return isResourceArray(resource, isVersionGameIndex);
+}
+
 // VersionGroupFlavorText
 function isVersionGroupFlavorText(resource: IVersionGroupFlavorText): resource is IVersionGroupFlavorText {
   return isString(resource.text) && isNamedAPIResource(resource.language) && isNamedAPIResource(resource.version_group);
@@ -365,6 +643,10 @@ export function isContestComboSetsOrNull(value: IContestComboSets | null): value
   return isNull(value) || isContestComboSets(value);
 }
 
+export function isMoveMetaDataOrNull(value: IMoveMetaData | null): value is IMoveMetaData | null {
+  return isNull(value) || isMoveMetaData(value);
+}
+
 export function isNamedAPIResourceOrNull(value: INamedAPIResource | null): value is INamedAPIResource | null {
   return isNull(value) || isNamedAPIResource(value);
 }
@@ -379,6 +661,10 @@ function isNull(value: any): value is null {
 
 function isNumber(value: number): value is number {
   return typeof value === 'number';
+}
+
+export function isNumberArray(value: number[]): value is number[] {
+  return isResourceArray(value, isNumber);
 }
 
 export function isNumberOrNull(value: number | null): value is number | null {

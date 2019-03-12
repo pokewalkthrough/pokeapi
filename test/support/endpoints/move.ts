@@ -7,7 +7,7 @@ import {
   isContestComboSetsOrNull,
   isMachineVersionDetailArray,
   isMoveFlavorTextArray,
-  isMoveMetaData,
+  isMoveMetaDataOrNull,
   isMoveStatChangeArray,
   isNameArray,
   isNamedAPIResource,
@@ -18,9 +18,9 @@ import {
 } from '../type-guards';
 
 export function moveTests(move: IMove): void {
-  expect(move.accuracy).to.be.a('number');
+  expect(move.accuracy).to.satisfy(isNumberOrNull);
   expect(move.effect_chance).to.satisfy(isNumberOrNull);
-  expect(move.pp).to.be.a('number');
+  expect(move.pp).to.satisfy(isNumberOrNull);
   expect(move.priority).to.be.a('number');
   expect(move.power).to.satisfy(isNumberOrNull);
   expect(move.contest_combos).to.satisfy(isContestComboSetsOrNull);
@@ -32,7 +32,7 @@ export function moveTests(move: IMove): void {
   expect(move.flavor_text_entries).to.satisfy(isMoveFlavorTextArray);
   expect(move.generation).to.satisfy(isNamedAPIResource);
   expect(move.machines).to.satisfy(isMachineVersionDetailArray);
-  expect(move.meta).to.satisfy(isMoveMetaData);
+  expect(move.meta).to.satisfy(isMoveMetaDataOrNull);
   expect(move.names).to.satisfy(isNameArray);
   expect(move.past_values).to.satisfy(isPastMoveStatValuesArray);
   expect(move.stat_changes).to.satisfy(isMoveStatChangeArray);

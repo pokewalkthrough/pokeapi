@@ -5,17 +5,22 @@ import { API_VERSION, BASE, constructListUrl, constructUrl, isListNamed, isNumbe
 
 import { endpointRunner } from './support/endpoint-runner';
 import {
+  abilityTests,
   berryFirmnessTests,
   berryFlavorTests,
   berryTests,
+  characteristicTests,
   contestEffectTests,
   contestTypeTests,
+  eggGroupTests,
   encounterConditionTests,
   encounterConditionValueTests,
   encounterMethodTests,
   evolutionChainTests,
   evolutionTriggerTests,
+  genderTests,
   generationTests,
+  growthRateTests,
   itemAttributeTests,
   itemCategoryTests,
   itemFlingEffectTests,
@@ -31,10 +36,20 @@ import {
   moveLearnMethodTests,
   moveTargetTests,
   moveTests,
+  natureTests,
   palParkAreaTests,
+  pokeathlonStatTests,
   pokedexTests,
+  pokemonColorTests,
+  pokemonFormTests,
+  pokemonHabitatTests,
+  pokemonShapeTests,
+  pokemonSpeciesTests,
+  pokemonTests,
   regionTests,
+  statTests,
   superContestEffectTests,
+  typeTests,
   versionGroupTests,
   versionTests,
 } from './support/endpoints';
@@ -181,3 +196,18 @@ endpointRunner('move-category', moveCategoryTests, true);
 endpointRunner('move-damage-class', moveDamageClassTests, true);
 endpointRunner('move-learn-method', moveLearnMethodTests, true);
 endpointRunner('move-target', moveTargetTests, true);
+endpointRunner('ability', abilityTests, true);
+endpointRunner('characteristic', characteristicTests, false);
+endpointRunner('egg-group', eggGroupTests, true);
+endpointRunner('gender', genderTests, true);
+endpointRunner('growth-rate', growthRateTests, true);
+endpointRunner('nature', natureTests, true);
+endpointRunner('pokeathlon-stat', pokeathlonStatTests, true);
+endpointRunner('pokemon', pokemonTests, true);
+endpointRunner('pokemon-color', pokemonColorTests, true);
+endpointRunner('pokemon-form', pokemonFormTests, true);
+endpointRunner('pokemon-habitat', pokemonHabitatTests, true);
+endpointRunner('pokemon-shape', pokemonShapeTests, true);
+endpointRunner('pokemon-species', pokemonSpeciesTests, true);
+endpointRunner('stat', statTests, true);
+endpointRunner('type', typeTests, true);
