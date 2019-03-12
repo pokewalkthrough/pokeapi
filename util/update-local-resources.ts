@@ -3,11 +3,11 @@
 import axios, { AxiosResponse } from 'axios';
 import fs from 'fs';
 
-import { IAPIResource, IAPIResourceList, INamedAPIResource, INamedAPIResourceList } from '../src/interfaces';
+import { IAPIResource, IAPIResourceList, INamedAPIResource, INamedAPIResourceList, TPokeAPIEndpoint } from '../src/interfaces';
 
 interface IEndpoint {
   filter?: string | number;
-  name: string;
+  name: TPokeAPIEndpoint;
 }
 
 function updateLocalResources(): void {
@@ -59,6 +59,7 @@ function updateLocalResources(): void {
     { name: 'pokemon-species' },
     { name: 'stat' },
     { name: 'type' },
+    { name: 'language' },
   ];
 
   const urlPrefix: string = 'https://pokeapi.co/api/v2/';

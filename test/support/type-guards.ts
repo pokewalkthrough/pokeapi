@@ -418,7 +418,10 @@ export function isPokemonSprites(resource: IPokemonSprites): resource is IPokemo
 // PokemonFormSprites
 export function isPokemonFormSprites(resource: IPokemonFormSprites): resource is IPokemonFormSprites {
   return (
-    isString(resource.front_default) && isStringOrNull(resource.front_shiny) && isStringOrNull(resource.back_default) && isStringOrNull(resource.back_shiny)
+    isStringOrNull(resource.front_default) &&
+    isStringOrNull(resource.front_shiny) &&
+    isStringOrNull(resource.back_default) &&
+    isStringOrNull(resource.back_shiny)
   );
 }
 
