@@ -1,5 +1,5 @@
 {
-  "name": "@pokequest/pokeapi",
+  "name": "@pokewalkthrough/pokeapi",
   "version": "1.0.0",
   "description": "PokeAPI wrapper",
   "main": "index.js",
@@ -10,6 +10,7 @@
     "compile": "tsc",
     "lint": "tslint -p . --fix",
     "test": "npm run clean:test && nyc mocha",
+    "test:new": "npm run download-test-resources && npm run test",
     "download-test-resources": "ts-node util/update-local-resources.ts"
   },
   "repository": {
@@ -60,12 +61,12 @@
     ]
   },
   "mocha": {
+    "bail": true,
+    "fullTrace": true,
     "require": [
       "ts-node/register",
       "source-map-support/register"
     ],
-    "fullTrace": true,
-    "bail": true,
     "spec": "test/index.ts"
   },
   "prettier": {
@@ -78,11 +79,11 @@
   "nyc": {
     "all": true,
     "cache": false,
-    "include": [
-      "src/**/*.ts"
-    ],
     "extension": [
       ".ts"
+    ],
+    "include": [
+      "src/**/*.ts"
     ],
     "reporter": [
       "html",
