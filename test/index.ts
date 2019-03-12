@@ -24,6 +24,13 @@ import {
   locationAreaTests,
   locationTests,
   machineTests,
+  moveAilmentTests,
+  moveBattleStyleTests,
+  moveCategoryTests,
+  moveDamageClassTests,
+  moveLearnMethodTests,
+  moveTargetTests,
+  moveTests,
   palParkAreaTests,
   pokedexTests,
   regionTests,
@@ -167,3 +174,10 @@ endpointRunner('location-area', locationAreaTests, true);
 endpointRunner('pal-park-area', palParkAreaTests, true);
 endpointRunner('region', regionTests, true);
 endpointRunner('machine', machineTests, false);
+endpointRunner('move', moveTests, true);
+endpointRunner('move-ailment', moveAilmentTests, true);
+endpointRunner('move-battle-style', moveBattleStyleTests, true);
+endpointRunner('move-category', moveCategoryTests, true);
+endpointRunner('move-damage-class', moveDamageClassTests, true);
+endpointRunner('move-learn-method', moveLearnMethodTests, true);
+endpointRunner('move-target', moveTargetTests, true);

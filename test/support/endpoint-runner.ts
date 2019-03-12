@@ -3,6 +3,7 @@ import fs from 'fs';
 
 import { IAPIResourceList, INamedAPIResourceList, INamedPokeAPIResource, IPokeAPIResource, TPokeAPIEndpoint } from '../../src/interfaces';
 
+// TODO: Check for the existence of extra/unexpected properties?
 export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResource>(
   endpoint: TPokeAPIEndpoint,
   itemTests: (resource: T) => void,

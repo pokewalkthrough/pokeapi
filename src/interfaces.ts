@@ -199,12 +199,12 @@ export interface IItemSprites {
 }
 
 export interface IItemHolderPokemon {
-  pokemon: string;
+  pokemon: INamedAPIResource; // Pokemon
   version_details: IItemHolderPokemonVersionDetail[];
 }
 
 export interface IItemHolderPokemonVersionDetail {
-  rarity: string;
+  rarity: number;
   version: INamedAPIResource; // Version
 }
 
@@ -242,7 +242,7 @@ export interface ILocation extends INamedPokeAPIResource {
   region: INamedAPIResource; // Region
 }
 
-// LocationArea
+// Location Areas
 export interface ILocationArea extends INamedPokeAPIResource {
   encounter_method_rates: IEncounterMethodRate[];
   game_index: number;
@@ -266,7 +266,7 @@ export interface IPokemonEncounter {
   version_details: IVersionEncounterDetail[];
 }
 
-// PalParkArea
+// Pal Park Areas
 export interface IPalParkArea extends INamedPokeAPIResource {
   names: IName[];
   pokemon_encounters: IPalParkEncounterSpecies[];
@@ -278,7 +278,7 @@ export interface IPalParkEncounterSpecies {
   rate: number;
 }
 
-// Region
+// Regions
 export interface IRegion extends INamedPokeAPIResource {
   locations: INamedAPIResource[]; // Location
   main_generation: INamedAPIResource; // Generation
@@ -287,10 +287,125 @@ export interface IRegion extends INamedPokeAPIResource {
   version_groups: INamedAPIResource[]; // VersionGroup
 }
 
-// Machine
+// Machines
 export interface IMachine extends IPokeAPIResource {
   item: INamedAPIResource; // Item
   move: INamedAPIResource; // Move
+  version_group: INamedAPIResource; // VersionGroup
+}
+
+// Moves
+export interface IMove extends INamedPokeAPIResource {
+  accuracy: number;
+  contest_combos: IContestComboSets | null;
+  contest_effect: IAPIResource; // ContestEffect
+  contest_type: INamedAPIResource; // ContestType
+  damage_class: INamedAPIResource; // MoveDamageClass
+  effect_chance: number | null;
+  effect_changes: IAbilityEffectChange[];
+  effect_entries: IVerboseEffect[];
+  flavor_text_entries: IMoveFlavorText[];
+  generation: INamedAPIResource; // Generation
+  machines: IMachineVersionDetail[];
+  meta: IMoveMetaData;
+  names: IName[];
+  past_values: IPastMoveStatValues[];
+  power: number | null;
+  pp: number;
+  priority: number;
+  stat_changes: IMoveStatChange[];
+  super_contest_effect: IAPIResource | null; // SuperContestEffect
+  target: INamedAPIResource; // MoveTarget
+  type: INamedAPIResource; // Type
+}
+
+export interface IContestComboSets {
+  normal: IContestComboDetail;
+  super: IContestComboDetail;
+}
+
+export interface IContestComboDetail {
+  use_after: INamedAPIResource[] | null; // Move
+  use_before: INamedAPIResource[] | null; // Move
+}
+
+export interface IMoveFlavorText {
+  flavor_text: string;
+  language: INamedAPIResource; // Language
+  version_group: INamedAPIResource; // VersionGroup
+}
+
+export interface IMoveMetaData {
+  ailment: INamedAPIResource; // TODO: What am I?
+  ailment_chance: number;
+  category: INamedAPIResource; // TODO: What am I?
+  crit_rate: number;
+  drain: number;
+  flinch_chance: number;
+  healing: number;
+  max_hits: number | null;
+  max_turns: number | null;
+  min_hits: number | null;
+  min_turns: number | null;
+  stat_chance: number;
+}
+
+export interface IMoveStatChange {
+  change: number;
+  stat: INamedAPIResource; // Stat
+}
+
+export interface IPastMoveStatValues {
+  accuracy: number | null;
+  effect_chance: number | null;
+  effect_entries: IVerboseEffect[];
+  power: number;
+  pp: number | null;
+  type: INamedAPIResource | null; // Type
+  version_group: INamedAPIResource; // VersionGroup
+}
+
+// Move Ailments
+export interface IMoveAilment extends INamedPokeAPIResource {
+  moves: INamedAPIResource[]; // Move
+  names: IName[];
+}
+
+// Move Battle Styles
+export interface IMoveBattleStyle extends INamedPokeAPIResource {
+  names: IName[];
+}
+
+// Move Categories
+export interface IMoveCategory extends INamedPokeAPIResource {
+  descriptions: IDescription[];
+  moves: INamedAPIResource[]; // Move
+}
+
+// Move Damage Classes
+export interface IMoveDamageClass extends INamedPokeAPIResource {
+  descriptions: IDescription[];
+  moves: INamedAPIResource[];
+  names: IName[];
+}
+
+// Move Learn Methods
+export interface IMoveLearnMethod extends INamedPokeAPIResource {
+  descriptions: IDescription[];
+  names: IName[];
+  version_groups: INamedAPIResource[]; // VersionGroup
+}
+
+// Move Targets
+export interface IMoveTarget extends INamedPokeAPIResource {
+  descriptions: IDescription[];
+  moves: INamedAPIResource[]; // Move
+  names: IName[];
+}
+
+// Abilities
+export interface IAbilityEffectChange {
+  effect_entries: IEffect[];
   version_group: INamedAPIResource; // VersionGroup
 }
 

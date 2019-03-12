@@ -21,6 +21,13 @@ import {
   ILocation,
   ILocationArea,
   IMachine,
+  IMove,
+  IMoveAilment,
+  IMoveBattleStyle,
+  IMoveCategory,
+  IMoveDamageClass,
+  IMoveLearnMethod,
+  IMoveTarget,
   INamedAPIResourceList,
   IPalParkArea,
   IPokeAPIResource,
@@ -59,6 +66,13 @@ export class PokeAPI {
   public async get<T extends IPalParkArea>(endpoint: 'pal-park-area', filter: number | string): Promise<T>;
   public async get<T extends IRegion>(endpoint: 'region', filter: number | string): Promise<T>;
   public async get<T extends IMachine>(endpoint: 'machine', filter: number): Promise<T>;
+  public async get<T extends IMove>(endpoint: 'move', filter: number | string): Promise<T>;
+  public async get<T extends IMoveAilment>(endpoint: 'move-ailment', filter: number | string): Promise<T>;
+  public async get<T extends IMoveBattleStyle>(endpoint: 'move-battle-style', filter: number | string): Promise<T>;
+  public async get<T extends IMoveCategory>(endpoint: 'move-category', filter: number | string): Promise<T>;
+  public async get<T extends IMoveDamageClass>(endpoint: 'move-damage-class', filter: number | string): Promise<T>;
+  public async get<T extends IMoveLearnMethod>(endpoint: 'move-learn-method', filter: number | string): Promise<T>;
+  public async get<T extends IMoveTarget>(endpoint: 'move-target', filter: number | string): Promise<T>;
   public async get<T extends IPokeAPIResource>(endpoint: TPokeAPIEndpoint, filter: number | string): Promise<T> {
     const url: string = constructUrl(endpoint, filter);
 
@@ -95,7 +109,14 @@ export class PokeAPI {
       | 'location'
       | 'location-area'
       | 'pal-park-area'
-      | 'region',
+      | 'region'
+      | 'move'
+      | 'move-ailment'
+      | 'move-battle-style'
+      | 'move-category'
+      | 'move-damage-class'
+      | 'move-learn-method'
+      | 'move-target',
     limit?: number,
     offset?: number,
   ): Promise<INamedAPIResourceList>;
