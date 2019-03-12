@@ -1,5 +1,5 @@
 {
-  "name": "@pokequest/pokeapi",
+  "name": "@pokewalkthrough/pokeapi",
   "version": "1.0.0",
   "description": "PokeAPI wrapper",
   "main": "index.js",
