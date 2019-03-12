@@ -20,6 +20,7 @@ import {
   IItemPocket,
   ILocation,
   ILocationArea,
+  IMachine,
   INamedAPIResourceList,
   IPalParkArea,
   IPokeAPIResource,
@@ -57,6 +58,7 @@ export class PokeAPI {
   public async get<T extends ILocationArea>(endpoint: 'location-area', filter: number | string): Promise<T>;
   public async get<T extends IPalParkArea>(endpoint: 'pal-park-area', filter: number | string): Promise<T>;
   public async get<T extends IRegion>(endpoint: 'region', filter: number | string): Promise<T>;
+  public async get<T extends IMachine>(endpoint: 'machine', filter: number): Promise<T>;
   public async get<T extends IPokeAPIResource>(endpoint: TPokeAPIEndpoint, filter: number | string): Promise<T> {
     const url: string = constructUrl(endpoint, filter);
 
@@ -97,7 +99,11 @@ export class PokeAPI {
     limit?: number,
     offset?: number,
   ): Promise<INamedAPIResourceList>;
-  public async getList(endpoint: 'contest-effect' | 'super-contest-effect' | 'evolution-chain', limit?: number, offset?: number): Promise<IAPIResourceList>;
+  public async getList(
+    endpoint: 'contest-effect' | 'super-contest-effect' | 'evolution-chain' | 'machine',
+    limit?: number,
+    offset?: number,
+  ): Promise<IAPIResourceList>;
   public async getList(endpoint: TPokeAPIEndpoint, limit?: number, offset?: number): Promise<IAPIResourceList | INamedAPIResourceList> {
     const url: string = constructListUrl(endpoint, limit, offset);
 

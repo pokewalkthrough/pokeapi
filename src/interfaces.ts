@@ -287,6 +287,13 @@ export interface IRegion extends INamedPokeAPIResource {
   version_groups: INamedAPIResource[]; // VersionGroup
 }
 
+// Machine
+export interface IMachine extends IPokeAPIResource {
+  item: INamedAPIResource; // Item
+  move: INamedAPIResource; // Move
+  version_group: INamedAPIResource; // VersionGroup
+}
+
 // Utility - Common Models
 export interface IAPIResource {
   url: string;
