@@ -160,10 +160,6 @@ function isString(value: string): value is string {
   return typeof value === 'string';
 }
 
-export function isStringOrNull(value: string | null): value is string | null {
-  return isNull(value) || isString(value);
-}
-
 function isResourceArray<T extends any>(resource: T[], resourceCheckMethod: (internalResource: T) => boolean): resource is T[] {
   if (Array.isArray(resource)) {
     if (resource.length === 0) {

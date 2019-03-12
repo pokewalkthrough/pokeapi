@@ -10,11 +10,15 @@ import {
   IPokeAPIResource,
   TPokeAPIEndpoint,
 } from '../../src/interfaces';
-import { isListNamed } from '../../src/util';
 
-import { isStringOrNull } from './type-guards';
-
-export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResource>(endpoint: TPokeAPIEndpoint, itemTests: (resource: T) => void): void {
+// TODO: Download JSON documents first, so they don't have to download during every test.  Update these docs every 4 hours, or on-demand.
+// TODO: Make it possible to choose a specific ID or Name instead of it being random
+// TODO: Somehow display which ID and/or Name is being tested
+export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResource>(
+  endpoint: TPokeAPIEndpoint,
+  itemTests: (resource: T) => void,
+  listIsNamed: boolean,
+): void {
   describe(`${endpoint}`, (): void => {
     const pokeapi: PokeAPI = new PokeAPI();
     let list: IAPIResourceList | INamedAPIResourceList | undefined;
@@ -24,11 +28,11 @@ export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResourc
 
       expect(list.count).to.be.a('number');
       expect(list.count).to.be.greaterThan(0);
-      expect(list.next).to.satisfy(isStringOrNull);
-      expect(list.previous).to.satisfy(isStringOrNull);
+      expect(list.next).to.be.oneOf(['string', null]);
+      expect(list.previous).to.be.oneOf(['string', null]);
 
-      if (isListNamed(list)) {
-        expect(list.results[0].name).to.be.a('string');
+      if (listIsNamed) {
+        expect((list as INamedAPIResourceList).results[0].name).to.be.a('string');
       }
 
       expect(list.results[0].url).to.be.a('string');
@@ -44,8 +48,8 @@ export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResourc
 
         expect(output.id).to.equal(id);
 
-        if (isListNamed(list)) {
-          expect(output.name).to.equal(list.results[randomIndex].name);
+        if (listIsNamed) {
+          expect(output.name).to.equal((list as INamedAPIResourceList).results[randomIndex].name);
         }
 
         itemTests(output);
@@ -54,9 +58,9 @@ export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResourc
       }
     });
 
-    it(`gets a ${endpoint} by name`, async function(): Promise<void> {
-      if (list) {
-        if (isListNamed(list)) {
+    if (listIsNamed) {
+      it(`gets a ${endpoint} by name`, async (): Promise<void> => {
+        if (list) {
           const randomIndex: number = Math.floor(Math.random() * (Math.floor(list.count - 1) + 1));
           const result: IAPIResource | INamedAPIResource = list.results[randomIndex];
           const urlParts: string[] = result.url.split('/');
@@ -65,15 +69,13 @@ export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResourc
           const output: any = await pokeapi.get(endpoint as any, name); // TODO: Remove 'any' check after 'get' method is fully populated with TPokeAPIEndpoint names
 
           expect(output.id).to.equal(id);
-          expect(output.name).to.equal(list.results[randomIndex].name);
+          expect(output.name).to.equal((list as INamedAPIResourceList).results[randomIndex].name);
 
           itemTests(output);
         } else {
-          this.skip();
+          throw new Error('list not found');
         }
-      } else {
-        throw new Error('list not found');
-      }
-    });
+      });
+    }
   });
 }
