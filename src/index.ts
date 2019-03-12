@@ -13,6 +13,11 @@ import {
   IEvolutionChain,
   IEvolutionTrigger,
   IGeneration,
+  IItem,
+  IItemAttribute,
+  IItemCategory,
+  IItemFlingEffect,
+  IItemPocket,
   INamedAPIResourceList,
   IPokeAPIResource,
   IPokedex,
@@ -39,6 +44,11 @@ export class PokeAPI {
   public async get<T extends IPokedex>(endpoint: 'pokedex', filter: number | string): Promise<T>;
   public async get<T extends IVersion>(endpoint: 'version', filter: number | string): Promise<T>;
   public async get<T extends IVersionGroup>(endpoint: 'version-group', filter: number | string): Promise<T>;
+  public async get<T extends IItem>(endpoint: 'item', filter: number | string): Promise<T>;
+  public async get<T extends IItemAttribute>(endpoint: 'item-attribute', filter: number | string): Promise<T>;
+  public async get<T extends IItemCategory>(endpoint: 'item-category', filter: number | string): Promise<T>;
+  public async get<T extends IItemFlingEffect>(endpoint: 'item-fling-effect', filter: number | string): Promise<T>;
+  public async get<T extends IItemPocket>(endpoint: 'item-pocket', filter: number | string): Promise<T>;
   public async get<T extends IPokeAPIResource>(endpoint: TPokeAPIEndpoint, filter: number | string): Promise<T> {
     const url: string = constructUrl(endpoint, filter);
 
@@ -66,7 +76,12 @@ export class PokeAPI {
       | 'generation'
       | 'pokedex'
       | 'version'
-      | 'version-group',
+      | 'version-group'
+      | 'item'
+      | 'item-attribute'
+      | 'item-category'
+      | 'item-fling-effect'
+      | 'item-pocket',
     limit?: number,
     offset?: number,
   ): Promise<INamedAPIResourceList>;

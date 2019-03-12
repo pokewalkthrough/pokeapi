@@ -16,6 +16,11 @@ import {
   evolutionChainTests,
   evolutionTriggerTests,
   generationTests,
+  itemAttributeTests,
+  itemCategoryTests,
+  itemFlingEffectTests,
+  itemPocketTests,
+  itemTests,
   pokedexTests,
   superContestEffectTests,
   versionGroupTests,
@@ -147,3 +152,8 @@ endpointRunner('generation', generationTests, true);
 endpointRunner('pokedex', pokedexTests, true);
 endpointRunner('version', versionTests, true);
 endpointRunner('version-group', versionGroupTests, true);
+endpointRunner('item', itemTests, true);
+endpointRunner('item-attribute', itemAttributeTests, true);
+endpointRunner('item-category', itemCategoryTests, true);
+endpointRunner('item-fling-effect', itemFlingEffectTests, true);
+endpointRunner('item-pocket', itemPocketTests, true);
