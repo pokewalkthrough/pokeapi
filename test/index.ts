@@ -21,7 +21,11 @@ import {
   itemFlingEffectTests,
   itemPocketTests,
   itemTests,
+  locationAreaTests,
+  locationTests,
+  palParkAreaTests,
   pokedexTests,
+  regionTests,
   superContestEffectTests,
   versionGroupTests,
   versionTests,
@@ -157,3 +161,7 @@ endpointRunner('item-attribute', itemAttributeTests, true);
 endpointRunner('item-category', itemCategoryTests, true);
 endpointRunner('item-fling-effect', itemFlingEffectTests, true);
 endpointRunner('item-pocket', itemPocketTests, true);
+endpointRunner('location', locationTests, true);
+endpointRunner('location-area', locationAreaTests, true);
+endpointRunner('pal-park-area', palParkAreaTests, true);
+endpointRunner('region', regionTests, true);

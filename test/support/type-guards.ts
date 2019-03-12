@@ -5,6 +5,9 @@ import {
   IContestName,
   IDescription,
   IEffect,
+  IEncounter,
+  IEncounterMethodRate,
+  IEncounterVersionDetails,
   IEvolutionDetail,
   IFlavorBerryMap,
   IFlavorText,
@@ -15,8 +18,11 @@ import {
   IMachineVersionDetail,
   IName,
   INamedAPIResource,
+  IPalParkEncounterSpecies,
+  IPokemonEncounter,
   IPokemonEntry,
   IVerboseEffect,
+  IVersionEncounterDetail,
   IVersionGroupFlavorText,
 } from '../../src/interfaces';
 
@@ -121,6 +127,42 @@ function isItemHolderPokemonVersionDetailArray(resource: IItemHolderPokemonVersi
   return isResourceArray(resource, isItemHolderPokemonVersionDetail);
 }
 
+// EncounterMethodRate
+function isEncounterMethodRate(resource: IEncounterMethodRate): resource is IEncounterMethodRate {
+  return isNamedAPIResource(resource.encounter_method) && isEncounterVersionDetailsArray(resource.version_details);
+}
+
+export function isEncounterMethodRateArray(resource: IEncounterMethodRate[]): resource is IEncounterMethodRate[] {
+  return isResourceArray(resource, isEncounterMethodRate);
+}
+
+// EncounterVersionDetails
+function isEncounterVersionDetails(resource: IEncounterVersionDetails): resource is IEncounterVersionDetails {
+  return isNumber(resource.rate) && isNamedAPIResource(resource.version);
+}
+
+function isEncounterVersionDetailsArray(resource: IEncounterVersionDetails[]): resource is IEncounterVersionDetails[] {
+  return isResourceArray(resource, isEncounterVersionDetails);
+}
+
+// PokemonEncounter
+function isPokemonEncounter(resource: IPokemonEncounter): resource is IPokemonEncounter {
+  return isNamedAPIResource(resource.pokemon) && isVersionEncounterDetailArray(resource.version_details);
+}
+
+export function isPokemonEncounterArray(resource: IPokemonEncounter[]): resource is IPokemonEncounter[] {
+  return isResourceArray(resource, isPokemonEncounter);
+}
+
+// PalParkEncounterSpecies
+function isPalParkEncounterSpecies(resource: IPalParkEncounterSpecies): resource is IPalParkEncounterSpecies {
+  return isNumber(resource.base_score) && isNumber(resource.rate) && isNamedAPIResource(resource.pokemon_species);
+}
+
+export function isPalParkEncounterSpeciesArray(resource: IPalParkEncounterSpecies[]): resource is IPalParkEncounterSpecies[] {
+  return isResourceArray(resource, isPalParkEncounterSpecies);
+}
+
 // APIResource
 export function isAPIResource(resource: IAPIResource): resource is IAPIResource {
   return isString(resource.url);
@@ -142,6 +184,21 @@ function isEffect(resource: IEffect): resource is IEffect {
 
 export function isEffectArray(resource: IEffect[]): resource is IEffect[] {
   return isResourceArray(resource, isEffect);
+}
+
+// Encounter
+function isEncounter(resource: IEncounter): resource is IEncounter {
+  return (
+    isNumber(resource.min_level) &&
+    isNumber(resource.max_level) &&
+    isNamedAPIResourceArray(resource.condition_values) &&
+    isNumber(resource.chance) &&
+    isNamedAPIResource(resource.method)
+  );
+}
+
+function isEncounterArray(resource: IEncounter[]): resource is IEncounter[] {
+  return isResourceArray(resource, isEncounter);
 }
 
 // FlavorText
@@ -196,6 +253,15 @@ function isVerboseEffect(resource: IVerboseEffect): resource is IVerboseEffect {
 
 export function isVerboseEffectArray(resource: IVerboseEffect[]): resource is IVerboseEffect[] {
   return isResourceArray(resource, isVerboseEffect);
+}
+
+// VersionEncounterDetail
+function isVersionEncounterDetail(resource: IVersionEncounterDetail): resource is IVersionEncounterDetail {
+  return isNamedAPIResource(resource.version) && isNumber(resource.max_chance) && isEncounterArray(resource.encounter_details);
+}
+
+function isVersionEncounterDetailArray(resource: IVersionEncounterDetail[]): resource is IVersionEncounterDetail[] {
+  return isResourceArray(resource, isVersionEncounterDetail);
 }
 
 // VersionGroupFlavorText

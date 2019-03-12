@@ -18,3 +18,7 @@ export { itemAttributeTests } from './item-attribute';
 export { itemCategoryTests } from './item-category';
 export { itemFlingEffectTests } from './item-fling-effect';
 export { itemPocketTests } from './item-pocket';
+export { locationTests } from './location';
+export { locationAreaTests } from './location-area';
+export { palParkAreaTests } from './pal-park-area';
+export { regionTests } from './region';

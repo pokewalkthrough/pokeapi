@@ -18,9 +18,13 @@ import {
   IItemCategory,
   IItemFlingEffect,
   IItemPocket,
+  ILocation,
+  ILocationArea,
   INamedAPIResourceList,
+  IPalParkArea,
   IPokeAPIResource,
   IPokedex,
+  IRegion,
   ISuperContestEffect,
   IVersion,
   IVersionGroup,
@@ -49,6 +53,10 @@ export class PokeAPI {
   public async get<T extends IItemCategory>(endpoint: 'item-category', filter: number | string): Promise<T>;
   public async get<T extends IItemFlingEffect>(endpoint: 'item-fling-effect', filter: number | string): Promise<T>;
   public async get<T extends IItemPocket>(endpoint: 'item-pocket', filter: number | string): Promise<T>;
+  public async get<T extends ILocation>(endpoint: 'location', filter: number | string): Promise<T>;
+  public async get<T extends ILocationArea>(endpoint: 'location-area', filter: number | string): Promise<T>;
+  public async get<T extends IPalParkArea>(endpoint: 'pal-park-area', filter: number | string): Promise<T>;
+  public async get<T extends IRegion>(endpoint: 'region', filter: number | string): Promise<T>;
   public async get<T extends IPokeAPIResource>(endpoint: TPokeAPIEndpoint, filter: number | string): Promise<T> {
     const url: string = constructUrl(endpoint, filter);
 
@@ -81,7 +89,11 @@ export class PokeAPI {
       | 'item-attribute'
       | 'item-category'
       | 'item-fling-effect'
-      | 'item-pocket',
+      | 'item-pocket'
+      | 'location'
+      | 'location-area'
+      | 'pal-park-area'
+      | 'region',
     limit?: number,
     offset?: number,
   ): Promise<INamedAPIResourceList>;
