@@ -177,6 +177,63 @@ export interface IVersionGroup extends INamedPokeAPIResource {
   versions: INamedAPIResource[]; // Version
 }
 
+// Items
+export interface IItem extends INamedPokeAPIResource {
+  attributes: INamedAPIResource[]; // ItemAttribute
+  baby_trigger_for: IAPIResource | null; // EvolutionChain
+  category: INamedAPIResource; // ItemCategory
+  cost: number;
+  effect_entries: IVerboseEffect[];
+  flavor_text_entries: IVersionGroupFlavorText[];
+  fling_effect: INamedAPIResource | null; // ItemFlingEffect
+  fling_power: number | null;
+  game_indices: IGenerationGameIndex[];
+  held_by_pokemon: IItemHolderPokemon[];
+  machines: IMachineVersionDetail[];
+  names: IName[];
+  sprites: IItemSprites;
+}
+
+export interface IItemSprites {
+  default: string | null;
+}
+
+export interface IItemHolderPokemon {
+  pokemon: string;
+  version_details: IItemHolderPokemonVersionDetail[];
+}
+
+export interface IItemHolderPokemonVersionDetail {
+  rarity: string;
+  version: INamedAPIResource; // Version
+}
+
+// Item Attributes
+export interface IItemAttribute extends INamedPokeAPIResource {
+  descriptions: IDescription[];
+  items: INamedAPIResource[]; // Item
+  names: IName[];
+}
+
+// Item Categories
+export interface IItemCategory extends INamedPokeAPIResource {
+  items: INamedAPIResource[]; // Item
+  names: IName[];
+  pocket: INamedAPIResource; // ItemPocket
+}
+
+// Item Fling Effects
+export interface IItemFlingEffect extends INamedPokeAPIResource {
+  effect_entries: IEffect[];
+  items: INamedAPIResource[]; // Item
+}
+
+// Item Pockets
+export interface IItemPocket extends INamedPokeAPIResource {
+  categories: INamedAPIResource[]; // ItemCategory
+  names: IName[];
+}
+
 // Utility - Common Models
 export interface IAPIResource {
   url: string;
@@ -197,6 +254,16 @@ export interface IFlavorText {
   language: INamedAPIResource; // Language
 }
 
+export interface IGenerationGameIndex {
+  game_index: number;
+  generation: INamedAPIResource; // Generation
+}
+
+export interface IMachineVersionDetail {
+  machine: IAPIResource; // Machine
+  version_group: INamedAPIResource; // VersionGroup
+}
+
 export interface IName {
   language: INamedAPIResource; // Language
   name: string;
@@ -204,6 +271,18 @@ export interface IName {
 
 export interface INamedAPIResource extends IAPIResource {
   name: string;
+}
+
+export interface IVerboseEffect {
+  effect: string;
+  language: INamedAPIResource; // Language
+  short_effect: string;
+}
+
+export interface IVersionGroupFlavorText {
+  language: INamedAPIResource; // Language
+  text: string;
+  version_group: INamedAPIResource; // VersionGroup
 }
 
 // Additional Interfaces

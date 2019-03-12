@@ -1,4 +1,5 @@
 import {
+  IAPIResource,
   IBerryFlavorMap,
   IChainLink,
   IContestName,
@@ -7,9 +8,16 @@ import {
   IEvolutionDetail,
   IFlavorBerryMap,
   IFlavorText,
+  IGenerationGameIndex,
+  IItemHolderPokemon,
+  IItemHolderPokemonVersionDetail,
+  IItemSprites,
+  IMachineVersionDetail,
   IName,
   INamedAPIResource,
   IPokemonEntry,
+  IVerboseEffect,
+  IVersionGroupFlavorText,
 } from '../../src/interfaces';
 
 // BerryFlavorMap
@@ -90,6 +98,34 @@ export function isPokemonEntryArray(resource: IPokemonEntry[]): resource is IPok
   return isResourceArray(resource, isPokemonEntry);
 }
 
+// ItemSprites
+export function isItemSprites(resource: IItemSprites): resource is IItemSprites {
+  return isStringOrNull(resource.default);
+}
+
+// ItemHolderPokemon
+function isItemHolderPokemon(resource: IItemHolderPokemon): resource is IItemHolderPokemon {
+  return isString(resource.pokemon) && isItemHolderPokemonVersionDetailArray(resource.version_details);
+}
+
+export function isItemHolderPokemonArray(resource: IItemHolderPokemon[]): resource is IItemHolderPokemon[] {
+  return isResourceArray(resource, isItemHolderPokemon);
+}
+
+// ItemHolderPokemonVersionDetail
+function isItemHolderPokemonVersionDetail(resource: IItemHolderPokemonVersionDetail): resource is IItemHolderPokemonVersionDetail {
+  return isString(resource.rarity) && isNamedAPIResource(resource.version);
+}
+
+function isItemHolderPokemonVersionDetailArray(resource: IItemHolderPokemonVersionDetail[]): resource is IItemHolderPokemonVersionDetail[] {
+  return isResourceArray(resource, isItemHolderPokemonVersionDetail);
+}
+
+// APIResource
+export function isAPIResource(resource: IAPIResource): resource is IAPIResource {
+  return isString(resource.url);
+}
+
 // Description
 function isDescription(resource: IDescription): resource is IDescription {
   return isString(resource.description) && isNamedAPIResource(resource.language);
@@ -117,6 +153,24 @@ export function isFlavorTextArray(resource: IFlavorText[]): resource is IFlavorT
   return isResourceArray(resource, isFlavorText);
 }
 
+// GenerationGameIndex
+function isGenerationGameIndex(resource: IGenerationGameIndex): resource is IGenerationGameIndex {
+  return isNumber(resource.game_index) && isNamedAPIResource(resource.generation);
+}
+
+export function isGenerationGameIndexArray(resource: IGenerationGameIndex[]): resource is IGenerationGameIndex[] {
+  return isResourceArray(resource, isGenerationGameIndex);
+}
+
+// MachineVersionDetail
+function isMachineVersionDetail(resource: IMachineVersionDetail): resource is IMachineVersionDetail {
+  return isAPIResource(resource.machine) && isNamedAPIResource(resource.version_group);
+}
+
+export function isMachineVersionDetailArray(resource: IMachineVersionDetail[]): resource is IMachineVersionDetail[] {
+  return isResourceArray(resource, isMachineVersionDetail);
+}
+
 // Name
 function isName(resource: IName): resource is IName {
   return isString(resource.name) && isNamedAPIResource(resource.language);
@@ -135,7 +189,29 @@ export function isNamedAPIResourceArray(resource: INamedAPIResource[]): resource
   return isResourceArray(resource, isNamedAPIResource);
 }
 
+// VerboseEffect
+function isVerboseEffect(resource: IVerboseEffect): resource is IVerboseEffect {
+  return isString(resource.effect) && isString(resource.short_effect) && isNamedAPIResource(resource.language);
+}
+
+export function isVerboseEffectArray(resource: IVerboseEffect[]): resource is IVerboseEffect[] {
+  return isResourceArray(resource, isVerboseEffect);
+}
+
+// VersionGroupFlavorText
+function isVersionGroupFlavorText(resource: IVersionGroupFlavorText): resource is IVersionGroupFlavorText {
+  return isString(resource.text) && isNamedAPIResource(resource.language) && isNamedAPIResource(resource.version_group);
+}
+
+export function isVersionGroupFlavorTextArray(resource: IVersionGroupFlavorText[]): resource is IVersionGroupFlavorText[] {
+  return isResourceArray(resource, isVersionGroupFlavorText);
+}
+
 // Utility
+export function isAPIResourceOrNull(value: IAPIResource | null): value is IAPIResource | null {
+  return isNull(value) || isAPIResource(value);
+}
+
 function isBoolean(value: boolean): value is boolean {
   return typeof value === 'boolean';
 }
@@ -158,6 +234,10 @@ export function isNumberOrNull(value: number | null): value is number | null {
 
 function isString(value: string): value is string {
   return typeof value === 'string';
+}
+
+function isStringOrNull(value: string | null): value is string | null {
+  return isNull(value) || isString(value);
 }
 
 function isResourceArray<T extends any>(resource: T[], resourceCheckMethod: (internalResource: T) => boolean): resource is T[] {
