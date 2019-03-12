@@ -61,12 +61,12 @@
     ]
   },
   "mocha": {
+    "bail": true,
+    "fullTrace": true,
     "require": [
       "ts-node/register",
       "source-map-support/register"
     ],
-    "fullTrace": true,
-    "bail": true,
     "spec": "test/index.ts"
   },
   "prettier": {
@@ -79,11 +79,11 @@
   "nyc": {
     "all": true,
     "cache": false,
-    "include": [
-      "src/**/*.ts"
-    ],
     "extension": [
       ".ts"
+    ],
+    "include": [
+      "src/**/*.ts"
     ],
     "reporter": [
       "html",
