@@ -76,6 +76,8 @@
     "trailingComma": "all"
   },
   "nyc": {
+    "all": true,
+    "cache": false,
     "include": [
       "src/**/*.ts"
     ],
@@ -83,10 +85,11 @@
       ".ts"
     ],
     "reporter": [
-      "text-summary",
-      "html"
+      "html",
+      "text-summary"
     ],
-    "instrument": true,
-    "sourceMap": true
+    "require": [
+      "ts-node/register"
+    ]
   }
 }
