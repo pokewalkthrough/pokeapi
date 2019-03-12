@@ -11,6 +11,7 @@ import {
   TPokeAPIEndpoint,
 } from '../../src/interfaces';
 
+// TODO: Download JSON documents first, so they don't have to download during every test.  Update these docs every 4 hours, or on-demand.
 // TODO: Make it possible to choose a specific ID or Name instead of it being random
 // TODO: Somehow display which ID and/or Name is being tested
 export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResource>(
