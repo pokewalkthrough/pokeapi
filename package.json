@@ -10,6 +10,7 @@
     "compile": "tsc",
     "lint": "tslint -p . --fix",
     "test": "npm run clean:test && nyc mocha",
+    "test:new": "npm run download-test-resources && npm run test",
     "download-test-resources": "ts-node util/update-local-resources.ts"
   },
   "repository": {
