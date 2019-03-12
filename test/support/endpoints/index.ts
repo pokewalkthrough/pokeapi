@@ -45,3 +45,4 @@ export { pokemonShapeTests } from './pokemon-shape';
 export { pokemonSpeciesTests } from './pokemon-species';
 export { statTests } from './stat';
 export { typeTests } from './type';
+export { languageTests } from './language';

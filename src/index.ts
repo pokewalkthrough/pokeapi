@@ -23,6 +23,7 @@ import {
   IItemCategory,
   IItemFlingEffect,
   IItemPocket,
+  ILanguage,
   ILocation,
   ILocationArea,
   IMachine,
@@ -103,6 +104,7 @@ export class PokeAPI {
   public async get<T extends IPokemonSpecies>(endpoint: 'pokemon-species', filter: number | string): Promise<T>;
   public async get<T extends IStat>(endpoint: 'stat', filter: number | string): Promise<T>;
   public async get<T extends IType>(endpoint: 'type', filter: number | string): Promise<T>;
+  public async get<T extends ILanguage>(endpoint: 'language', filter: number | string): Promise<T>;
   public async get<T extends IPokeAPIResource>(endpoint: TPokeAPIEndpoint, filter: number | string): Promise<T> {
     const url: string = constructUrl(endpoint, filter);
 
@@ -160,7 +162,8 @@ export class PokeAPI {
       | 'pokemon-shape'
       | 'pokemon-species'
       | 'stat'
-      | 'type',
+      | 'type'
+      | 'language',
     limit?: number,
     offset?: number,
   ): Promise<INamedAPIResourceList>;

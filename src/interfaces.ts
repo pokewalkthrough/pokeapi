@@ -516,7 +516,7 @@ export interface IPokemon extends INamedPokeAPIResource {
   height: number;
   held_items: IPokemonHeldItem[];
   is_default: boolean;
-  location_area_encounters: string;
+  location_area_encounters: string; // TODO: Deal with this somehow - this string has a link to encounters, but the URL doesn't follow the same format as literally everything else
   moves: IPokemonMove[];
   order: number;
   species: INamedAPIResource; // PokemonSpecies
@@ -604,7 +604,7 @@ export interface IPokemonForm extends INamedPokeAPIResource {
 export interface IPokemonFormSprites {
   back_default: string | null;
   back_shiny: string | null;
-  front_default: string;
+  front_default: string | null;
   front_shiny: string | null;
 }
 
@@ -723,6 +723,14 @@ export interface ITypeRelations {
   half_damage_to: INamedAPIResource[]; // Type
   no_damage_from: INamedAPIResource[]; // Type
   no_damage_to: INamedAPIResource[]; // Type
+}
+
+// Utility - Language
+export interface ILanguage extends INamedPokeAPIResource {
+  iso3166: string;
+  iso639: string;
+  names: IName[];
+  official: boolean;
 }
 
 // Utility - Common Models
@@ -853,4 +861,5 @@ export type TPokeAPIEndpoint =
   | 'pokemon-shape'
   | 'pokemon-species'
   | 'stat'
-  | 'type';
+  | 'type'
+  | 'language';

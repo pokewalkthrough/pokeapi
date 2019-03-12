@@ -26,6 +26,7 @@ import {
   itemFlingEffectTests,
   itemPocketTests,
   itemTests,
+  languageTests,
   locationAreaTests,
   locationTests,
   machineTests,
@@ -211,3 +212,4 @@ endpointRunner('pokemon-shape', pokemonShapeTests, true);
 endpointRunner('pokemon-species', pokemonSpeciesTests, true);
 endpointRunner('stat', statTests, true);
 endpointRunner('type', typeTests, true);
+endpointRunner('language', languageTests, true);
