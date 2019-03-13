@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
-import { IEvolutionTrigger } from '../../../src/interfaces';
 import { isNameArray, isNamedAPIResourceArray } from '../type-guards';
+import { IEvolutionTrigger } from '../../../src/types';
 
 export function evolutionTriggerTests(evolutionTrigger: IEvolutionTrigger): void {
   expect(evolutionTrigger.names).to.satisfy(isNameArray);

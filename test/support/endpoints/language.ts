@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
-import { ILanguage } from '../../../src/interfaces';
 import { isNameArray } from '../type-guards';
+import { ILanguage } from '../../../src/types';
 
 export function languageTests(language: ILanguage): void {
   expect(language.official).to.be.a('boolean');

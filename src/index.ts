@@ -1,11 +1,8 @@
 import { AxiosResponse, default as axios } from 'axios';
 
+import { IAPIResourceList, IBerry, IBerryFirmness, IBerryFlavor, INamedAPIResourceList } from './interfaces';
 import {
-  IAPIResourceList,
   IAbility,
-  IBerry,
-  IBerryFirmness,
-  IBerryFlavor,
   ICharacteristic,
   IContestEffect,
   IContestType,
@@ -34,7 +31,6 @@ import {
   IMoveDamageClass,
   IMoveLearnMethod,
   IMoveTarget,
-  INamedAPIResourceList,
   INature,
   IPalParkArea,
   IPokeAPIResource,
@@ -53,7 +49,7 @@ import {
   IVersion,
   IVersionGroup,
   TPokeAPIEndpoint,
-} from './interfaces';
+} from './types';
 import { constructListUrl, constructUrl } from './util';
 
 export class PokeAPI {
@@ -108,7 +104,6 @@ export class PokeAPI {
   public async get<T extends IPokeAPIResource>(endpoint: TPokeAPIEndpoint, filter: number | string): Promise<T> {
     const url: string = constructUrl(endpoint, filter);
 
-    // TODO: Remove axios and replace with native method to reduce dependencies
     return axios
       .get<T>(url)
       .then((value: AxiosResponse<T>) => {
@@ -175,7 +170,6 @@ export class PokeAPI {
   public async getList(endpoint: TPokeAPIEndpoint, limit?: number, offset?: number): Promise<IAPIResourceList | INamedAPIResourceList> {
     const url: string = constructListUrl(endpoint, limit, offset);
 
-    // TODO: Remove axios and replace with native method to reduce dependencies
     return axios
       .get<IAPIResourceList | INamedAPIResourceList>(url)
       .then((value: AxiosResponse<IAPIResourceList | INamedAPIResourceList>) => {

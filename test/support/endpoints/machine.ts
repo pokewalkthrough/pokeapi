@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
-import { IMachine } from '../../../src/interfaces';
 import { isNamedAPIResource } from '../type-guards';
+import { IMachine } from '../../../src/types';
 
 export function machineTests(machine: IMachine): void {
   expect(machine.item).to.satisfy(isNamedAPIResource);

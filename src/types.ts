@@ -1,57 +1,5 @@
 // TODO: annotate with documentation
 
-// Resource Lists
-export interface IAPIResourceList {
-  count: number;
-  next: string | null;
-  previous: string | null;
-  results: IAPIResource[];
-}
-
-export interface INamedAPIResourceList {
-  count: number;
-  next: string | null;
-  previous: string | null;
-  results: INamedAPIResource[];
-}
-
-// Berries
-export interface IBerry extends INamedPokeAPIResource {
-  firmness: INamedAPIResource; // BerryFirmness
-  flavors: IBerryFlavorMap[];
-  growth_time: number;
-  item: INamedAPIResource; // Item
-  max_harvest: number;
-  natural_gift_power: number;
-  natural_gift_type: INamedAPIResource; // Type
-  size: number;
-  smoothness: number;
-  soil_dryness: number;
-}
-
-export interface IBerryFlavorMap {
-  flavor: INamedAPIResource; // BerryFlavor
-  potency: number;
-}
-
-// Berry Firmnesses
-export interface IBerryFirmness extends INamedPokeAPIResource {
-  berries: INamedAPIResource[]; // Berry
-  names: IName[];
-}
-
-// Berry Flavors
-export interface IBerryFlavor extends INamedPokeAPIResource {
-  berries: IFlavorBerryMap[];
-  contest_type: INamedAPIResource; // ContestType
-  names: IName[];
-}
-
-export interface IFlavorBerryMap {
-  berry: INamedAPIResource; // Berry
-  potency: number;
-}
-
 // Contest Types
 export interface IContestType extends INamedPokeAPIResource {
   berry_flavor: INamedAPIResource; // BerryFlavor
@@ -338,9 +286,9 @@ export interface IMoveFlavorText {
 }
 
 export interface IMoveMetaData {
-  ailment: INamedAPIResource; // TODO: What am I?
+  ailment: INamedAPIResource; // MoveAilment
   ailment_chance: number;
-  category: INamedAPIResource; // TODO: What am I?
+  category: INamedAPIResource; // MoveCategory
   crit_rate: number;
   drain: number;
   flinch_chance: number;
@@ -516,7 +464,7 @@ export interface IPokemon extends INamedPokeAPIResource {
   height: number;
   held_items: IPokemonHeldItem[];
   is_default: boolean;
-  location_area_encounters: string; // TODO: Deal with this somehow - this string has a link to encounters, but the URL doesn't follow the same format as literally everything else
+  location_area_encounters: string;
   moves: IPokemonMove[];
   order: number;
   species: INamedAPIResource; // PokemonSpecies
@@ -611,7 +559,7 @@ export interface IPokemonFormSprites {
 // Pokemon Habitats
 export interface IPokemonHabitat extends INamedPokeAPIResource {
   names: IName[];
-  pokemon_species: INamedAPIResourceList[]; // PokemonSpecies
+  pokemon_species: INamedAPIResource[]; // PokemonSpecies
 }
 
 // Pokemon Shapes

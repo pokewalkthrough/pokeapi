@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
-import { IEncounterMethod } from '../../../src/interfaces';
 import { isNameArray } from '../type-guards';
+import { IEncounterMethod } from '../../../src/types';
 
 export function encounterMethodTests(encounterMethod: IEncounterMethod): void {
   expect(encounterMethod.names).to.satisfy(isNameArray);

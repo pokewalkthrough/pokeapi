@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
-import { IContestEffect } from '../../../src/interfaces';
 import { isEffectArray, isFlavorTextArray } from '../type-guards';
+import { IContestEffect } from '../../../src/types';
 
 export function contestEffectTests(contestEffect: IContestEffect): void {
   expect(contestEffect.appeal).to.be.a('number');

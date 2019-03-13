@@ -1,10 +1,10 @@
+import { IBerryFlavorMap, IFlavorBerryMap } from '../../src/interfaces';
 import {
   IAPIResource,
   IAbilityEffectChange,
   IAbilityFlavorText,
   IAbilityPokemon,
   IAwesomeName,
-  IBerryFlavorMap,
   IChainLink,
   IContestComboDetail,
   IContestComboSets,
@@ -15,7 +15,6 @@ import {
   IEncounterMethodRate,
   IEncounterVersionDetails,
   IEvolutionDetail,
-  IFlavorBerryMap,
   IFlavorText,
   IGenerationGameIndex,
   IGenus,
@@ -59,7 +58,7 @@ import {
   IVersionEncounterDetail,
   IVersionGameIndex,
   IVersionGroupFlavorText,
-} from '../../src/interfaces';
+} from '../../src/types';
 
 // BerryFlavorMap
 function isBerryFlavorMap(resource: IBerryFlavorMap): resource is IBerryFlavorMap {

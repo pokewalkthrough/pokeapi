@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
-import { IPokemonForm } from '../../../src/interfaces';
 import { isNameArray, isNamedAPIResource, isPokemonFormSprites } from '../type-guards';
+import { IPokemonForm } from '../../../src/types';
 
 export function pokemonFormTests(pokemonForm: IPokemonForm): void {
   expect(pokemonForm.order).to.be.a('number');

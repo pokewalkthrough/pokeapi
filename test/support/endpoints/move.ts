@@ -1,6 +1,5 @@
 import { expect } from 'chai';
 
-import { IMove } from '../../../src/interfaces';
 import {
   isAPIResourceOrNull,
   isAbilityEffectChangeArray,
@@ -16,6 +15,7 @@ import {
   isPastMoveStatValuesArray,
   isVerboseEffectArray,
 } from '../type-guards';
+import { IMove } from '../../../src/types';
 
 export function moveTests(move: IMove): void {
   expect(move.accuracy).to.satisfy(isNumberOrNull);

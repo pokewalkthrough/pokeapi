@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
-import { IEggGroup } from '../../../src/interfaces';
 import { isNameArray, isNamedAPIResourceArray } from '../type-guards';
+import { IEggGroup } from '../../../src/types';
 
 export function eggGroupTests(eggGroup: IEggGroup): void {
   expect(eggGroup.names).to.satisfy(isNameArray);

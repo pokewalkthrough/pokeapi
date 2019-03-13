@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
-import { IPokedex } from '../../../src/interfaces';
 import { isDescriptionArray, isNameArray, isNamedAPIResourceArray, isNamedAPIResourceOrNull, isPokemonEntryArray } from '../type-guards';
+import { IPokedex } from '../../../src/types';
 
 export function pokedexTests(pokedex: IPokedex): void {
   expect(pokedex.is_main_series).to.be.a('boolean');

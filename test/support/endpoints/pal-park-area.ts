@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
-import { IPalParkArea } from '../../../src/interfaces';
 import { isNameArray, isPalParkEncounterSpeciesArray } from '../type-guards';
+import { IPalParkArea } from '../../../src/types';
 
 export function palParkAreaTests(palParkArea: IPalParkArea): void {
   expect(palParkArea.names).to.satisfy(isNameArray);

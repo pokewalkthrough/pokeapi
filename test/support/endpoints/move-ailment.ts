@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
-import { IMoveAilment } from '../../../src/interfaces';
 import { isNameArray, isNamedAPIResourceArray } from '../type-guards';
+import { IMoveAilment } from '../../../src/types';
 
 export function moveAilmentTests(moveAilment: IMoveAilment): void {
   expect(moveAilment.moves).to.satisfy(isNamedAPIResourceArray);

@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
-import { IVersionGroup } from '../../../src/interfaces';
 import { isNamedAPIResource, isNamedAPIResourceArray } from '../type-guards';
+import { IVersionGroup } from '../../../src/types';
 
 export function versionGroupTests(versionGroup: IVersionGroup): void {
   expect(versionGroup.order).to.be.a('number');

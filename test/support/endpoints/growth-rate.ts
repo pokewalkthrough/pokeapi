@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
-import { IGrowthRate } from '../../../src/interfaces';
 import { isDescriptionArray, isGrowthRateExperienceLevelArray, isNamedAPIResourceArray } from '../type-guards';
+import { IGrowthRate } from '../../../src/types';
 
 export function growthRateTests(growthRate: IGrowthRate): void {
   expect(growthRate.formula).to.be.a('string');

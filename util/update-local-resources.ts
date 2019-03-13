@@ -3,7 +3,8 @@
 import axios, { AxiosResponse } from 'axios';
 import fs from 'fs';
 
-import { IAPIResource, IAPIResourceList, INamedAPIResource, INamedAPIResourceList, TPokeAPIEndpoint } from '../src/interfaces';
+import { IAPIResourceList, INamedAPIResourceList } from '../src/interfaces';
+import { IAPIResource, INamedAPIResource, TPokeAPIEndpoint } from '../src/types';
 
 interface IEndpoint {
   filter?: string | number;

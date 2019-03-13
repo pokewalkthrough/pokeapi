@@ -1,8 +1,10 @@
 import { expect } from 'chai';
 import fs from 'fs';
 
-import { IAPIResourceList, INamedAPIResourceList, INamedPokeAPIResource, IPokeAPIResource, TPokeAPIEndpoint } from '../../src/interfaces';
+import { IAPIResourceList, INamedAPIResourceList } from '../../src/interfaces';
+import { INamedPokeAPIResource, IPokeAPIResource, TPokeAPIEndpoint } from '../../src/types';
 
+// TODO: Run each endpoint once (for real) to ensure connectivity to endpoints
 // TODO: Check for the existence of extra/unexpected properties?
 export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResource>(
   endpoint: TPokeAPIEndpoint,

@@ -1,6 +1,5 @@
 import { expect } from 'chai';
 
-import { IPokemonSpecies } from '../../../src/interfaces';
 import {
   isAPIResource,
   isDescriptionArray,
@@ -14,6 +13,7 @@ import {
   isPokemonSpeciesDexEntryArray,
   isPokemonSpeciesVarietyArray,
 } from '../type-guards';
+import { IPokemonSpecies } from '../../../src/types';
 
 export function pokemonSpeciesTests(pokemonSpecies: IPokemonSpecies): void {
   expect(pokemonSpecies.order).to.be.a('number');

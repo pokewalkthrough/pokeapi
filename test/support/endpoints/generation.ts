@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
-import { IGeneration } from '../../../src/interfaces';
 import { isNameArray, isNamedAPIResource, isNamedAPIResourceArray } from '../type-guards';
+import { IGeneration } from '../../../src/types';
 
 export function generationTests(generation: IGeneration): void {
   expect(generation.abilities).to.satisfy(isNamedAPIResourceArray);

@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
-import { IContestType } from '../../../src/interfaces';
 import { isContestNameArray, isNamedAPIResource } from '../type-guards';
+import { IContestType } from '../../../src/types';
 
 export function contestTypeTests(contestType: IContestType): void {
   expect(contestType.berry_flavor).to.satisfy(isNamedAPIResource);

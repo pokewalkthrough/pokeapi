@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
-import { IPokemonShape } from '../../../src/interfaces';
 import { isAwesomeNameArray, isNameArray, isNamedAPIResourceArray } from '../type-guards';
+import { IPokemonShape } from '../../../src/types';
 
 export function pokemonShapeTests(pokemonShape: IPokemonShape): void {
   expect(pokemonShape.awesome_names).to.satisfy(isAwesomeNameArray);
