@@ -1,13 +1,22 @@
 import { AxiosResponse, default as axios } from 'axios';
 
-import { IAPIResourceList, IBerry, IBerryFirmness, IBerryFlavor, IContestEffect, IContestType, INamedAPIResourceList, ISuperContestEffect } from './interfaces';
+import {
+  IAPIResourceList,
+  IBerry,
+  IBerryFirmness,
+  IBerryFlavor,
+  IContestEffect,
+  IContestType,
+  IEncounterCondition,
+  IEncounterConditionValue,
+  IEncounterMethod,
+  INamedAPIResourceList,
+  ISuperContestEffect,
+} from './interfaces';
 import {
   IAbility,
   ICharacteristic,
   IEggGroup,
-  IEncounterCondition,
-  IEncounterConditionValue,
-  IEncounterMethod,
   IEvolutionChain,
   IEvolutionTrigger,
   IGender,

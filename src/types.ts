@@ -1,23 +1,5 @@
 // TODO: annotate with documentation
 
-// Encounter Methods
-export interface IEncounterMethod extends INamedPokeAPIResource {
-  names: IName[];
-  order: number;
-}
-
-// Encounter Conditions
-export interface IEncounterCondition extends INamedPokeAPIResource {
-  names: IName[];
-  values: INamedAPIResource[]; // EncounterConditionValue
-}
-
-// Encounter Condition Values
-export interface IEncounterConditionValue extends INamedPokeAPIResource {
-  condition: INamedAPIResource; // EncounterCondition
-  names: IName[];
-}
-
 // Evolution Chains
 export interface IEvolutionChain extends IPokeAPIResource {
   baby_trigger_item: INamedAPIResource | null; // Item

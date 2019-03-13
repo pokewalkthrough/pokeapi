@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
+import { IEncounterCondition } from '../../../src/interfaces';
 import { isNameArray, isNamedAPIResourceArray } from '../type-guards';
-import { IEncounterCondition } from '../../../src/types';
 
 export function encounterConditionTests(encounterCondition: IEncounterCondition): void {
   expect(encounterCondition.names).to.satisfy(isNameArray);
