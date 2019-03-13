@@ -1,11 +1,9 @@
 import { AxiosResponse, default as axios } from 'axios';
 
-import { IAPIResourceList, IBerry, IBerryFirmness, IBerryFlavor, INamedAPIResourceList } from './interfaces';
+import { IAPIResourceList, IBerry, IBerryFirmness, IBerryFlavor, IContestEffect, IContestType, INamedAPIResourceList, ISuperContestEffect } from './interfaces';
 import {
   IAbility,
   ICharacteristic,
-  IContestEffect,
-  IContestType,
   IEggGroup,
   IEncounterCondition,
   IEncounterConditionValue,
@@ -44,7 +42,6 @@ import {
   IPokemonSpecies,
   IRegion,
   IStat,
-  ISuperContestEffect,
   IType,
   IVersion,
   IVersionGroup,

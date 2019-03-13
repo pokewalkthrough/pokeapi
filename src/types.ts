@@ -1,32 +1,5 @@
 // TODO: annotate with documentation
 
-// Contest Types
-export interface IContestType extends INamedPokeAPIResource {
-  berry_flavor: INamedAPIResource; // BerryFlavor
-  names: IContestName[];
-}
-
-export interface IContestName {
-  color: string;
-  language: INamedAPIResource; // Language
-  name: string;
-}
-
-// Contest Effects
-export interface IContestEffect extends IPokeAPIResource {
-  appeal: number;
-  effect_entries: IEffect[];
-  flavor_text_entries: IFlavorText[];
-  jam: number;
-}
-
-// Super Contest Effects
-export interface ISuperContestEffect extends IPokeAPIResource {
-  appeal: number;
-  flavor_text_entries: IFlavorText[];
-  moves: INamedAPIResource[]; // Move
-}
-
 // Encounter Methods
 export interface IEncounterMethod extends INamedPokeAPIResource {
   names: IName[];

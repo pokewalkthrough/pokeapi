@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
+import { ISuperContestEffect } from '../../../src/interfaces';
 import { isFlavorTextArray, isNamedAPIResourceArray } from '../type-guards';
-import { ISuperContestEffect } from '../../../src/types';
 
 export function superContestEffectTests(superContestEffect: ISuperContestEffect): void {
   expect(superContestEffect.appeal).to.be.a('number');

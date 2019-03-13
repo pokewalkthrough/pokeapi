@@ -22,7 +22,7 @@ export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResourc
       },
     );
 
-    it(`${endpoint} list has expected properties`, async (): Promise<void> => {
+    it('list has expected properties', async (): Promise<void> => {
       if (list) {
         expect(list.count).to.be.a('number');
         expect(list.count).to.be.greaterThan(0);
@@ -37,7 +37,7 @@ export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResourc
       }
     });
 
-    it(`${endpoint} item has expected properties`, async (): Promise<void> => {
+    it('item has expected properties', async (): Promise<void> => {
       if (item) {
         expect(item.id).to.be.a('number');
 

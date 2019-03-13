@@ -1,4 +1,4 @@
-import { IBerryFlavorMap, IFlavorBerryMap } from '../../src/interfaces';
+import { IBerryFlavorMap, IContestName, IFlavorBerryMap } from '../../src/interfaces';
 import {
   IAPIResource,
   IAbilityEffectChange,
@@ -8,7 +8,6 @@ import {
   IChainLink,
   IContestComboDetail,
   IContestComboSets,
-  IContestName,
   IDescription,
   IEffect,
   IEncounter,
