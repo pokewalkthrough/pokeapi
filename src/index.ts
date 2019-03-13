@@ -10,6 +10,8 @@ import {
   IEncounterCondition,
   IEncounterConditionValue,
   IEncounterMethod,
+  IEvolutionChain,
+  IEvolutionTrigger,
   INamedAPIResourceList,
   ISuperContestEffect,
 } from './interfaces';
@@ -17,8 +19,6 @@ import {
   IAbility,
   ICharacteristic,
   IEggGroup,
-  IEvolutionChain,
-  IEvolutionTrigger,
   IGender,
   IGeneration,
   IGrowthRate,

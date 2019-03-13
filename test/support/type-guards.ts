@@ -1,11 +1,10 @@
-import { IBerryFlavorMap, IContestName, IFlavorBerryMap } from '../../src/interfaces';
+import { IBerryFlavorMap, IChainLink, IContestName, IEvolutionDetail, IFlavorBerryMap } from '../../src/interfaces';
 import {
   IAPIResource,
   IAbilityEffectChange,
   IAbilityFlavorText,
   IAbilityPokemon,
   IAwesomeName,
-  IChainLink,
   IContestComboDetail,
   IContestComboSets,
   IDescription,
@@ -13,7 +12,6 @@ import {
   IEncounter,
   IEncounterMethodRate,
   IEncounterVersionDetails,
-  IEvolutionDetail,
   IFlavorText,
   IGenerationGameIndex,
   IGenus,

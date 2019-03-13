@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
+import { IEvolutionChain } from '../../../src/interfaces';
 import { isChainLink, isNamedAPIResourceOrNull } from '../type-guards';
-import { IEvolutionChain } from '../../../src/types';
 
 export function evolutionChainTests(evolutionChain: IEvolutionChain): void {
   expect(evolutionChain.baby_trigger_item).to.satisfy(isNamedAPIResourceOrNull);

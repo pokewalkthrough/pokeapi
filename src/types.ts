@@ -1,45 +1,5 @@
 // TODO: annotate with documentation
 
-// Evolution Chains
-export interface IEvolutionChain extends IPokeAPIResource {
-  baby_trigger_item: INamedAPIResource | null; // Item
-  chain: IChainLink;
-}
-
-export interface IChainLink {
-  evolution_details: IEvolutionDetail[];
-  evolves_to: IChainLink[];
-  is_baby: boolean;
-  species: INamedAPIResource; // PokemonSpecies
-}
-
-export interface IEvolutionDetail {
-  gender: number | null;
-  held_item: INamedAPIResource | null; // Item
-  item: INamedAPIResource | null; // Item
-  known_move: INamedAPIResource | null; // Move
-  known_move_type: INamedAPIResource | null; // Type
-  location: INamedAPIResource | null; // Location
-  min_affection: number | null;
-  min_beauty: number | null;
-  min_happiness: number | null;
-  min_level: number | null;
-  needs_overworld_rain: boolean;
-  party_species: INamedAPIResource | null; // PokemonSpecies
-  party_type: INamedAPIResource | null; // Type
-  relative_physical_stats: number | null;
-  time_of_day: string;
-  trade_species: INamedAPIResource | null; // PokemonSpecies
-  trigger: INamedAPIResource; // EvolutionTrigger
-  turn_upside_down: boolean;
-}
-
-// Evolution Triggers
-export interface IEvolutionTrigger extends INamedPokeAPIResource {
-  names: IName[];
-  pokemon_species: INamedAPIResource[];
-}
-
 // Generations
 export interface IGeneration extends INamedPokeAPIResource {
   abilities: INamedAPIResource[]; // Ability
