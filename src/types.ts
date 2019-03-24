@@ -1,47 +1,5 @@
 // TODO: annotate with documentation
 
-// Generations
-export interface IGeneration extends INamedPokeAPIResource {
-  abilities: INamedAPIResource[]; // Ability
-  main_region: INamedAPIResource; // Region
-  moves: INamedAPIResource[]; // Move
-  names: IName[];
-  pokemon_species: INamedAPIResource[]; // PokemonSpecies
-  types: INamedAPIResource[]; // Type
-  version_groups: INamedAPIResource[]; // VersionGroup
-}
-
-// Pokedexes
-export interface IPokedex extends INamedPokeAPIResource {
-  descriptions: IDescription[];
-  is_main_series: boolean;
-  names: IName[];
-  pokemon_entries: IPokemonEntry[];
-  region: INamedAPIResource | null; // Region
-  version_groups: INamedAPIResource[]; // VersionGroup
-}
-
-export interface IPokemonEntry {
-  entry_number: number;
-  pokemon_species: INamedAPIResource; // PokemonSpecies
-}
-
-// Versions
-export interface IVersion extends INamedPokeAPIResource {
-  names: IName[];
-  version_group: INamedAPIResource; // VersionGroup
-}
-
-// Version Groups
-export interface IVersionGroup extends INamedPokeAPIResource {
-  generation: INamedAPIResource; // Generation
-  move_learn_methods: INamedAPIResource[]; // MoveLearnMethod
-  order: number;
-  pokedexes: INamedAPIResource[]; // Pokedex
-  regions: INamedAPIResource[]; // Region
-  versions: INamedAPIResource[]; // Version
-}
-
 // Items
 export interface IItem extends INamedPokeAPIResource {
   attributes: INamedAPIResource[]; // ItemAttribute

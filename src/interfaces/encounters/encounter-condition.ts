@@ -8,6 +8,7 @@ export interface IEncounterCondition extends INamedPokeAPIResource {
    * The name of this resource listed in different languages.
    */
   names: IName[];
+
   /**
    * A list of possible values for this encounter condition.
    */

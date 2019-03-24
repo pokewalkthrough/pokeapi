@@ -9,6 +9,7 @@ export interface IEncounterMethod extends INamedPokeAPIResource {
    * The name of this resource listed in different languages.
    */
   names: IName[];
+
   /**
    * A good value for sorting.
    */

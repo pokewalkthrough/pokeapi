@@ -1,4 +1,4 @@
-import { IBerryFlavorMap, IChainLink, IContestName, IEvolutionDetail, IFlavorBerryMap } from '../../src/interfaces';
+import { IBerryFlavorMap, IChainLink, IContestName, IEvolutionDetail, IFlavorBerryMap, IPokemonEntry } from '../../src/interfaces';
 import {
   IAPIResource,
   IAbilityEffectChange,
@@ -37,7 +37,6 @@ import {
   IPastMoveStatValues,
   IPokemonAbility,
   IPokemonEncounter,
-  IPokemonEntry,
   IPokemonFormSprites,
   IPokemonHeldItem,
   IPokemonHeldItemVersion,

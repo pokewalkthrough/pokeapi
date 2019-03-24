@@ -8,6 +8,7 @@ export interface IBerryFirmness extends INamedPokeAPIResource {
    * A list of the berries with this firmness.
    */
   berries: INamedAPIResource[];
+
   /**
    * The name of this resource listed in different languages.
    */

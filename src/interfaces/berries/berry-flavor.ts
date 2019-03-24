@@ -9,10 +9,12 @@ export interface IBerryFlavor extends INamedPokeAPIResource {
    * A list of the berries with this flavor.
    */
   berries: IFlavorBerryMap[];
+
   /**
    * The contest type that correlates with this berry flavor.
    */
   contest_type: INamedAPIResource;
+
   /**
    * The name of this resource listed in different languages.
    */
@@ -24,6 +26,7 @@ export interface IFlavorBerryMap {
    * The berry with the referenced flavor.
    */
   berry: INamedAPIResource;
+
   /**
    * How powerful the referenced flavor is for this berry.
    */

@@ -9,6 +9,7 @@ export interface IEvolutionTrigger extends INamedPokeAPIResource {
    * The name of this resource listed in different languages.
    */
   names: IName[];
+
   /**
    * A list of pokemon species that result from this evolution trigger.
    */

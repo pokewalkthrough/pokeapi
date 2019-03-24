@@ -3,3 +3,4 @@ export { IBerry, IBerryFirmness, IBerryFlavor, IBerryFlavorMap, IFlavorBerryMap 
 export { IContestEffect, IContestName, IContestType, ISuperContestEffect } from './contests';
 export { IEncounterCondition, IEncounterConditionValue, IEncounterMethod } from './encounters';
 export { IChainLink, IEvolutionChain, IEvolutionDetail, IEvolutionTrigger } from './evolution';
+export { IGeneration, IPokedex, IPokemonEntry, IVersion, IVersionGroup } from './games';

@@ -12,15 +12,18 @@ import {
   IEncounterMethod,
   IEvolutionChain,
   IEvolutionTrigger,
+  IGeneration,
   INamedAPIResourceList,
+  IPokedex,
   ISuperContestEffect,
+  IVersion,
+  IVersionGroup,
 } from './interfaces';
 import {
   IAbility,
   ICharacteristic,
   IEggGroup,
   IGender,
-  IGeneration,
   IGrowthRate,
   IItem,
   IItemAttribute,
@@ -42,7 +45,6 @@ import {
   IPalParkArea,
   IPokeAPIResource,
   IPokeathlonStat,
-  IPokedex,
   IPokemon,
   IPokemonColor,
   IPokemonForm,
@@ -52,8 +54,6 @@ import {
   IRegion,
   IStat,
   IType,
-  IVersion,
-  IVersionGroup,
   TPokeAPIEndpoint,
 } from './types';
 import { constructListUrl, constructUrl } from './util';
