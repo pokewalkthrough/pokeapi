@@ -1,4 +1,5 @@
-import { IName, INamedAPIResource, INamedPokeAPIResource } from '../../types';
+import { INamedPokeAPIResource } from '../../types';
+import { IName, INamedAPIResource } from '../utility';
 
 /**
  * Item categories determine where items will be placed in the players bag.

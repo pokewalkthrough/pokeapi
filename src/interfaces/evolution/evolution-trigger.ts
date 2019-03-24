@@ -1,4 +1,5 @@
-import { IName, INamedAPIResource, INamedPokeAPIResource } from '../../types';
+import { INamedPokeAPIResource } from '../../types';
+import { IName, INamedAPIResource } from '../utility';
 
 /**
  * Evolution triggers are the events and conditions that cause a Pokémon to evolve. Check out

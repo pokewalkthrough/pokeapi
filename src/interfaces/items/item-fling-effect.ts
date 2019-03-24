@@ -1,4 +1,5 @@
-import { IEffect, INamedAPIResource, INamedPokeAPIResource } from '../../types';
+import { INamedPokeAPIResource } from '../../types';
+import { IEffect, INamedAPIResource } from '../utility';
 
 /**
  * The various effects of the move "Fling" when used with different items.

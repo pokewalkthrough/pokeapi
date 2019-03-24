@@ -1,4 +1,5 @@
-import { IName, INamedAPIResource, INamedPokeAPIResource } from '../../types';
+import { INamedPokeAPIResource } from '../../types';
+import { IName, INamedAPIResource } from '../utility';
 
 /**
  * A generation is a grouping of the Pokémon games that separates them based on the Pokémon they include. In each generation, a new set of Pokémon, Moves,

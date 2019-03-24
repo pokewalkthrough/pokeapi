@@ -16,3 +16,19 @@ export {
   IItemPocket,
   IItemSprites,
 } from './items';
+export {
+  ILanguage,
+  IAPIResource,
+  IDescription,
+  IEffect,
+  IEncounter,
+  IFlavorText,
+  IGenerationGameIndex,
+  IMachineVersionDetail,
+  IName,
+  INamedAPIResource,
+  IVerboseEffect,
+  IVersionEncounterDetail,
+  IVersionGameIndex,
+  IVersionGroupFlavorText,
+} from './utility';

@@ -1,4 +1,5 @@
-import { IName, INamedAPIResource, INamedPokeAPIResource } from '../../types';
+import { INamedPokeAPIResource } from '../../types';
+import { IName, INamedAPIResource } from '../utility';
 
 /**
  * Conditions which affect what pokemon might appear in the wild, e.g., day or night.

@@ -1,6 +1,7 @@
-import { IName, INamedAPIResource, INamedPokeAPIResource } from '../../types';
+import { INamedPokeAPIResource } from '../../types';
+import { IName, INamedAPIResource } from '../utility';
 
 export interface IItemPocket extends INamedPokeAPIResource {
-  categories: INamedAPIResource[]; // ItemCategory
+  categories: INamedAPIResource[];
   names: IName[];
 }

@@ -1,4 +1,5 @@
-import { IEffect, IFlavorText, IPokeAPIResource } from '../../types';
+import { IPokeAPIResource } from '../../types';
+import { IEffect, IFlavorText } from '../utility';
 
 /**
  * Contest effects refer to the effects of moves when used in contests.

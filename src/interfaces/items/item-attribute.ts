@@ -1,4 +1,5 @@
-import { IDescription, IName, INamedAPIResource, INamedPokeAPIResource } from '../../types';
+import { INamedPokeAPIResource } from '../../types';
+import { IDescription, IName, INamedAPIResource } from '../utility';
 
 /**
  * Item attributes define particular aspects of items, e.g. "usable in battle" or "consumable".

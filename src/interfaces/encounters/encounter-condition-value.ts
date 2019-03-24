@@ -1,4 +1,5 @@
-import { IName, INamedAPIResource, INamedPokeAPIResource } from '../../types';
+import { INamedPokeAPIResource } from '../../types';
+import { IName, INamedAPIResource } from '../utility';
 
 /**
  * Encounter condition values are the various states that an encounter condition can have, i.e., time of day can be either day or night.

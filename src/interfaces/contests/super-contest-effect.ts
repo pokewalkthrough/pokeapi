@@ -1,4 +1,5 @@
-import { IFlavorText, INamedAPIResource, IPokeAPIResource } from '../../types';
+import { IPokeAPIResource } from '../../types';
+import { IFlavorText, INamedAPIResource } from '../utility';
 
 /**
  * Super contest effects refer to the effects of moves when used in super contests.

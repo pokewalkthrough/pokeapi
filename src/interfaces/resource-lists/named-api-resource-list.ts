@@ -1,4 +1,4 @@
-import { INamedAPIResource } from '../../types';
+import { INamedAPIResource } from '../utility';
 
 /**
  * Calling any API endpoint without a resource ID or name will return a paginated list of available resources for that API. By default, a list "page" will

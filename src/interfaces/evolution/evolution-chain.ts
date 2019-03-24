@@ -1,4 +1,5 @@
-import { INamedAPIResource, IPokeAPIResource } from '../../types';
+import { IPokeAPIResource } from '../../types';
+import { INamedAPIResource } from '../utility';
 
 /**
  * Evolution chains are essentially family trees. They start with the lowest stage within a family and detail evolution conditions for each as well as Pokémon

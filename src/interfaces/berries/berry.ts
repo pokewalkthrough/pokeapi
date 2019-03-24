@@ -1,4 +1,5 @@
-import { INamedAPIResource, INamedPokeAPIResource } from '../../types';
+import { INamedPokeAPIResource } from '../../types';
+import { INamedAPIResource } from '../utility';
 
 /**
  * Berries are small fruits that can provide HP and status condition restoration, stat enhancement, and even damage negation when eaten by a Pokémon. Check

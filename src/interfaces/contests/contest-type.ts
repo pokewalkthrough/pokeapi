@@ -1,4 +1,5 @@
-import { INamedAPIResource, INamedPokeAPIResource } from '../../types';
+import { INamedPokeAPIResource } from '../../types';
+import { INamedAPIResource } from '../utility';
 
 /**
  * Contest types are categories judges used to weigh a Pokémon's condition in Pokémon contests. Check out

@@ -1,3 +1,17 @@
+import {
+  IAPIResource,
+  IDescription,
+  IEffect,
+  IFlavorText,
+  IGenerationGameIndex,
+  IMachineVersionDetail,
+  IName,
+  INamedAPIResource,
+  IVerboseEffect,
+  IVersionEncounterDetail,
+  IVersionGameIndex,
+} from './interfaces';
+
 // Locations
 export interface ILocation extends INamedPokeAPIResource {
   areas: INamedAPIResource[]; // LocationArea
@@ -485,84 +499,6 @@ export interface ITypeRelations {
   half_damage_to: INamedAPIResource[]; // Type
   no_damage_from: INamedAPIResource[]; // Type
   no_damage_to: INamedAPIResource[]; // Type
-}
-
-// Utility - Language
-export interface ILanguage extends INamedPokeAPIResource {
-  iso3166: string;
-  iso639: string;
-  names: IName[];
-  official: boolean;
-}
-
-// Utility - Common Models
-export interface IAPIResource {
-  url: string;
-}
-
-export interface IDescription {
-  description: string;
-  language: INamedAPIResource; // Language
-}
-
-export interface IEffect {
-  effect: string;
-  language: INamedAPIResource; // Language
-}
-
-export interface IEncounter {
-  chance: number;
-  condition_values: INamedAPIResource[]; // EncounterConditionValue
-  max_level: number;
-  method: INamedAPIResource; // EncounterMethod
-  min_level: number;
-}
-
-export interface IFlavorText {
-  flavor_text: string;
-  language: INamedAPIResource; // Language
-}
-
-export interface IGenerationGameIndex {
-  game_index: number;
-  generation: INamedAPIResource; // Generation
-}
-
-export interface IMachineVersionDetail {
-  machine: IAPIResource; // Machine
-  version_group: INamedAPIResource; // VersionGroup
-}
-
-export interface IName {
-  language: INamedAPIResource; // Language
-  name: string;
-}
-
-export interface INamedAPIResource extends IAPIResource {
-  name: string;
-}
-
-export interface IVerboseEffect {
-  effect: string;
-  language: INamedAPIResource; // Language
-  short_effect: string;
-}
-
-export interface IVersionEncounterDetail {
-  encounter_details: IEncounter[];
-  max_chance: number;
-  version: INamedAPIResource; // Version
-}
-
-export interface IVersionGameIndex {
-  game_index: number;
-  version: INamedAPIResource; // Version
-}
-
-export interface IVersionGroupFlavorText {
-  language: INamedAPIResource; // Language
-  text: string;
-  version_group: INamedAPIResource; // VersionGroup
 }
 
 // Additional Interfaces
