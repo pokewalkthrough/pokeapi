@@ -26,6 +26,7 @@ export {
   IPokemonEncounter,
   IRegion,
 } from './locations';
+export { IMachine } from './machines';
 export {
   ILanguage,
   IAPIResource,

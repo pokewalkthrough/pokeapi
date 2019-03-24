@@ -12,13 +12,6 @@ import {
   IVersionGameIndex,
 } from './interfaces';
 
-// Machines
-export interface IMachine extends IPokeAPIResource {
-  item: INamedAPIResource; // Item
-  move: INamedAPIResource; // Move
-  version_group: INamedAPIResource; // VersionGroup
-}
-
 // Moves
 export interface IMove extends INamedPokeAPIResource {
   accuracy: number | null;
