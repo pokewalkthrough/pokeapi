@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 
+import { IItem } from '../../../src/interfaces';
 import {
   isAPIResourceOrNull,
   isGenerationGameIndexArray,
@@ -14,7 +15,6 @@ import {
   isVerboseEffectArray,
   isVersionGroupFlavorTextArray,
 } from '../type-guards';
-import { IItem } from '../../../src/types';
 
 export function itemTests(item: IItem): void {
   expect(item.cost).to.be.a('number');

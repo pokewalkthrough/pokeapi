@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
+import { IItemAttribute } from '../../../src/interfaces';
 import { isDescriptionArray, isNameArray, isNamedAPIResourceArray } from '../type-guards';
-import { IItemAttribute } from '../../../src/types';
 
 export function itemAttributeTests(itemAttribute: IItemAttribute): void {
   expect(itemAttribute.items).to.satisfy(isNamedAPIResourceArray);

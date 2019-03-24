@@ -1,4 +1,14 @@
-import { IBerryFlavorMap, IChainLink, IContestName, IEvolutionDetail, IFlavorBerryMap, IPokemonEntry } from '../../src/interfaces';
+import {
+  IBerryFlavorMap,
+  IChainLink,
+  IContestName,
+  IEvolutionDetail,
+  IFlavorBerryMap,
+  IItemHolderPokemon,
+  IItemHolderPokemonVersionDetail,
+  IItemSprites,
+  IPokemonEntry,
+} from '../../src/interfaces';
 import {
   IAPIResource,
   IAbilityEffectChange,
@@ -16,9 +26,6 @@ import {
   IGenerationGameIndex,
   IGenus,
   IGrowthRateExperienceLevel,
-  IItemHolderPokemon,
-  IItemHolderPokemonVersionDetail,
-  IItemSprites,
   IMachineVersionDetail,
   IMoveBattleStylePreference,
   IMoveFlavorText,

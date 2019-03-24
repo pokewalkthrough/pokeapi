@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
+import { IItemPocket } from '../../../src/interfaces';
 import { isNameArray, isNamedAPIResourceArray } from '../type-guards';
-import { IItemPocket } from '../../../src/types';
 
 export function itemPocketTests(itemPocket: IItemPocket): void {
   expect(itemPocket.categories).to.satisfy(isNamedAPIResourceArray);
