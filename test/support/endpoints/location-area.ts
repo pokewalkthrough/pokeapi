@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
+import { ILocationArea } from '../../../src/interfaces';
 import { isEncounterMethodRateArray, isNameArray, isNamedAPIResource, isPokemonEncounterArray } from '../type-guards';
-import { ILocationArea } from '../../../src/types';
 
 export function locationAreaTests(locationArea: ILocationArea): void {
   expect(locationArea.game_index).to.be.a('number');

@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
+import { IRegion } from '../../../src/interfaces';
 import { isNameArray, isNamedAPIResource, isNamedAPIResourceArray } from '../type-guards';
-import { IRegion } from '../../../src/types';
 
 export function regionTests(region: IRegion): void {
   expect(region.locations).to.satisfy(isNamedAPIResourceArray);

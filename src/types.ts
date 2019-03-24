@@ -12,59 +12,6 @@ import {
   IVersionGameIndex,
 } from './interfaces';
 
-// Locations
-export interface ILocation extends INamedPokeAPIResource {
-  areas: INamedAPIResource[]; // LocationArea
-  game_indices: IGenerationGameIndex[];
-  names: IName[];
-  region: INamedAPIResource | null; // Region
-}
-
-// Location Areas
-export interface ILocationArea extends INamedPokeAPIResource {
-  encounter_method_rates: IEncounterMethodRate[];
-  game_index: number;
-  location: INamedAPIResource; // Location
-  names: IName[];
-  pokemon_encounters: IPokemonEncounter[];
-}
-
-export interface IEncounterMethodRate {
-  encounter_method: INamedAPIResource; // EncounterMethod
-  version_details: IEncounterVersionDetails[];
-}
-
-export interface IEncounterVersionDetails {
-  rate: number;
-  version: INamedAPIResource; // Version
-}
-
-export interface IPokemonEncounter {
-  pokemon: INamedAPIResource; // Pokemon
-  version_details: IVersionEncounterDetail[];
-}
-
-// Pal Park Areas
-export interface IPalParkArea extends INamedPokeAPIResource {
-  names: IName[];
-  pokemon_encounters: IPalParkEncounterSpecies[];
-}
-
-export interface IPalParkEncounterSpecies {
-  base_score: number;
-  pokemon_species: INamedAPIResource; // PokemonSpecies
-  rate: number;
-}
-
-// Regions
-export interface IRegion extends INamedPokeAPIResource {
-  locations: INamedAPIResource[]; // Location
-  main_generation: INamedAPIResource; // Generation
-  names: IName[];
-  pokedexes: INamedAPIResource[]; // Pokedex
-  version_groups: INamedAPIResource[]; // VersionGroup
-}
-
 // Machines
 export interface IMachine extends IPokeAPIResource {
   item: INamedAPIResource; // Item

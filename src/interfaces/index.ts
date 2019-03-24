@@ -17,6 +17,16 @@ export {
   IItemSprites,
 } from './items';
 export {
+  IEncounterMethodRate,
+  IEncounterVersionDetails,
+  ILocation,
+  ILocationArea,
+  IPalParkArea,
+  IPalParkEncounterSpecies,
+  IPokemonEncounter,
+  IRegion,
+} from './locations';
+export {
   ILanguage,
   IAPIResource,
   IDescription,
