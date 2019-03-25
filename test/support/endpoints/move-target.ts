@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
+import { IMoveTarget } from '../../../src/interfaces';
 import { isDescriptionArray, isNameArray, isNamedAPIResourceArray } from '../type-guards';
-import { IMoveTarget } from '../../../src/types';
 
 export function moveTargetTests(moveTarget: IMoveTarget): void {
   expect(moveTarget.descriptions).to.satisfy(isDescriptionArray);

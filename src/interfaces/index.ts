@@ -28,6 +28,21 @@ export {
 } from './locations';
 export { IMachine } from './machines';
 export {
+  IContestComboDetail,
+  IContestComboSets,
+  IMove,
+  IMoveAilment,
+  IMoveBattleStyle,
+  IMoveCategory,
+  IMoveDamageClass,
+  IMoveFlavorText,
+  IMoveLearnMethod,
+  IMoveMetaData,
+  IMoveStatChange,
+  IMoveTarget,
+  IPastMoveStatValues,
+} from './moves';
+export {
   ILanguage,
   IAPIResource,
   IDescription,

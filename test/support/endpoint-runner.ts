@@ -32,6 +32,10 @@ export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResourc
         if (listIsNamed) {
           expect((list as INamedAPIResourceList).results[0].name).to.be.a('string');
         }
+        // TODO: insert else clause here:
+        /*
+          expect((list as IAPIResourceList).results[0].name.to.not.exist.or.something?
+        */
 
         expect(list.results[0].url).to.be.a('string');
       }
@@ -44,6 +48,10 @@ export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResourc
         if (listIsNamed) {
           expect((item as INamedPokeAPIResource).name).to.be.a('string');
         }
+        // TODO: insert else clause here:
+        /*
+          expect((item as IAPIResourceList).name.to.not.exist.or.something?
+        */
 
         itemTests(item);
       }
