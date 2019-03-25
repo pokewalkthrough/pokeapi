@@ -3,6 +3,7 @@ import fs from 'fs';
 
 import { IAPIResourceList, INamedAPIResourceList, INamedPokeAPIResource, IPokeAPIResource, TPokeAPIEndpoint } from '../../src/interfaces';
 
+// TODO: Run each endpoint once (for real) to ensure connectivity to endpoints
 // TODO: Check for the existence of extra/unexpected properties?
 export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResource>(
   endpoint: TPokeAPIEndpoint,
@@ -20,7 +21,7 @@ export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResourc
       },
     );
 
-    it(`${endpoint} list has expected properties`, async (): Promise<void> => {
+    it('list has expected properties', async (): Promise<void> => {
       if (list) {
         expect(list.count).to.be.a('number');
         expect(list.count).to.be.greaterThan(0);
@@ -30,18 +31,26 @@ export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResourc
         if (listIsNamed) {
           expect((list as INamedAPIResourceList).results[0].name).to.be.a('string');
         }
+        // TODO: insert else clause here:
+        /*
+          expect((list as IAPIResourceList).results[0].name.to.not.exist.or.something?
+        */
 
         expect(list.results[0].url).to.be.a('string');
       }
     });
 
-    it(`${endpoint} item has expected properties`, async (): Promise<void> => {
+    it('item has expected properties', async (): Promise<void> => {
       if (item) {
         expect(item.id).to.be.a('number');
 
         if (listIsNamed) {
           expect((item as INamedPokeAPIResource).name).to.be.a('string');
         }
+        // TODO: insert else clause here:
+        /*
+          expect((item as IAPIResourceList).name.to.not.exist.or.something?
+        */
 
         itemTests(item);
       }

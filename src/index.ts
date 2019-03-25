@@ -35,6 +35,7 @@ import {
   IMoveLearnMethod,
   IMoveTarget,
   INamedAPIResourceList,
+  INamedPokeAPIResource,
   INature,
   IPalParkArea,
   IPokeAPIResource,
@@ -105,10 +106,9 @@ export class PokeAPI {
   public async get<T extends IStat>(endpoint: 'stat', filter: number | string): Promise<T>;
   public async get<T extends IType>(endpoint: 'type', filter: number | string): Promise<T>;
   public async get<T extends ILanguage>(endpoint: 'language', filter: number | string): Promise<T>;
-  public async get<T extends IPokeAPIResource>(endpoint: TPokeAPIEndpoint, filter: number | string): Promise<T> {
+  public async get<T extends INamedPokeAPIResource | IPokeAPIResource>(endpoint: TPokeAPIEndpoint, filter: number | string): Promise<T> {
     const url: string = constructUrl(endpoint, filter);
 
-    // TODO: Remove axios and replace with native method to reduce dependencies
     return axios
       .get<T>(url)
       .then((value: AxiosResponse<T>) => {
@@ -175,7 +175,6 @@ export class PokeAPI {
   public async getList(endpoint: TPokeAPIEndpoint, limit?: number, offset?: number): Promise<IAPIResourceList | INamedAPIResourceList> {
     const url: string = constructListUrl(endpoint, limit, offset);
 
-    // TODO: Remove axios and replace with native method to reduce dependencies
     return axios
       .get<IAPIResourceList | INamedAPIResourceList>(url)
       .then((value: AxiosResponse<IAPIResourceList | INamedAPIResourceList>) => {
