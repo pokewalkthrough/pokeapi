@@ -1,7 +1,6 @@
 import { expect } from 'chai';
 
-import { IAPIResourceList, INamedAPIResourceList } from '../src/interfaces';
-import { API_VERSION, BASE, constructListUrl, constructUrl, isListNamed, isNumber } from '../src/util';
+import { API_VERSION, BASE, constructListUrl, constructUrl } from '../src/util';
 
 import { endpointRunner } from './support/endpoint-runner';
 import {
@@ -97,70 +96,6 @@ describe('util', (): void => {
       const output: string = constructUrl(endpoint, filter);
 
       expect(output).to.equal(`${BASE}/api/${API_VERSION}/${endpoint}/${filter}/`);
-    });
-  });
-
-  describe('isListNamed', (): void => {
-    it('returns true if list is named', (): void => {
-      const list: INamedAPIResourceList = {
-        count: 1,
-        next: '',
-        previous: '',
-        results: [
-          {
-            name: 'test-name',
-            url: 'test-url',
-          },
-        ],
-      };
-
-      const output: boolean = isListNamed(list);
-
-      expect(output).to.equal(true);
-    });
-
-    it('returns false if list is not named', (): void => {
-      const list: IAPIResourceList = {
-        count: 1,
-        next: '',
-        previous: '',
-        results: [
-          {
-            url: 'test-url',
-          },
-        ],
-      };
-
-      const output: boolean = isListNamed(list);
-
-      expect(output).to.equal(false);
-    });
-
-    it('returns false if list is empty', (): void => {
-      const list: IAPIResourceList = {
-        count: 1,
-        next: '',
-        previous: '',
-        results: [],
-      };
-
-      const output: boolean = isListNamed(list);
-
-      expect(output).to.equal(false);
-    });
-  });
-
-  describe('isNumber', (): void => {
-    it('returns true if value is a number', (): void => {
-      const output: boolean = isNumber(0);
-
-      expect(output).to.equal(true);
-    });
-
-    it('returns false if value is not a number', (): void => {
-      const output: boolean = isNumber('hello');
-
-      expect(output).to.equal(false);
     });
   });
 });
