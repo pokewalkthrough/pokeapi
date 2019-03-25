@@ -3,6 +3,8 @@ import fs from 'fs';
 
 import { IAPIResourceList, INamedAPIResourceList, INamedPokeAPIResource, IPokeAPIResource, TPokeAPIEndpoint } from '../../src/interfaces';
 
+import { isAPIResource, isNamedAPIResource, isStringOrNull } from './type-guards';
+
 // TODO: Run each endpoint once (for real) to ensure connectivity to endpoints
 // TODO: Check for the existence of extra/unexpected properties?
 export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResource>(
@@ -25,18 +27,43 @@ export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResourc
       if (list) {
         expect(list.count).to.be.a('number');
         expect(list.count).to.be.greaterThan(0);
-        expect(list.next).to.be.oneOf(['string', null]);
-        expect(list.previous).to.be.oneOf(['string', null]);
+        expect(list.next).to.satisfy(isStringOrNull);
+        expect(list.previous).to.satisfy(isStringOrNull);
 
-        if (listIsNamed) {
-          expect((list as INamedAPIResourceList).results[0].name).to.be.a('string');
+        for (const result of list.results) {
+          if (listIsNamed) {
+            expect(result).to.satisfy(isNamedAPIResource);
+          } else {
+            expect(result).to.satisfy(isAPIResource);
+          }
+
+          expect(result.url).to.be.a('string');
         }
-        // TODO: insert else clause here:
-        /*
-          expect((list as IAPIResourceList).results[0].name.to.not.exist.or.something?
-        */
+      }
+    });
 
-        expect(list.results[0].url).to.be.a('string');
+    it('list has no unexpected properties', async (): Promise<void> => {
+      if (list) {
+        const keys: string[] = Object.keys(list);
+        const expectedKeys: string[] = ['count', 'next', 'previous', 'results'];
+        const expectedNamedResultKeys: string[] = ['name', 'url'];
+        const expectedResultKeys: string[] = ['url'];
+
+        for (const key of keys) {
+          expect(expectedKeys.includes(key)).to.equal(true);
+        }
+
+        for (const result of list.results) {
+          const resultsKeys: string[] = Object.keys(result);
+
+          for (const key of resultsKeys) {
+            if (listIsNamed) {
+              expect(expectedNamedResultKeys.includes(key)).to.equal(true);
+            } else {
+              expect(expectedResultKeys.includes(key)).to.equal(true);
+            }
+          }
+        }
       }
     });
 

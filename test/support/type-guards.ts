@@ -678,7 +678,7 @@ function isString(value: string): value is string {
   return typeof value === 'string';
 }
 
-function isStringOrNull(value: string | null): value is string | null {
+export function isStringOrNull(value: string | null): value is string | null {
   return isNull(value) || isString(value);
 }
 
