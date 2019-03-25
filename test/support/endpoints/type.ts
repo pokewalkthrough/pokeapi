@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 
+import { IType } from '../../../src/interfaces';
 import {
   isGenerationGameIndexArray,
   isNameArray,
@@ -9,7 +10,6 @@ import {
   isTypePokemonArray,
   isTypeRelations,
 } from '../type-guards';
-import { IType } from '../../../src/types';
 
 export function typeTests(type: IType): void {
   expect(type.damage_relations).to.satisfy(isTypeRelations);

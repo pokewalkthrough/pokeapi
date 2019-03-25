@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 
+import { IPokemon } from '../../../src/interfaces';
 import {
   isNamedAPIResource,
   isNamedAPIResourceArray,
@@ -11,7 +12,6 @@ import {
   isPokemonTypeArray,
   isVersionGameIndexArray,
 } from '../type-guards';
-import { IPokemon } from '../../../src/types';
 
 export function pokemonTests(pokemon: IPokemon): void {
   expect(pokemon.base_experience).to.be.a('number');

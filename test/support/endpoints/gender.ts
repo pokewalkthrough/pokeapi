@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
+import { IGender } from '../../../src/interfaces';
 import { isNamedAPIResourceArray, isPokemonSpeciesGenderArray } from '../type-guards';
-import { IGender } from '../../../src/types';
 
 export function genderTests(gender: IGender): void {
   expect(gender.pokemon_species_details).to.satisfy(isPokemonSpeciesGenderArray);

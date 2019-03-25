@@ -2,17 +2,22 @@ import { AxiosResponse, default as axios } from 'axios';
 
 import {
   IAPIResourceList,
+  IAbility,
   IBerry,
   IBerryFirmness,
   IBerryFlavor,
+  ICharacteristic,
   IContestEffect,
   IContestType,
+  IEggGroup,
   IEncounterCondition,
   IEncounterConditionValue,
   IEncounterMethod,
   IEvolutionChain,
   IEvolutionTrigger,
+  IGender,
   IGeneration,
+  IGrowthRate,
   IItem,
   IItemAttribute,
   IItemCategory,
@@ -30,32 +35,24 @@ import {
   IMoveLearnMethod,
   IMoveTarget,
   INamedAPIResourceList,
-  IPalParkArea,
-  IPokedex,
-  IRegion,
-  ISuperContestEffect,
-  IVersion,
-  IVersionGroup,
-} from './interfaces';
-import {
-  IAbility,
-  ICharacteristic,
-  IEggGroup,
-  IGender,
-  IGrowthRate,
   INature,
-  IPokeAPIResource,
+  IPalParkArea,
   IPokeathlonStat,
+  IPokedex,
   IPokemon,
   IPokemonColor,
   IPokemonForm,
   IPokemonHabitat,
   IPokemonShape,
   IPokemonSpecies,
+  IRegion,
   IStat,
+  ISuperContestEffect,
   IType,
-  TPokeAPIEndpoint,
-} from './types';
+  IVersion,
+  IVersionGroup,
+} from './interfaces';
+import { INamedPokeAPIResource, IPokeAPIResource, TPokeAPIEndpoint } from './types';
 import { constructListUrl, constructUrl } from './util';
 
 export class PokeAPI {
@@ -107,7 +104,7 @@ export class PokeAPI {
   public async get<T extends IStat>(endpoint: 'stat', filter: number | string): Promise<T>;
   public async get<T extends IType>(endpoint: 'type', filter: number | string): Promise<T>;
   public async get<T extends ILanguage>(endpoint: 'language', filter: number | string): Promise<T>;
-  public async get<T extends IPokeAPIResource>(endpoint: TPokeAPIEndpoint, filter: number | string): Promise<T> {
+  public async get<T extends INamedPokeAPIResource | IPokeAPIResource>(endpoint: TPokeAPIEndpoint, filter: number | string): Promise<T> {
     const url: string = constructUrl(endpoint, filter);
 
     return axios

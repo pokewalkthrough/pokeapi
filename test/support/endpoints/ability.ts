@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 
+import { IAbility } from '../../../src/interfaces';
 import {
   isAbilityEffectChangeArray,
   isAbilityFlavorTextArray,
@@ -8,7 +9,6 @@ import {
   isNamedAPIResource,
   isVerboseEffectArray,
 } from '../type-guards';
-import { IAbility } from '../../../src/types';
 
 export function abilityTests(ability: IAbility): void {
   expect(ability.is_main_series).to.be.a('boolean');

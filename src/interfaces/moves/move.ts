@@ -1,4 +1,5 @@
-import { IAbilityEffectChange, INamedPokeAPIResource } from '../../types';
+import { IAbilityEffectChange } from '../pokemon';
+import { INamedPokeAPIResource } from '../../types';
 import { IAPIResource, IMachineVersionDetail, IName, INamedAPIResource, IVerboseEffect } from '../utility';
 
 /**

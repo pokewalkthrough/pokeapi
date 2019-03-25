@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 
+import { IStat } from '../../../src/interfaces';
 import { isAPIResourceArray, isMoveStatAffectSets, isNameArray, isNamedAPIResourceOrNull, isNatureStatAffectSets } from '../type-guards';
-import { IStat } from '../../../src/types';
 
 export function statTests(stat: IStat): void {
   expect(stat.game_index).to.be.a('number');
