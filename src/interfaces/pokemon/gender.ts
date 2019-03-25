@@ -1,5 +1,5 @@
-import { INamedPokeAPIResource } from '../../types';
 import { INamedAPIResource } from '../utility';
+import { INamedPokeAPIResource } from '..';
 
 /**
  * Genders were introduced in Generation II for the purposes of breeding Pokémon but can also result in visual differences or even different evolutionary

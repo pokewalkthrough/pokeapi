@@ -1,5 +1,5 @@
-import { INamedPokeAPIResource } from '../../types';
 import { IName, INamedAPIResource } from '../utility';
+import { INamedPokeAPIResource } from '..';
 
 /**
  * Versions of the games, e.g., Red, Blue or Yellow.

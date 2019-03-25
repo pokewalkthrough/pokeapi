@@ -1,5 +1,5 @@
-import { INamedPokeAPIResource } from '../../types';
 import { IName } from '../utility';
+import { INamedPokeAPIResource } from '..';
 
 /**
  * Methods by which the player might can encounter Pokémon in the wild, e.g., walking in tall grass. Check out

@@ -1,5 +1,5 @@
-import { INamedPokeAPIResource } from '../../types';
 import { IGenerationGameIndex, IName, INamedAPIResource } from '../utility';
+import { INamedPokeAPIResource } from '..';
 
 /**
  * Types are properties for Pokémon and their moves. Each type has three properties: which types of Pokémon it is super effective against, which types of

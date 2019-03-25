@@ -1,5 +1,5 @@
-import { INamedPokeAPIResource } from '../../types';
 import { IName, INamedAPIResource } from '../utility';
+import { INamedPokeAPIResource } from '..';
 
 /**
  * Egg Groups are categories which determine which Pokémon are able to interbreed. Pokémon may belong to either one or two Egg Groups.

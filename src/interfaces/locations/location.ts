@@ -1,5 +1,5 @@
-import { INamedPokeAPIResource } from '../../types';
 import { IGenerationGameIndex, IName, INamedAPIResource } from '../utility';
+import { INamedPokeAPIResource } from '..';
 
 /**
  * Locations that can be visited within the games. Locations make up sizable portions of regions, like cities or routes.

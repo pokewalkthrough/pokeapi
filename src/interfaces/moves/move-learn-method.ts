@@ -1,5 +1,5 @@
-import { INamedPokeAPIResource } from '../../types';
 import { IDescription, IName, INamedAPIResource } from '../utility';
+import { INamedPokeAPIResource } from '..';
 
 /**
  * Methods by which Pokémon can learn moves.

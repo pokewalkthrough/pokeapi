@@ -1,5 +1,5 @@
-import { INamedPokeAPIResource } from '../../types';
 import { IAPIResource, IDescription, IFlavorText, IName, INamedAPIResource } from '../utility';
+import { INamedPokeAPIResource } from '..';
 
 /**
  * A Pokémon Species forms the basis for at least one Pokémon. Attributes of a Pokémon species are shared across all varieties of Pokémon within the species.

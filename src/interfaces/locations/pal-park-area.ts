@@ -1,5 +1,5 @@
-import { INamedPokeAPIResource } from '../../types';
 import { IName, INamedAPIResource } from '../utility';
+import { INamedPokeAPIResource } from '..';
 
 /**
  * Areas used for grouping Pokémon encounters in Pal Park. They're like habitats that are specific to

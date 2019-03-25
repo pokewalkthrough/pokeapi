@@ -1,5 +1,5 @@
-import { INamedPokeAPIResource } from '../../types';
 import { INamedAPIResource, IVersionEncounterDetail, IVersionGameIndex } from '../utility';
+import { INamedPokeAPIResource } from '..';
 
 /**
  * Pokémon are the creatures that inhabit the world of the Pokémon games. They can be caught using Pokéballs and trained by battling with other Pokémon.

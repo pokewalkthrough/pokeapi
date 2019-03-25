@@ -1,5 +1,5 @@
-import { INamedPokeAPIResource } from '../../types';
 import { IEffect, IName, INamedAPIResource, IVerboseEffect } from '../utility';
+import { INamedPokeAPIResource } from '..';
 
 /**
  * Abilities provide passive effects for Pokémon in battle or in the overworld. Pokémon have multiple possible abilities but can have only one ability at a

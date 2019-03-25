@@ -1,5 +1,5 @@
-import { INamedPokeAPIResource } from '../../types';
 import { IAPIResource, IName, INamedAPIResource } from '../utility';
+import { INamedPokeAPIResource } from '..';
 
 /**
  * Stats determine certain aspects of battles. Each Pokémon has a value for each stat which grows as they gain levels and can be altered momentarily by

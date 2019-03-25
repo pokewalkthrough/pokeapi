@@ -1,8 +1,7 @@
 import { expect } from 'chai';
 import fs from 'fs';
 
-import { IAPIResourceList, INamedAPIResourceList } from '../../src/interfaces';
-import { INamedPokeAPIResource, IPokeAPIResource, TPokeAPIEndpoint } from '../../src/types';
+import { IAPIResourceList, INamedAPIResourceList, INamedPokeAPIResource, IPokeAPIResource, TPokeAPIEndpoint } from '../../src/interfaces';
 
 // TODO: Run each endpoint once (for real) to ensure connectivity to endpoints
 // TODO: Check for the existence of extra/unexpected properties?

@@ -1,4 +1,4 @@
-import { IPokeAPIResource } from '../../types';
+import { IPokeAPIResource } from '..';
 
 /**
  * Characteristics indicate which stat contains a Pokémon's highest IV. A Pokémon's Characteristic is determined by the remainder of its highest IV divided

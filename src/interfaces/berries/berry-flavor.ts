@@ -1,5 +1,5 @@
-import { INamedPokeAPIResource } from '../../types';
 import { IName, INamedAPIResource } from '../utility';
+import { INamedPokeAPIResource } from '..';
 
 /**
  * Flavors determine whether a Pokémon will benefit or suffer from eating a berry based on their [nature](https://pokeapi.co/docs/v2.html/#natures). Check out

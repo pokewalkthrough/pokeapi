@@ -1,5 +1,5 @@
-import { INamedPokeAPIResource } from '../../types';
 import { INamedAPIResource } from '../utility';
+import { INamedPokeAPIResource } from '..';
 
 /**
  * Version groups categorize highly similar versions of the games.

@@ -1,5 +1,5 @@
-import { INamedPokeAPIResource } from '../../types';
 import { IDescription, IName, INamedAPIResource } from '../utility';
+import { INamedPokeAPIResource } from '..';
 
 /**
  * A Pokédex is a handheld electronic encyclopedia device; one which is capable of recording and retaining information of the various Pokémon in a given region

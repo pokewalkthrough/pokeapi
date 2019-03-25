@@ -1,5 +1,5 @@
-import { INamedPokeAPIResource } from '../../types';
 import { IName, INamedAPIResource } from '../utility';
+import { INamedPokeAPIResource } from '..';
 
 /**
  * Habitats are generally different terrain Pokémon can be found in but can also be areas designated for rare or legendary Pokémon.

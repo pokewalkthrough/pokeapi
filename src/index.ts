@@ -35,8 +35,10 @@ import {
   IMoveLearnMethod,
   IMoveTarget,
   INamedAPIResourceList,
+  INamedPokeAPIResource,
   INature,
   IPalParkArea,
+  IPokeAPIResource,
   IPokeathlonStat,
   IPokedex,
   IPokemon,
@@ -51,8 +53,8 @@ import {
   IType,
   IVersion,
   IVersionGroup,
+  TPokeAPIEndpoint,
 } from './interfaces';
-import { INamedPokeAPIResource, IPokeAPIResource, TPokeAPIEndpoint } from './types';
 import { constructListUrl, constructUrl } from './util';
 
 export class PokeAPI {

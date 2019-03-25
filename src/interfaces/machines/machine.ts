@@ -1,5 +1,5 @@
-import { IPokeAPIResource } from '../../types';
 import { INamedAPIResource } from '../utility';
+import { IPokeAPIResource } from '..';
 
 /**
  * Machines are the representation of items that teach moves to Pokémon. They vary from version to version, so it is not certain that one specific TM or HM

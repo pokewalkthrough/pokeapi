@@ -1,5 +1,5 @@
-import { INamedPokeAPIResource } from '../../types';
 import { IDescription, INamedAPIResource } from '../utility';
+import { INamedPokeAPIResource } from '..';
 
 /**
  * Very general categories that loosely group move effects.

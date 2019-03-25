@@ -1,5 +1,5 @@
-import { INamedPokeAPIResource } from '../../types';
 import { IDescription, IName, INamedAPIResource } from '../utility';
+import { INamedPokeAPIResource } from '..';
 
 /**
  * Targets moves can be directed at during battle. Targets can be Pokémon, environments or even other moves.

@@ -1,5 +1,5 @@
-import { INamedPokeAPIResource } from '../../types';
 import { IName, INamedAPIResource, IVersionEncounterDetail } from '../utility';
+import { INamedPokeAPIResource } from '..';
 
 /**
  * Location areas are sections of areas, such as floors in a building or cave. Each area has its own set of possible Pokémon encounters.

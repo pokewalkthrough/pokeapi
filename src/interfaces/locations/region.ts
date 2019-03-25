@@ -1,5 +1,5 @@
-import { INamedPokeAPIResource } from '../../types';
 import { IName, INamedAPIResource } from '../utility';
+import { INamedPokeAPIResource } from '..';
 
 /**
  * A region is an organized area of the Pokémon world. Most often, the main difference between regions is the species of Pokémon that can be encountered within

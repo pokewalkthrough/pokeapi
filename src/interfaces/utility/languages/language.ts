@@ -1,5 +1,5 @@
 import { IName } from '../common';
-import { INamedPokeAPIResource } from '../../../types';
+import { INamedPokeAPIResource } from '../..';
 
 /**
  * Languages for translations of API resource information.

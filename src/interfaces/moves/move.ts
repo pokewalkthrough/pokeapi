@@ -1,6 +1,6 @@
 import { IAbilityEffectChange } from '../pokemon';
-import { INamedPokeAPIResource } from '../../types';
 import { IAPIResource, IMachineVersionDetail, IName, INamedAPIResource, IVerboseEffect } from '../utility';
+import { INamedPokeAPIResource } from '..';
 
 /**
  * Moves are the skills of Pokémon in battle. In battle, a Pokémon uses one move each turn. Some moves (including those learned by Hidden Machine) can be used
