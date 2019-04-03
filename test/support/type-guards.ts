@@ -4,6 +4,7 @@ import {
   IAbilityFlavorText,
   IAbilityPokemon,
   IAwesomeName,
+  IBerry,
   IBerryFlavorMap,
   IChainLink,
   IContestComboDetail,
@@ -61,9 +62,43 @@ import {
   IVersionGroupFlavorText,
 } from '../../src/interfaces';
 
+// Berry
+export function isBerry(resource: IBerry): resource is IBerry {
+  const expectedKeys: string[] = [
+    'firmness',
+    'flavors',
+    'growth_time',
+    'id',
+    'item',
+    'max_harvest',
+    'name',
+    'natural_gift_power',
+    'natural_gift_type',
+    'size',
+    'smoothness',
+    'soil_dryness',
+  ];
+
+  return (
+    isNamedAPIResource(resource.firmness) &&
+    isBerryFlavorMapArray(resource.flavors) &&
+    isNumber(resource.growth_time) &&
+    isNamedAPIResource(resource.item) &&
+    isNumber(resource.max_harvest) &&
+    isNumber(resource.natural_gift_power) &&
+    isNamedAPIResource(resource.natural_gift_type) &&
+    isNumber(resource.size) &&
+    isNumber(resource.smoothness) &&
+    isNumber(resource.soil_dryness) &&
+    isExpectedStructure(resource, expectedKeys)
+  );
+}
+
 // BerryFlavorMap
 function isBerryFlavorMap(resource: IBerryFlavorMap): resource is IBerryFlavorMap {
-  return isNamedAPIResource(resource.flavor) && isNumber(resource.potency);
+  const keys: string[] = Object.keys(resource);
+
+  return isNamedAPIResource(resource.flavor) && isNumber(resource.potency) && keys.length === 2;
 }
 
 export function isBerryFlavorMapArray(resource: IBerryFlavorMap[]): resource is IBerryFlavorMap[] {
@@ -590,7 +625,9 @@ export function isNameArray(resource: IName[]): resource is IName[] {
 
 // NamedAPIResource
 export function isNamedAPIResource(resource: INamedAPIResource): resource is INamedAPIResource {
-  return isString(resource.name) && isString(resource.url);
+  const keys: string[] = Object.keys(resource);
+
+  return isString(resource.name) && isString(resource.url) && keys.length === 2;
 }
 
 export function isNamedAPIResourceArray(resource: INamedAPIResource[]): resource is INamedAPIResource[] {
@@ -646,6 +683,14 @@ export function isContestComboSetsOrNull(value: IContestComboSets | null): value
   return isNull(value) || isContestComboSets(value);
 }
 
+function isExpectedStructure<T extends any>(resource: T, expectedKeys: string[]): boolean {
+  return (
+    Object.keys(resource).filter((value: string) => {
+      return !expectedKeys.includes(value);
+    }).length === 0
+  );
+}
+
 export function isMoveMetaDataOrNull(value: IMoveMetaData | null): value is IMoveMetaData | null {
   return isNull(value) || isMoveMetaData(value);
 }
@@ -674,14 +719,6 @@ export function isNumberOrNull(value: number | null): value is number | null {
   return isNull(value) || isNumber(value);
 }
 
-function isString(value: string): value is string {
-  return typeof value === 'string';
-}
-
-export function isStringOrNull(value: string | null): value is string | null {
-  return isNull(value) || isString(value);
-}
-
 function isResourceArray<T extends any>(resource: T[], resourceCheckMethod: (internalResource: T) => boolean): resource is T[] {
   if (Array.isArray(resource)) {
     if (resource.length === 0) {
@@ -694,4 +731,12 @@ function isResourceArray<T extends any>(resource: T[], resourceCheckMethod: (int
   } else {
     return false;
   }
+}
+
+function isString(value: string): value is string {
+  return typeof value === 'string';
+}
+
+export function isStringOrNull(value: string | null): value is string | null {
+  return isNull(value) || isString(value);
 }

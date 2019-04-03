@@ -36,8 +36,6 @@ export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResourc
           } else {
             expect(result).to.satisfy(isAPIResource);
           }
-
-          expect(result.url).to.be.a('string');
         }
       }
     });
@@ -54,9 +52,9 @@ export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResourc
         }
 
         for (const result of list.results) {
-          const resultsKeys: string[] = Object.keys(result);
+          const resultKeys: string[] = Object.keys(result);
 
-          for (const key of resultsKeys) {
+          for (const key of resultKeys) {
             if (listIsNamed) {
               expect(expectedNamedResultKeys.includes(key)).to.equal(true);
             } else {
@@ -73,11 +71,9 @@ export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResourc
 
         if (listIsNamed) {
           expect((item as INamedPokeAPIResource).name).to.be.a('string');
+        } else {
+          expect(item).to.not.haveOwnProperty('name');
         }
-        // TODO: insert else clause here:
-        /*
-          expect((item as IAPIResourceList).name.to.not.exist.or.something?
-        */
 
         itemTests(item);
       }
