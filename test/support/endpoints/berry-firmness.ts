@@ -1,9 +1,16 @@
 import { expect } from 'chai';
 
 import { IBerryFirmness } from '../../../src/interfaces';
-import { isNameArray, isNamedAPIResourceArray } from '../type-guards';
+import { nameTest, namedAPIResourceTest } from '../objects';
+import { numberTest, stringTest } from '../primitives';
 
-export function berryFirmnessTests(berryFirmness: IBerryFirmness): void {
-  expect(berryFirmness.berries).to.satisfy(isNamedAPIResourceArray);
-  expect(berryFirmness.names).to.satisfy(isNameArray);
+export function berryFirmnessTest(berryFirmness: IBerryFirmness): void {
+  expect(berryFirmness)
+    .to.be.an('object')
+    .and.to.have.keys(['berries', 'id', 'name', 'names']);
+
+  namedAPIResourceTest(...berryFirmness.berries);
+  numberTest(berryFirmness.id);
+  stringTest(false, berryFirmness.name);
+  nameTest(...berryFirmness.names);
 }
