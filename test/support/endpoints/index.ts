@@ -1,4 +1,4 @@
-export { berryTests } from './berry';
+export { berryTest } from './berry';
 export { berryFirmnessTests } from './berry-firmness';
 export { berryFlavorTests } from './berry-flavor';
 export { contestTypeTests } from './contest-type';

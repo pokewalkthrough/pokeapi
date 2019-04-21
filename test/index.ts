@@ -7,7 +7,7 @@ import {
   abilityTests,
   berryFirmnessTests,
   berryFlavorTests,
-  berryTests,
+  berryTest,
   characteristicTests,
   contestEffectTests,
   contestTypeTests,
@@ -100,7 +100,7 @@ describe('util', (): void => {
   });
 });
 
-endpointRunner('berry', berryTests, true);
+endpointRunner('berry', berryTest, true);
 endpointRunner('berry-firmness', berryFirmnessTests, true);
 endpointRunner('berry-flavor', berryFlavorTests, true);
 endpointRunner('contest-type', contestTypeTests, true);

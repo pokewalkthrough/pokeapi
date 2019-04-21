@@ -1,81 +1,75 @@
 import { expect } from 'chai';
 import fs from 'fs';
 
-import { IAPIResourceList, INamedAPIResourceList, INamedPokeAPIResource, IPokeAPIResource, TPokeAPIEndpoint } from '../../src/interfaces';
-
-import { isAPIResource, isNamedAPIResource, isStringOrNull } from './type-guards';
+import {
+  IAPIResource,
+  IAPIResourceList,
+  INamedAPIResource,
+  INamedAPIResourceList,
+  INamedPokeAPIResource,
+  IPokeAPIResource,
+  TPokeAPIEndpoint,
+} from '../../src/interfaces';
 
 // TODO: Run each endpoint once (for real) to ensure connectivity to endpoints
-// TODO: Check for the existence of extra/unexpected properties?
+// TODO: Check for the existence of extra/unexpected properties?  Check out Chai's `keys`
+// TODO: Infer listIsNamed property?  Do I really need to pass this in?
 export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResource>(
   endpoint: TPokeAPIEndpoint,
   itemTests: (resource: T) => void,
   listIsNamed: boolean,
 ): void {
   describe(`${endpoint}`, (): void => {
-    let list: IAPIResourceList | INamedAPIResourceList | undefined;
     let item: T | undefined;
+    let list: IAPIResourceList | INamedAPIResourceList | undefined;
 
     before(
       async (): Promise<void> => {
-        list = JSON.parse((await fs.promises.readFile(`./test/resources/${endpoint}-list.json`)).toString());
         item = JSON.parse((await fs.promises.readFile(`./test/resources/${endpoint}-item.json`)).toString());
+        list = JSON.parse((await fs.promises.readFile(`./test/resources/${endpoint}-list.json`)).toString());
       },
     );
 
-    it('list has expected properties', async (): Promise<void> => {
+    it('list has expected properties and no unexpected properties', (): void => {
       if (list) {
-        expect(list.count).to.be.a('number');
-        expect(list.count).to.be.greaterThan(0);
-        expect(list.next).to.satisfy(isStringOrNull);
-        expect(list.previous).to.satisfy(isStringOrNull);
+        expect(list)
+          .to.be.an('object')
+          .and.to.have.keys(['count', 'next', 'previous', 'results']);
 
-        for (const result of list.results) {
+        expect(list.count)
+          .to.be.a('number')
+          .and.to.be.greaterThan(0);
+
+        expect(list.next).to.be.oneOf(['string', null]);
+        expect(list.previous).to.be.oneOf(['string', null]);
+
+        list.results.forEach((result: IAPIResource | INamedAPIResource) => {
           if (listIsNamed) {
-            expect(result).to.satisfy(isNamedAPIResource);
+            expect(result)
+              .to.be.an('object')
+              .and.to.have.keys(['name', 'url']);
+
+            expect((result as INamedAPIResource).name).to.be.a('string');
+            expect(result.url).to.be.a('string');
           } else {
-            expect(result).to.satisfy(isAPIResource);
+            expect(result)
+              .to.be.an('object')
+              .to.have.keys(['url']);
+
+            expect(result as IAPIResource).to.not.haveOwnProperty('name');
+            expect(result.url).to.be.a('string');
           }
-        }
+        });
+      } else {
+        throw new Error(`Cannot find list for endpoint: '${endpoint}'`);
       }
     });
 
-    it('list has no unexpected properties', async (): Promise<void> => {
-      if (list) {
-        const keys: string[] = Object.keys(list);
-        const expectedKeys: string[] = ['count', 'next', 'previous', 'results'];
-        const expectedNamedResultKeys: string[] = ['name', 'url'];
-        const expectedResultKeys: string[] = ['url'];
-
-        for (const key of keys) {
-          expect(expectedKeys.includes(key)).to.equal(true);
-        }
-
-        for (const result of list.results) {
-          const resultKeys: string[] = Object.keys(result);
-
-          for (const key of resultKeys) {
-            if (listIsNamed) {
-              expect(expectedNamedResultKeys.includes(key)).to.equal(true);
-            } else {
-              expect(expectedResultKeys.includes(key)).to.equal(true);
-            }
-          }
-        }
-      }
-    });
-
-    it('item has expected properties', async (): Promise<void> => {
+    it('item has expected properties and no unexpected properties', (): void => {
       if (item) {
-        expect(item.id).to.be.a('number');
-
-        if (listIsNamed) {
-          expect((item as INamedPokeAPIResource).name).to.be.a('string');
-        } else {
-          expect(item).to.not.haveOwnProperty('name');
-        }
-
         itemTests(item);
+      } else {
+        throw new Error(`Cannot find item for endpoint: '${endpoint}'`);
       }
     });
   });
