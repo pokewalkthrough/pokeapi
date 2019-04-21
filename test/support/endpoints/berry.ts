@@ -25,5 +25,5 @@ export function berryTest(berry: IBerry): void {
   berryFlavorMapTest(...berry.flavors);
   namedAPIResourceTest(berry.firmness, berry.item, berry.natural_gift_type);
   numberTest(berry.growth_time, berry.id, berry.max_harvest, berry.natural_gift_power, berry.size, berry.smoothness, berry.soil_dryness);
-  stringTest(berry.name);
+  stringTest(false, berry.name);
 }

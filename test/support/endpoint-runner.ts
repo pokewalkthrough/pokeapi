@@ -11,14 +11,13 @@ import {
   TPokeAPIEndpoint,
 } from '../../src/interfaces';
 
+import { apiResourceTest, namedAPIResourceTest } from './objects';
+import { numberTest, stringTest } from './primitives';
+
 // TODO: Run each endpoint once (for real) to ensure connectivity to endpoints
 // TODO: Check for the existence of extra/unexpected properties?  Check out Chai's `keys`
 // TODO: Infer listIsNamed property?  Do I really need to pass this in?
-export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResource>(
-  endpoint: TPokeAPIEndpoint,
-  itemTests: (resource: T) => void,
-  listIsNamed: boolean,
-): void {
+export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResource>(endpoint: TPokeAPIEndpoint, itemTests: (resource: T) => void): void {
   describe(`${endpoint}`, (): void => {
     let item: T | undefined;
     let list: IAPIResourceList | INamedAPIResourceList | undefined;
@@ -36,30 +35,14 @@ export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResourc
           .to.be.an('object')
           .and.to.have.keys(['count', 'next', 'previous', 'results']);
 
-        expect(list.count)
-          .to.be.a('number')
-          .and.to.be.greaterThan(0);
+        numberTest(list.count);
+        stringTest(true, list.next, list.previous);
 
-        expect(list.next).to.be.oneOf(['string', null]);
-        expect(list.previous).to.be.oneOf(['string', null]);
-
-        list.results.forEach((result: IAPIResource | INamedAPIResource) => {
-          if (listIsNamed) {
-            expect(result)
-              .to.be.an('object')
-              .and.to.have.keys(['name', 'url']);
-
-            expect((result as INamedAPIResource).name).to.be.a('string');
-            expect(result.url).to.be.a('string');
-          } else {
-            expect(result)
-              .to.be.an('object')
-              .to.have.keys(['url']);
-
-            expect(result as IAPIResource).to.not.haveOwnProperty('name');
-            expect(result.url).to.be.a('string');
-          }
-        });
+        if (isListNamed(list)) {
+          namedAPIResourceTest(...list.results);
+        } else {
+          apiResourceTest(...list.results);
+        }
       } else {
         throw new Error(`Cannot find list for endpoint: '${endpoint}'`);
       }
@@ -73,4 +56,18 @@ export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResourc
       }
     });
   });
+}
+
+function isListNamed(list: IAPIResourceList | INamedAPIResourceList): list is INamedAPIResourceList {
+  let hasName: boolean = false;
+
+  if (list.results.length > 0 && isResourceNamed(list.results[0])) {
+    hasName = true;
+  }
+
+  return hasName;
+}
+
+function isResourceNamed(value: IAPIResource | INamedAPIResource): value is INamedAPIResource {
+  return value.hasOwnProperty('name');
 }

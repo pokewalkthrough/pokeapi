@@ -10,7 +10,7 @@ export function namedAPIResourceTest(...args: INamedAPIResource[]): void {
         .to.be.an('object')
         .and.to.have.keys(['name', 'url']);
 
-      stringTest(namedAPIResource.name, namedAPIResource.url);
+      stringTest(false, namedAPIResource.name, namedAPIResource.url);
     },
   );
 }
