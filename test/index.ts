@@ -6,7 +6,7 @@ import { endpointRunner } from './support/endpoint-runner';
 import {
   abilityTests,
   berryFirmnessTest,
-  berryFlavorTests,
+  berryFlavorTest,
   berryTest,
   characteristicTests,
   contestEffectTests,
@@ -102,7 +102,7 @@ describe('util', (): void => {
 
 endpointRunner('berry', berryTest);
 endpointRunner('berry-firmness', berryFirmnessTest);
-endpointRunner('berry-flavor', berryFlavorTests);
+endpointRunner('berry-flavor', berryFlavorTest);
 endpointRunner('contest-type', contestTypeTests);
 endpointRunner('contest-effect', contestEffectTests);
 endpointRunner('super-contest-effect', superContestEffectTests);

@@ -1,10 +1,17 @@
 import { expect } from 'chai';
 
 import { IBerryFlavor } from '../../../src/interfaces';
-import { isFlavorBerryMapArray, isNameArray, isNamedAPIResource } from '../type-guards';
+import { flavorBerryMapTest, nameTest, namedAPIResourceTest } from '../objects';
+import { numberTest, stringTest } from '../primitives';
 
-export function berryFlavorTests(berryFlavor: IBerryFlavor): void {
-  expect(berryFlavor.berries).to.satisfy(isFlavorBerryMapArray);
-  expect(berryFlavor.contest_type).to.satisfy(isNamedAPIResource);
-  expect(berryFlavor.names).to.satisfy(isNameArray);
+export function berryFlavorTest(berryFlavor: IBerryFlavor): void {
+  expect(berryFlavor)
+    .to.be.an('object')
+    .and.to.have.keys(['berries', 'contest_type', 'id', 'name', 'names']);
+
+  flavorBerryMapTest(...berryFlavor.berries);
+  namedAPIResourceTest(berryFlavor.contest_type);
+  numberTest(berryFlavor.id);
+  stringTest(false, berryFlavor.name);
+  nameTest(...berryFlavor.names);
 }

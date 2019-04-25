@@ -1,6 +1,6 @@
 export { berryTest } from './berry';
 export { berryFirmnessTest } from './berry-firmness';
-export { berryFlavorTests } from './berry-flavor';
+export { berryFlavorTest } from './berry-flavor';
 export { contestTypeTests } from './contest-type';
 export { contestEffectTests } from './contest-effect';
 export { superContestEffectTests } from './super-contest-effect';

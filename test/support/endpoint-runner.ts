@@ -15,8 +15,6 @@ import { apiResourceTest, namedAPIResourceTest } from './objects';
 import { numberTest, stringTest } from './primitives';
 
 // TODO: Run each endpoint once (for real) to ensure connectivity to endpoints
-// TODO: Check for the existence of extra/unexpected properties?  Check out Chai's `keys`
-// TODO: Infer listIsNamed property?  Do I really need to pass this in?
 export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResource>(endpoint: TPokeAPIEndpoint, itemTests: (resource: T) => void): void {
   describe(`${endpoint}`, (): void => {
     let item: T | undefined;
