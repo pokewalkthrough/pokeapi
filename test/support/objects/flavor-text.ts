@@ -13,7 +13,7 @@ export function flavorTextTest(...args: IFlavorText[]): void {
         .and.to.have.keys(['flavor_text', 'language']);
 
       stringTest(false, flavorText.flavor_text);
-      namedAPIResourceTest(flavorText.language);
+      namedAPIResourceTest(false, flavorText.language);
     },
   );
 }

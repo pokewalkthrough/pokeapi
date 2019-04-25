@@ -11,5 +11,5 @@ export function contestEffectTest(contestEffect: IContestEffect): void {
 
   effectTest(...contestEffect.effect_entries);
   flavorTextTest(...contestEffect.flavor_text_entries);
-  numberTest(contestEffect.appeal, contestEffect.id, contestEffect.jam);
+  numberTest(false, contestEffect.appeal, contestEffect.id, contestEffect.jam);
 }

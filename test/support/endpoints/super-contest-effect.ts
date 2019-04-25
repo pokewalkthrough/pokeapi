@@ -10,6 +10,6 @@ export function superContestEffectTest(superContestEffect: ISuperContestEffect):
     .and.to.have.keys(['appeal', 'flavor_text_entries', 'id', 'moves']);
 
   flavorTextTest(...superContestEffect.flavor_text_entries);
-  namedAPIResourceTest(...superContestEffect.moves);
-  numberTest(superContestEffect.appeal, superContestEffect.id);
+  namedAPIResourceTest(false, ...superContestEffect.moves);
+  numberTest(false, superContestEffect.appeal, superContestEffect.id);
 }

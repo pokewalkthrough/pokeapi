@@ -33,11 +33,11 @@ export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResourc
           .to.be.an('object')
           .and.to.have.keys(['count', 'next', 'previous', 'results']);
 
-        numberTest(list.count);
+        numberTest(false, list.count);
         stringTest(true, list.next, list.previous);
 
         if (isListNamed(list)) {
-          namedAPIResourceTest(...list.results);
+          namedAPIResourceTest(false, ...list.results);
         } else {
           apiResourceTest(...list.results);
         }

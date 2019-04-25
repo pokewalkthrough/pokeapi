@@ -1,9 +1,15 @@
 import { expect } from 'chai';
 
 import { IEvolutionChain } from '../../../src/interfaces';
-import { isChainLink, isNamedAPIResourceOrNull } from '../type-guards';
+import { chainLinkTest, namedAPIResourceTest } from '../objects';
+import { numberTest } from '../primitives';
 
-export function evolutionChainTests(evolutionChain: IEvolutionChain): void {
-  expect(evolutionChain.baby_trigger_item).to.satisfy(isNamedAPIResourceOrNull);
-  expect(evolutionChain.chain).to.satisfy(isChainLink);
+export function evolutionChainTest(evolutionChain: IEvolutionChain): void {
+  expect(evolutionChain)
+    .to.be.an('object')
+    .and.to.have.keys(['baby_trigger_item', 'chain', 'id']);
+
+  chainLinkTest(evolutionChain.chain);
+  namedAPIResourceTest(true, evolutionChain.baby_trigger_item);
+  numberTest(false, evolutionChain.id);
 }

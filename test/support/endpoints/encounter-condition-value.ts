@@ -10,7 +10,7 @@ export function encounterConditionValueTest(encounterConditionValue: IEncounterC
     .and.to.have.keys(['condition', 'id', 'name', 'names']);
 
   nameTest(...encounterConditionValue.names);
-  namedAPIResourceTest(encounterConditionValue.condition);
-  numberTest(encounterConditionValue.id);
+  namedAPIResourceTest(false, encounterConditionValue.condition);
+  numberTest(false, encounterConditionValue.id);
   stringTest(false, encounterConditionValue.name);
 }

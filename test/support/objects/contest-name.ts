@@ -12,7 +12,7 @@ export function contestNameTest(...args: IContestName[]): void {
         .to.be.an('object')
         .and.to.have.keys(['color', 'language', 'name']);
 
-      namedAPIResourceTest(contestName.language);
+      namedAPIResourceTest(false, contestName.language);
       stringTest(false, contestName.color, contestName.name);
     },
   );

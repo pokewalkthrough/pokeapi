@@ -12,7 +12,7 @@ export function nameTest(...args: IName[]): void {
         .to.be.an('object')
         .and.to.have.keys(['language', 'name']);
 
-      namedAPIResourceTest(name.language);
+      namedAPIResourceTest(false, name.language);
       stringTest(false, name.name);
     },
   );

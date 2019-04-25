@@ -10,8 +10,8 @@ export function berryFlavorTest(berryFlavor: IBerryFlavor): void {
     .and.to.have.keys(['berries', 'contest_type', 'id', 'name', 'names']);
 
   flavorBerryMapTest(...berryFlavor.berries);
-  namedAPIResourceTest(berryFlavor.contest_type);
-  numberTest(berryFlavor.id);
+  namedAPIResourceTest(false, berryFlavor.contest_type);
+  numberTest(false, berryFlavor.id);
   stringTest(false, berryFlavor.name);
   nameTest(...berryFlavor.names);
 }

@@ -12,8 +12,8 @@ export function berryFlavorMapTest(...args: IBerryFlavorMap[]): void {
         .to.be.an('object')
         .and.to.have.keys(['flavor', 'potency']);
 
-      namedAPIResourceTest(berryFlavorMap.flavor);
-      numberTest(berryFlavorMap.potency);
+      namedAPIResourceTest(false, berryFlavorMap.flavor);
+      numberTest(false, berryFlavorMap.potency);
     },
   );
 }

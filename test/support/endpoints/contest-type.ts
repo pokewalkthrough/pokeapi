@@ -10,7 +10,7 @@ export function contestTypeTest(contestType: IContestType): void {
     .and.to.have.keys(['berry_flavor', 'id', 'name', 'names']);
 
   contestNameTest(...contestType.names);
-  namedAPIResourceTest(contestType.berry_flavor);
-  numberTest(contestType.id);
+  namedAPIResourceTest(false, contestType.berry_flavor);
+  numberTest(false, contestType.id);
   stringTest(false, contestType.name);
 }

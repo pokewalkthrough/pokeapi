@@ -10,6 +10,6 @@ export function encounterMethodTest(encounterMethod: IEncounterMethod): void {
     .and.to.have.keys(['id', 'name', 'names', 'order']);
 
   nameTest(...encounterMethod.names);
-  numberTest(encounterMethod.id, encounterMethod.order);
+  numberTest(false, encounterMethod.id, encounterMethod.order);
   stringTest(false, encounterMethod.name);
 }

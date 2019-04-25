@@ -15,7 +15,7 @@ import {
   encounterConditionTest,
   encounterConditionValueTest,
   encounterMethodTest,
-  evolutionChainTests,
+  evolutionChainTest,
   evolutionTriggerTests,
   genderTests,
   generationTests,
@@ -109,7 +109,7 @@ endpointRunner('super-contest-effect', superContestEffectTest);
 endpointRunner('encounter-method', encounterMethodTest);
 endpointRunner('encounter-condition', encounterConditionTest);
 endpointRunner('encounter-condition-value', encounterConditionValueTest);
-endpointRunner('evolution-chain', evolutionChainTests);
+endpointRunner('evolution-chain', evolutionChainTest);
 endpointRunner('evolution-trigger', evolutionTriggerTests);
 endpointRunner('generation', generationTests);
 endpointRunner('pokedex', pokedexTests);

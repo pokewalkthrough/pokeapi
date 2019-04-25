@@ -10,7 +10,7 @@ export function berryFirmnessTest(berryFirmness: IBerryFirmness): void {
     .and.to.have.keys(['berries', 'id', 'name', 'names']);
 
   nameTest(...berryFirmness.names);
-  namedAPIResourceTest(...berryFirmness.berries);
-  numberTest(berryFirmness.id);
+  namedAPIResourceTest(false, ...berryFirmness.berries);
+  numberTest(false, berryFirmness.id);
   stringTest(false, berryFirmness.name);
 }

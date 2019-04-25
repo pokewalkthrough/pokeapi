@@ -12,8 +12,8 @@ export function flavorBerryMapTest(...args: IFlavorBerryMap[]): void {
         .to.be.an('object')
         .and.to.have.keys(['berry', 'potency']);
 
-      namedAPIResourceTest(flavorBerryMap.berry);
-      numberTest(flavorBerryMap.potency);
+      namedAPIResourceTest(false, flavorBerryMap.berry);
+      numberTest(false, flavorBerryMap.potency);
     },
   );
 }
