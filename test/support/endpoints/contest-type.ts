@@ -1,9 +1,16 @@
 import { expect } from 'chai';
 
 import { IContestType } from '../../../src/interfaces';
-import { isContestNameArray, isNamedAPIResource } from '../type-guards';
+import { contestNameTest, namedAPIResourceTest } from '../objects';
+import { numberTest, stringTest } from '../primitives';
 
-export function contestTypeTests(contestType: IContestType): void {
-  expect(contestType.berry_flavor).to.satisfy(isNamedAPIResource);
-  expect(contestType.names).to.satisfy(isContestNameArray);
+export function contestTypeTest(contestType: IContestType): void {
+  expect(contestType)
+    .to.be.an('object')
+    .and.to.have.keys(['berry_flavor', 'id', 'name', 'names']);
+
+  contestNameTest(...contestType.names);
+  namedAPIResourceTest(contestType.berry_flavor);
+  numberTest(contestType.id);
+  stringTest(false, contestType.name);
 }

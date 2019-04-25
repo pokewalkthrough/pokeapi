@@ -10,7 +10,7 @@ import {
   berryTest,
   characteristicTests,
   contestEffectTests,
-  contestTypeTests,
+  contestTypeTest,
   eggGroupTests,
   encounterConditionTests,
   encounterConditionValueTests,
@@ -103,7 +103,7 @@ describe('util', (): void => {
 endpointRunner('berry', berryTest);
 endpointRunner('berry-firmness', berryFirmnessTest);
 endpointRunner('berry-flavor', berryFlavorTest);
-endpointRunner('contest-type', contestTypeTests);
+endpointRunner('contest-type', contestTypeTest);
 endpointRunner('contest-effect', contestEffectTests);
 endpointRunner('super-contest-effect', superContestEffectTests);
 endpointRunner('encounter-method', encounterMethodTests);

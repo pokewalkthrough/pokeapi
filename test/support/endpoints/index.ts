@@ -1,7 +1,7 @@
 export { berryTest } from './berry';
 export { berryFirmnessTest } from './berry-firmness';
 export { berryFlavorTest } from './berry-flavor';
-export { contestTypeTests } from './contest-type';
+export { contestTypeTest } from './contest-type';
 export { contestEffectTests } from './contest-effect';
 export { superContestEffectTests } from './super-contest-effect';
 export { encounterMethodTests } from './encounter-method';
