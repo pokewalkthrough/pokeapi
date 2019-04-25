@@ -6,7 +6,7 @@ export { contestEffectTest } from './contest-effect';
 export { superContestEffectTest } from './super-contest-effect';
 export { encounterMethodTest } from './encounter-method';
 export { encounterConditionTest } from './encounter-condition';
-export { encounterConditionValueTests } from './encounter-condition-value';
+export { encounterConditionValueTest } from './encounter-condition-value';
 export { evolutionChainTests } from './evolution-chain';
 export { evolutionTriggerTests } from './evolution-trigger';
 export { generationTests } from './generation';

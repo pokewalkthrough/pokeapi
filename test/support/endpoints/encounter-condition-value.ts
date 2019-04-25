@@ -1,9 +1,16 @@
 import { expect } from 'chai';
 
 import { IEncounterConditionValue } from '../../../src/interfaces';
-import { isNameArray, isNamedAPIResource } from '../type-guards';
+import { nameTest, namedAPIResourceTest } from '../objects';
+import { numberTest, stringTest } from '../primitives';
 
-export function encounterConditionValueTests(encounterConditionValue: IEncounterConditionValue): void {
-  expect(encounterConditionValue.condition).to.satisfy(isNamedAPIResource);
-  expect(encounterConditionValue.names).to.satisfy(isNameArray);
+export function encounterConditionValueTest(encounterConditionValue: IEncounterConditionValue): void {
+  expect(encounterConditionValue)
+    .to.be.an('object')
+    .and.to.have.keys(['condition', 'id', 'name', 'names']);
+
+  nameTest(...encounterConditionValue.names);
+  namedAPIResourceTest(encounterConditionValue.condition);
+  numberTest(encounterConditionValue.id);
+  stringTest(false, encounterConditionValue.name);
 }

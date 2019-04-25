@@ -13,7 +13,7 @@ import {
   contestTypeTest,
   eggGroupTests,
   encounterConditionTest,
-  encounterConditionValueTests,
+  encounterConditionValueTest,
   encounterMethodTest,
   evolutionChainTests,
   evolutionTriggerTests,
@@ -108,7 +108,7 @@ endpointRunner('contest-effect', contestEffectTest);
 endpointRunner('super-contest-effect', superContestEffectTest);
 endpointRunner('encounter-method', encounterMethodTest);
 endpointRunner('encounter-condition', encounterConditionTest);
-endpointRunner('encounter-condition-value', encounterConditionValueTests);
+endpointRunner('encounter-condition-value', encounterConditionValueTest);
 endpointRunner('evolution-chain', evolutionChainTests);
 endpointRunner('evolution-trigger', evolutionTriggerTests);
 endpointRunner('generation', generationTests);
