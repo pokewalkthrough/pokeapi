@@ -15,17 +15,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/pokequest/pokeapi.git"
+    "url": "git+ssh://git@github.com/pokewalkthrough/pokeapi.git"
   },
   "keywords": [
     "PokeAPI",
     "Pokemon",
-    "PokeQuest"
+    "PokeWalkthrough"
   ],
   "author": "Michael Randolph <mrand01@gmail.com> (https://github.com/mrand01)",
   "license": "MIT",
-  "bugs": "https://github.com/pokequest/pokeapi/issues",
-  "homepage": "https://github.com/pokequest/pokeapi#readme",
+  "bugs": "https://github.com/pokewalkthrough/pokeapi/issues",
+  "homepage": "https://github.com/pokewalkthrough/pokeapi#readme",
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
