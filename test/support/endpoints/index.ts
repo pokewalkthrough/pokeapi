@@ -2,7 +2,7 @@ export { berryTest } from './berry';
 export { berryFirmnessTest } from './berry-firmness';
 export { berryFlavorTest } from './berry-flavor';
 export { contestTypeTest } from './contest-type';
-export { contestEffectTests } from './contest-effect';
+export { contestEffectTest } from './contest-effect';
 export { superContestEffectTests } from './super-contest-effect';
 export { encounterMethodTests } from './encounter-method';
 export { encounterConditionTests } from './encounter-condition';

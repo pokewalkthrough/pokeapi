@@ -1,11 +1,15 @@
 import { expect } from 'chai';
 
 import { IContestEffect } from '../../../src/interfaces';
-import { isEffectArray, isFlavorTextArray } from '../type-guards';
+import { effectTest, flavorTextTest } from '../objects';
+import { numberTest } from '../primitives';
 
-export function contestEffectTests(contestEffect: IContestEffect): void {
-  expect(contestEffect.appeal).to.be.a('number');
-  expect(contestEffect.effect_entries).to.satisfy(isEffectArray);
-  expect(contestEffect.flavor_text_entries).to.satisfy(isFlavorTextArray);
-  expect(contestEffect.jam).to.be.a('number');
+export function contestEffectTest(contestEffect: IContestEffect): void {
+  expect(contestEffect)
+    .to.be.an('object')
+    .and.to.have.keys(['appeal', 'effect_entries', 'flavor_text_entries', 'id', 'jam']);
+
+  numberTest(contestEffect.appeal, contestEffect.id, contestEffect.jam);
+  effectTest(...contestEffect.effect_entries);
+  flavorTextTest(...contestEffect.flavor_text_entries);
 }

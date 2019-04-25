@@ -9,7 +9,7 @@ import {
   berryFlavorTest,
   berryTest,
   characteristicTests,
-  contestEffectTests,
+  contestEffectTest,
   contestTypeTest,
   eggGroupTests,
   encounterConditionTests,
@@ -104,7 +104,7 @@ endpointRunner('berry', berryTest);
 endpointRunner('berry-firmness', berryFirmnessTest);
 endpointRunner('berry-flavor', berryFlavorTest);
 endpointRunner('contest-type', contestTypeTest);
-endpointRunner('contest-effect', contestEffectTests);
+endpointRunner('contest-effect', contestEffectTest);
 endpointRunner('super-contest-effect', superContestEffectTests);
 endpointRunner('encounter-method', encounterMethodTests);
 endpointRunner('encounter-condition', encounterConditionTests);
