@@ -5,7 +5,7 @@ export { contestTypeTest } from './contest-type';
 export { contestEffectTest } from './contest-effect';
 export { superContestEffectTest } from './super-contest-effect';
 export { encounterMethodTest } from './encounter-method';
-export { encounterConditionTests } from './encounter-condition';
+export { encounterConditionTest } from './encounter-condition';
 export { encounterConditionValueTests } from './encounter-condition-value';
 export { evolutionChainTests } from './evolution-chain';
 export { evolutionTriggerTests } from './evolution-trigger';
