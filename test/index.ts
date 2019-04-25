@@ -48,7 +48,7 @@ import {
   pokemonTests,
   regionTests,
   statTests,
-  superContestEffectTests,
+  superContestEffectTest,
   typeTests,
   versionGroupTests,
   versionTests,
@@ -105,7 +105,7 @@ endpointRunner('berry-firmness', berryFirmnessTest);
 endpointRunner('berry-flavor', berryFlavorTest);
 endpointRunner('contest-type', contestTypeTest);
 endpointRunner('contest-effect', contestEffectTest);
-endpointRunner('super-contest-effect', superContestEffectTests);
+endpointRunner('super-contest-effect', superContestEffectTest);
 endpointRunner('encounter-method', encounterMethodTests);
 endpointRunner('encounter-condition', encounterConditionTests);
 endpointRunner('encounter-condition-value', encounterConditionValueTests);

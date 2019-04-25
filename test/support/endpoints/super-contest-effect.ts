@@ -1,10 +1,15 @@
 import { expect } from 'chai';
 
 import { ISuperContestEffect } from '../../../src/interfaces';
-import { isFlavorTextArray, isNamedAPIResourceArray } from '../type-guards';
+import { flavorTextTest, namedAPIResourceTest } from '../objects';
+import { numberTest } from '../primitives';
 
-export function superContestEffectTests(superContestEffect: ISuperContestEffect): void {
-  expect(superContestEffect.appeal).to.be.a('number');
-  expect(superContestEffect.flavor_text_entries).to.satisfy(isFlavorTextArray);
-  expect(superContestEffect.moves).to.satisfy(isNamedAPIResourceArray);
+export function superContestEffectTest(superContestEffect: ISuperContestEffect): void {
+  expect(superContestEffect)
+    .to.be.an('object')
+    .and.to.have.keys(['appeal', 'flavor_text_entries', 'id', 'moves']);
+
+  flavorTextTest(...superContestEffect.flavor_text_entries);
+  namedAPIResourceTest(...superContestEffect.moves);
+  numberTest(superContestEffect.appeal, superContestEffect.id);
 }
