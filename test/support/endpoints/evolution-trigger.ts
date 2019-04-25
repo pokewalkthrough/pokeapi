@@ -1,9 +1,16 @@
 import { expect } from 'chai';
 
 import { IEvolutionTrigger } from '../../../src/interfaces';
-import { isNameArray, isNamedAPIResourceArray } from '../type-guards';
+import { nameTest, namedAPIResourceTest } from '../objects';
+import { numberTest, stringTest } from '../primitives';
 
-export function evolutionTriggerTests(evolutionTrigger: IEvolutionTrigger): void {
-  expect(evolutionTrigger.names).to.satisfy(isNameArray);
-  expect(evolutionTrigger.pokemon_species).to.satisfy(isNamedAPIResourceArray);
+export function evolutionTriggerTest(evolutionTrigger: IEvolutionTrigger): void {
+  expect(evolutionTrigger)
+    .to.be.an('object')
+    .and.to.have.keys(['id', 'name', 'names', 'pokemon_species']);
+
+  nameTest(...evolutionTrigger.names);
+  namedAPIResourceTest(false, ...evolutionTrigger.pokemon_species);
+  numberTest(false, evolutionTrigger.id);
+  stringTest(false, evolutionTrigger.name);
 }

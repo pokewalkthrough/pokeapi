@@ -8,7 +8,7 @@ export { encounterMethodTest } from './encounter-method';
 export { encounterConditionTest } from './encounter-condition';
 export { encounterConditionValueTest } from './encounter-condition-value';
 export { evolutionChainTest } from './evolution-chain';
-export { evolutionTriggerTests } from './evolution-trigger';
+export { evolutionTriggerTest } from './evolution-trigger';
 export { generationTests } from './generation';
 export { pokedexTests } from './pokedex';
 export { versionTests } from './version';
