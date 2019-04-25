@@ -4,7 +4,7 @@ export { berryFlavorTest } from './berry-flavor';
 export { contestTypeTest } from './contest-type';
 export { contestEffectTest } from './contest-effect';
 export { superContestEffectTest } from './super-contest-effect';
-export { encounterMethodTests } from './encounter-method';
+export { encounterMethodTest } from './encounter-method';
 export { encounterConditionTests } from './encounter-condition';
 export { encounterConditionValueTests } from './encounter-condition-value';
 export { evolutionChainTests } from './evolution-chain';

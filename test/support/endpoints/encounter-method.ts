@@ -1,9 +1,15 @@
 import { expect } from 'chai';
 
 import { IEncounterMethod } from '../../../src/interfaces';
-import { isNameArray } from '../type-guards';
+import { nameTest } from '../objects';
+import { numberTest, stringTest } from '../primitives';
 
-export function encounterMethodTests(encounterMethod: IEncounterMethod): void {
-  expect(encounterMethod.names).to.satisfy(isNameArray);
-  expect(encounterMethod.order).to.be.a('number');
+export function encounterMethodTest(encounterMethod: IEncounterMethod): void {
+  expect(encounterMethod)
+    .to.be.an('object')
+    .and.to.have.keys(['id', 'name', 'names', 'order']);
+
+  nameTest(...encounterMethod.names);
+  numberTest(encounterMethod.id, encounterMethod.order);
+  stringTest(false, encounterMethod.name);
 }

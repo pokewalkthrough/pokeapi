@@ -14,7 +14,7 @@ import {
   eggGroupTests,
   encounterConditionTests,
   encounterConditionValueTests,
-  encounterMethodTests,
+  encounterMethodTest,
   evolutionChainTests,
   evolutionTriggerTests,
   genderTests,
@@ -106,7 +106,7 @@ endpointRunner('berry-flavor', berryFlavorTest);
 endpointRunner('contest-type', contestTypeTest);
 endpointRunner('contest-effect', contestEffectTest);
 endpointRunner('super-contest-effect', superContestEffectTest);
-endpointRunner('encounter-method', encounterMethodTests);
+endpointRunner('encounter-method', encounterMethodTest);
 endpointRunner('encounter-condition', encounterConditionTests);
 endpointRunner('encounter-condition-value', encounterConditionValueTests);
 endpointRunner('evolution-chain', evolutionChainTests);
