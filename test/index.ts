@@ -18,7 +18,7 @@ import {
   evolutionChainTest,
   evolutionTriggerTest,
   genderTests,
-  generationTests,
+  generationTest,
   growthRateTests,
   itemAttributeTests,
   itemCategoryTests,
@@ -111,7 +111,7 @@ endpointRunner('encounter-condition', encounterConditionTest);
 endpointRunner('encounter-condition-value', encounterConditionValueTest);
 endpointRunner('evolution-chain', evolutionChainTest);
 endpointRunner('evolution-trigger', evolutionTriggerTest);
-endpointRunner('generation', generationTests);
+endpointRunner('generation', generationTest);
 endpointRunner('pokedex', pokedexTests);
 endpointRunner('version', versionTests);
 endpointRunner('version-group', versionGroupTests);

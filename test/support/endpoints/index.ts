@@ -9,7 +9,7 @@ export { encounterConditionTest } from './encounter-condition';
 export { encounterConditionValueTest } from './encounter-condition-value';
 export { evolutionChainTest } from './evolution-chain';
 export { evolutionTriggerTest } from './evolution-trigger';
-export { generationTests } from './generation';
+export { generationTest } from './generation';
 export { pokedexTests } from './pokedex';
 export { versionTests } from './version';
 export { versionGroupTests } from './version-group';

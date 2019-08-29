@@ -1,14 +1,24 @@
 import { expect } from 'chai';
 
 import { IGeneration } from '../../../src/interfaces';
-import { isNameArray, isNamedAPIResource, isNamedAPIResourceArray } from '../type-guards';
+import { nameTest, namedAPIResourceTest } from '../objects';
+import { numberTest, stringTest } from '../primitives';
 
-export function generationTests(generation: IGeneration): void {
-  expect(generation.abilities).to.satisfy(isNamedAPIResourceArray);
-  expect(generation.names).to.satisfy(isNameArray);
-  expect(generation.main_region).to.satisfy(isNamedAPIResource);
-  expect(generation.moves).to.satisfy(isNamedAPIResourceArray);
-  expect(generation.pokemon_species).to.satisfy(isNamedAPIResourceArray);
-  expect(generation.types).to.satisfy(isNamedAPIResourceArray);
-  expect(generation.version_groups).to.satisfy(isNamedAPIResourceArray);
+export function generationTest(generation: IGeneration): void {
+  expect(generation)
+    .to.be.an('object')
+    .and.to.have.keys(['abilities', 'id', 'main_region', 'moves', 'name', 'names', 'pokemon_species', 'types', 'version_groups']);
+
+  nameTest(...generation.names);
+  namedAPIResourceTest(
+    false,
+    ...generation.abilities,
+    generation.main_region,
+    ...generation.moves,
+    ...generation.pokemon_species,
+    ...generation.types,
+    ...generation.version_groups,
+  );
+  numberTest(false, generation.id);
+  stringTest(false, generation.name);
 }
