@@ -10,7 +10,7 @@ export { encounterConditionValueTest } from './encounter-condition-value';
 export { evolutionChainTest } from './evolution-chain';
 export { evolutionTriggerTest } from './evolution-trigger';
 export { generationTest } from './generation';
-export { pokedexTests } from './pokedex';
+export { pokedexTest } from './pokedex';
 export { versionTests } from './version';
 export { versionGroupTests } from './version-group';
 export { itemTests } from './item';

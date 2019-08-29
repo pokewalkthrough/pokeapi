@@ -39,7 +39,7 @@ import {
   natureTests,
   palParkAreaTests,
   pokeathlonStatTests,
-  pokedexTests,
+  pokedexTest,
   pokemonColorTests,
   pokemonFormTests,
   pokemonHabitatTests,
@@ -112,7 +112,7 @@ endpointRunner('encounter-condition-value', encounterConditionValueTest);
 endpointRunner('evolution-chain', evolutionChainTest);
 endpointRunner('evolution-trigger', evolutionTriggerTest);
 endpointRunner('generation', generationTest);
-endpointRunner('pokedex', pokedexTests);
+endpointRunner('pokedex', pokedexTest);
 endpointRunner('version', versionTests);
 endpointRunner('version-group', versionGroupTests);
 endpointRunner('item', itemTests);
