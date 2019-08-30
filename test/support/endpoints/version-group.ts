@@ -1,13 +1,22 @@
 import { expect } from 'chai';
 
 import { IVersionGroup } from '../../../src/interfaces';
-import { isNamedAPIResource, isNamedAPIResourceArray } from '../type-guards';
+import { namedAPIResourceTest } from '../objects';
+import { numberTest, stringTest } from '../primitives';
 
-export function versionGroupTests(versionGroup: IVersionGroup): void {
-  expect(versionGroup.order).to.be.a('number');
-  expect(versionGroup.generation).to.satisfy(isNamedAPIResource);
-  expect(versionGroup.move_learn_methods).to.satisfy(isNamedAPIResourceArray);
-  expect(versionGroup.pokedexes).to.satisfy(isNamedAPIResourceArray);
-  expect(versionGroup.regions).to.satisfy(isNamedAPIResourceArray);
-  expect(versionGroup.versions).to.satisfy(isNamedAPIResourceArray);
+export function versionGroupTest(versionGroup: IVersionGroup): void {
+  expect(versionGroup)
+    .to.be.an('object')
+    .and.to.have.keys(['generation', 'id', 'move_learn_methods', 'name', 'order', 'pokedexes', 'regions', 'versions']);
+
+  namedAPIResourceTest(
+    false,
+    versionGroup.generation,
+    ...versionGroup.move_learn_methods,
+    ...versionGroup.pokedexes,
+    ...versionGroup.regions,
+    ...versionGroup.versions,
+  );
+  numberTest(false, versionGroup.id, versionGroup.order);
+  stringTest(false, versionGroup.name);
 }

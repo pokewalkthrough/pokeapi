@@ -12,7 +12,7 @@ export { evolutionTriggerTest } from './evolution-trigger';
 export { generationTest } from './generation';
 export { pokedexTest } from './pokedex';
 export { versionTest } from './version';
-export { versionGroupTests } from './version-group';
+export { versionGroupTest } from './version-group';
 export { itemTests } from './item';
 export { itemAttributeTests } from './item-attribute';
 export { itemCategoryTests } from './item-category';

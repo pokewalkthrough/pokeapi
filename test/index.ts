@@ -50,7 +50,7 @@ import {
   statTests,
   superContestEffectTest,
   typeTests,
-  versionGroupTests,
+  versionGroupTest,
   versionTest,
 } from './support/endpoints';
 
@@ -114,7 +114,7 @@ endpointRunner('evolution-trigger', evolutionTriggerTest);
 endpointRunner('generation', generationTest);
 endpointRunner('pokedex', pokedexTest);
 endpointRunner('version', versionTest);
-endpointRunner('version-group', versionGroupTests);
+endpointRunner('version-group', versionGroupTest);
 endpointRunner('item', itemTests);
 endpointRunner('item-attribute', itemAttributeTests);
 endpointRunner('item-category', itemCategoryTests);
