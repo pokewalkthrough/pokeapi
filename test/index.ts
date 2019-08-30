@@ -51,7 +51,7 @@ import {
   superContestEffectTest,
   typeTests,
   versionGroupTests,
-  versionTests,
+  versionTest,
 } from './support/endpoints';
 
 describe('util', (): void => {
@@ -113,7 +113,7 @@ endpointRunner('evolution-chain', evolutionChainTest);
 endpointRunner('evolution-trigger', evolutionTriggerTest);
 endpointRunner('generation', generationTest);
 endpointRunner('pokedex', pokedexTest);
-endpointRunner('version', versionTests);
+endpointRunner('version', versionTest);
 endpointRunner('version-group', versionGroupTests);
 endpointRunner('item', itemTests);
 endpointRunner('item-attribute', itemAttributeTests);

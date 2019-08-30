@@ -11,7 +11,7 @@ export { evolutionChainTest } from './evolution-chain';
 export { evolutionTriggerTest } from './evolution-trigger';
 export { generationTest } from './generation';
 export { pokedexTest } from './pokedex';
-export { versionTests } from './version';
+export { versionTest } from './version';
 export { versionGroupTests } from './version-group';
 export { itemTests } from './item';
 export { itemAttributeTests } from './item-attribute';
