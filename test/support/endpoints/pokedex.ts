@@ -2,7 +2,7 @@ import { expect } from 'chai';
 
 import { IPokedex } from '../../../src/interfaces';
 import { descriptionTest, nameTest, namedAPIResourceTest, pokemonEntryTest } from '../objects';
-import { booleanTest } from '../primitives';
+import { booleanTest, numberTest, stringTest } from '../primitives';
 
 export function pokedexTest(pokedex: IPokedex): void {
   expect(pokedex)
@@ -14,5 +14,7 @@ export function pokedexTest(pokedex: IPokedex): void {
   nameTest(...pokedex.names);
   namedAPIResourceTest(true, pokedex.region);
   namedAPIResourceTest(false, ...pokedex.version_groups);
+  numberTest(false, pokedex.id);
   pokemonEntryTest(...pokedex.pokemon_entries);
+  stringTest(false, pokedex.name);
 }
