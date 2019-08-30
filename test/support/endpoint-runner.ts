@@ -39,7 +39,7 @@ export function endpointRunner<T extends IPokeAPIResource | INamedPokeAPIResourc
         if (isListNamed(list)) {
           namedAPIResourceTest(false, ...list.results);
         } else {
-          apiResourceTest(...list.results);
+          apiResourceTest(false, ...list.results);
         }
       } else {
         throw new Error(`Cannot find list for endpoint: '${endpoint}'`);

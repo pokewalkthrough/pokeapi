@@ -3,7 +3,7 @@ import { expect } from 'chai';
 import { INamedAPIResource } from '../../../src/interfaces';
 import { stringTest } from '../primitives';
 
-// TODO: remove allowNull and just write better tests?
+// TODO: anything with allowNull should be refactored into separate tests (eg: namedAPIResourceOrNullTest)
 export function namedAPIResourceTest(allowNull: false, ...args: INamedAPIResource[]): void;
 export function namedAPIResourceTest(allowNull: true, ...args: Array<INamedAPIResource | null>): void;
 export function namedAPIResourceTest(allowNull: boolean, ...args: Array<INamedAPIResource | null>): void {

@@ -13,7 +13,7 @@ export { generationTest } from './generation';
 export { pokedexTest } from './pokedex';
 export { versionTest } from './version';
 export { versionGroupTest } from './version-group';
-export { itemTests } from './item';
+export { itemTest } from './item';
 export { itemAttributeTests } from './item-attribute';
 export { itemCategoryTests } from './item-category';
 export { itemFlingEffectTests } from './item-fling-effect';

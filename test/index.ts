@@ -24,7 +24,7 @@ import {
   itemCategoryTests,
   itemFlingEffectTests,
   itemPocketTests,
-  itemTests,
+  itemTest,
   languageTests,
   locationAreaTests,
   locationTests,
@@ -115,7 +115,7 @@ endpointRunner('generation', generationTest);
 endpointRunner('pokedex', pokedexTest);
 endpointRunner('version', versionTest);
 endpointRunner('version-group', versionGroupTest);
-endpointRunner('item', itemTests);
+endpointRunner('item', itemTest);
 endpointRunner('item-attribute', itemAttributeTests);
 endpointRunner('item-category', itemCategoryTests);
 endpointRunner('item-fling-effect', itemFlingEffectTests);
